@@ -1,5 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Array of MMRDA Micro-Zones for the carpet bombing section
+const mmrdaZones = [
+  "Fort", "Kalbadevi", "Mandvi", "Girgaon", "Colaba", "Malabar Hill", "Grant Road",
+  "Mumbai Central", "Chinchbunder", "Mazgaon", "Jacob Circle", "Parel", "Dadar",
+  "Sewri", "Mahim", "Dharavi", "Worli", "Matunga", "Marine Lines", "Nariman Point",
+  "Sion", "Prabhadevi", "Wadala", "Nehru Nagar", "Bhandup", "Shivaji Nagar", "Juhu",
+  "Bandra", "Khar", "Andheri", "Santacruz", "Vile Parle", "Marol", "Jogeshwari",
+  "Versova", "Goregaon", "Malad", "Borivali", "Kandivali", "Dahisar", "Kurla",
+  "Chembur", "Sakinaka", "Powai", "Ghatkopar", "Vikhroli", "Mulund", "Chakala MIDC",
+  "Thane", "Naupada", "Wagle Estate", "Kalwa", "Mumbra", "Bhayandar", "Mira Road",
+  "Ulhasnagar", "Dombivli", "Kalyan", "Ambernath", "Badlapur", "Belapur CBD",
+  "Ghansoli", "Uran", "Vashi", "Sanpada", "Nerul", "JNPT", "Airoli", "Panvel",
+  "Taloja MIDC", "Kharghar", "Kalamboli", "Vasai", "Nalasopara", "Naigaon", "Virar"
+];
 ---
 
 <Layout title="Service Areas & Supply Network | Vertex Scaffolding Maharashtra, Gujarat & Goa">
@@ -46,35 +61,35 @@ import Layout from '../layouts/Layout.astro';
             Mumbai, Navi Mumbai & Coastal Belt
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 font-jakarta">
-            <a href="/locations/mh/mumbai-city" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/mumbai-city" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Mumbai City & Suburbs</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/navi-mumbai-ttc" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/navi-mumbai-ttc" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Navi Mumbai (TTC) <span class="text-[9px] uppercase ml-1 text-emerald-500/80 bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded-sm">HQ</span></span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/taloja-midc" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/taloja-midc" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Taloja MIDC</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/jnpt" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/jnpt" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">JNPT Port & Uran</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/thane-wagle" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/thane-wagle" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Thane (Wagle Estate)</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/bhiwandi" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/bhiwandi" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Bhiwandi Logistics Hub</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/kalyan-dombivli" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/kalyan-dombivli" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Kalyan & Dombivli</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/tarapur-boisar" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/tarapur-boisar" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Tarapur MIDC (Boisar)</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
@@ -87,27 +102,27 @@ import Layout from '../layouts/Layout.astro';
             Pune Corridor & Raigad
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 font-jakarta">
-            <a href="/locations/mh/chakan-midc" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/chakan-midc" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Chakan MIDC</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/bhosari" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/bhosari" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Bhosari & PCMC</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/talegaon" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/talegaon" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Talegaon MIDC</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/ranjangaon" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/ranjangaon" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Ranjangaon MIDC</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/patalganga" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/patalganga" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Patalganga MIDC</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/roha-khopoli" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/roha-khopoli" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Roha & Khopoli</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
@@ -120,27 +135,27 @@ import Layout from '../layouts/Layout.astro';
             Nashik, Aurangabad & Vidarbha
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 font-jakarta">
-            <a href="/locations/mh/satpur-ambad" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/satpur-ambad" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Nashik (Satpur & Ambad)</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/sinnar" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/sinnar" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Sinnar MIDC</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/waluj-aurangabad" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/waluj-aurangabad" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Waluj MIDC (Aurangabad)</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/shendra-dmic" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/shendra-dmic" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Shendra AURIC (DMIC)</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/butibori" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/butibori" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Nagpur (Butibori MIDC)</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/mh/mihan" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/maharashtra/mihan" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">MIHAN SEZ</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
@@ -169,23 +184,23 @@ import Layout from '../layouts/Layout.astro';
             South Gujarat (Surat to Vapi)
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 font-jakarta">
-            <a href="/locations/gj/hazira" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/hazira" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Surat & Hazira Port</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/gj/sachin-palsana" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/sachin-palsana" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Sachin & Palsana GIDC</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/gj/vapi" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/vapi" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Vapi GIDC</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/gj/umbergaon" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/umbergaon" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Sarigam & Umbergaon</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/gj/valsad" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/valsad" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Valsad & Pardi</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
@@ -198,35 +213,35 @@ import Layout from '../layouts/Layout.astro';
             Bharuch, Vadodara & Ahmedabad
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 font-jakarta">
-            <a href="/locations/gj/ankleshwar" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/ankleshwar" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Ankleshwar GIDC</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/gj/dahej" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/dahej" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Dahej PCPIR & Jhagadia</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/gj/nandesari" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/nandesari" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Vadodara (Nandesari)</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/gj/savli-halol" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/savli-halol" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Savli & Halol GIDC</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/gj/sanand" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/sanand" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Ahmedabad (Sanand)</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/gj/vatva-naroda" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/vatva-naroda" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Vatva & Naroda GIDC</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/gj/rajkot" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/rajkot" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Rajkot (Metoda GIDC)</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
-            <a href="/locations/gj/morbi" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+            <a href="/locations/gujarat/morbi" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#0a170e] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
               <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Morbi Industrial Hub</span>
               <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
@@ -250,36 +265,58 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 font-jakarta">
-          <a href="/locations/ga/mopa" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+          <a href="/locations/goa/mopa" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
             <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Pernem (Mopa Zone)</span>
             <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
-          <a href="/locations/ga/tuem" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+          <a href="/locations/goa/tuem" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
             <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Tuem Industrial Estate</span>
             <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
-          <a href="/locations/ga/thivim" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+          <a href="/locations/goa/thivim" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
             <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Thivim Industrial Estate</span>
             <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
-          <a href="/locations/ga/bicholim-honda" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+          <a href="/locations/goa/bicholim-honda" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
             <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Bicholim & Honda</span>
             <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
-          <a href="/locations/ga/verna" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+          <a href="/locations/goa/verna" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
             <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Verna Industrial Estate</span>
             <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
-          <a href="/locations/ga/kundaim" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+          <a href="/locations/goa/kundaim" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
             <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Kundaim Industrial Estate</span>
             <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
-          <a href="/locations/ga/panaji-mapusa" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
+          <a href="/locations/goa/panaji-mapusa" class="group flex items-center justify-between p-4 sm:p-5 min-h-[64px] rounded-[3px] border border-white/5 bg-[#050f09] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all shadow-sm">
             <span class="text-zinc-300 font-bold text-sm sm:text-[15px] group-hover:text-emerald-400 transition-colors">Panaji & Mapusa</span>
             <svg class="h-4 w-4 sm:h-5 sm:w-5 text-zinc-600 group-hover:text-emerald-400 transition-transform transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
         </div>
 
+      </div>
+    </section>
+
+    <section class="py-12 sm:py-16 bg-[#050f09] relative z-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="h-10 w-10 rounded-sm bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.2)] shrink-0">
+            <svg class="h-5 w-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-black text-white uppercase tracking-tight">Mumbai MMRDA <span class="text-emerald-400">Micro-Zones</span></h2>
+            <p class="font-jakarta text-xs sm:text-sm text-zinc-400 mt-1">Direct 24-hour dispatch available to the following pin-code clusters.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2.5 sm:gap-3">
+          {mmrdaZones.map(zone => (
+            <a href={`/locations/maharashtra/${zone.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} class="inline-flex items-center justify-center px-3.5 py-2 rounded-sm border border-emerald-500/20 bg-[#0a170e] text-zinc-300 text-[10px] sm:text-[11px] font-bold uppercase tracking-widest hover:border-emerald-500/60 hover:text-emerald-400 hover:bg-emerald-500/10 transition-all duration-300 shadow-sm">
+              {zone}
+            </a>
+          ))}
+        </div>
       </div>
     </section>
 

@@ -1,122 +1,161 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// ==========================================
+// 1. FLAGSHIP IMPORTS (Options 1 & 2)
+// ==========================================
+import ringlockOpt1 from '../assets/products/Ringlock Option 1.jpeg';
+import ringlockOpt2 from '../assets/products/Ringlock Option 2.jpeg';
+import towerFeatured from '../assets/products/Staircase Tower.jpeg';
+import plankOpt1 from '../assets/products/Walkway Plank Option 1.jpeg';
+import plankOpt2 from '../assets/products/Walkway Plank Option 2.jpeg';
+
+// ==========================================
+// 2. FULL CATALOGUE IMPORTS (19 Items)
+// ==========================================
+import anchorNut from '../assets/products/anchor-nut product.jpg';
+import baseJack from '../assets/products/base-jack product.jpg';
+import cuplock from '../assets/products/Cuplock product.jpg';
+import doubleCoupler from '../assets/products/double coupler.jpg';
+import expJointPin from '../assets/products/exp-joint-pin product.jpg';
+import fixedBasePlate from '../assets/products/fixed-base-plate product.jpg';
+import floorformPanels from '../assets/products/floorform-panels-highres product.jpg';
+import girderCoupler from '../assets/products/girder-coupler.jpg';
+import gratings from '../assets/products/gratings-highres product.jpg';
+import hFrame from '../assets/products/h frame product.jpg';
+import ringlockProd from '../assets/products/Ringlock product.jpg';
+import sleeveCoupler from '../assets/products/sleeve coupler.png'; 
+import staircaseProd from '../assets/products/staircase tower product.jpg';
+import stirrupHead from '../assets/products/stirrup head.jpg';
+import swivelCoupler from '../assets/products/swivel coupler.jpg';
+import telescopicProp from '../assets/products/telescopic steel prop.jpg';
+import tieRod from '../assets/products/tie-rod product.jpg';
+import universalJack from '../assets/products/universal jack product.jpg';
+import walkwayPlank from '../assets/products/walkway plank.jpg';
 
 // Unified Product Data Engine for the Interactive Grid
 const products = [
   // Scaffolding Systems
   {
-    name: "Cuplock Scaffolding System",
+    name: "Ringlock Scaffolding",
     category: "scaffolding",
-    image: "https://images.unsplash.com/photo-1545459720-aac8509eb02c?q=80&w=600&auto=format&fit=crop",
-    specs: ["Rapid locking mechanism", "High load-bearing capacity", "Galvanized for rust resistance"]
+    image: ringlockProd,
+    specs: ["Multi-directional rosette nodes", "Up to 8 connections per node", "High load-bearing capacity"]
   },
   {
-    name: "H-Frame Scaffolding System",
+    name: "Cuplock Scaffolding",
     category: "scaffolding",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop",
+    image: cuplock,
+    specs: ["Rapid locking mechanism", "Galvanized rust resistance", "Rigid node points"]
+  },
+  {
+    name: "H-Frame Scaffolding",
+    category: "scaffolding",
+    image: hFrame,
     specs: ["Ideal for masonry & painting", "Rigid cross-bracing", "Quick vertical stacking"]
   },
   {
-    name: "APS Unit Scaffolding System",
+    name: "Walkway Planks",
     category: "scaffolding",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop",
-    specs: ["Advanced perimeter safety", "Modular configuration", "OSHA compliant framework"]
+    image: walkwayPlank,
+    specs: ["Punched anti-slip surface", "Roll-formed structural rigidity", "Heavy-duty load rating"]
   },
   {
-    name: "Aluminum Scaffolding & Jacks",
+    name: "Staircase Towers",
     category: "scaffolding",
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=600&auto=format&fit=crop",
-    specs: ["Lightweight maneuverability", "Non-corrosive alloy", "Caster wheels with dual locks"]
+    image: staircaseProd,
+    specs: ["High-volume worker egress", "Interlocking stringers", "OSHA compliant landings"]
+  },
+  {
+    name: "Industrial Gratings",
+    category: "scaffolding",
+    image: gratings,
+    specs: ["Heavy impact resistance", "High drainage capability", "Non-slip serrated edge"]
   },
 
   // Pipes & Props
   {
-    name: "Scaffolding Pipes and Tubes",
+    name: "Telescopic Steel Prop",
     category: "pipes",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop",
-    specs: ["48.3mm outer diameter", "High tensile steel grade", "Custom length availability"]
-  },
-  {
-    name: "Vertical Scaffolding Pipes",
-    category: "pipes",
-    image: "https://images.unsplash.com/photo-1590644365607-1c5a39178125?q=80&w=600&auto=format&fit=crop",
-    specs: ["Heavy wall thickness", "Seamless structural joints", "End-to-end welded joints"]
-  },
-  {
-    name: "Telescopic Steel Props",
-    category: "pipes",
-    image: "https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=600&auto=format&fit=crop",
+    image: telescopicProp,
     specs: ["Infinite height adjustment", "Self-cleaning heavy duty thread", "Solid base and head plates"]
-  },
-  {
-    name: "Adjustable Beam Spans",
-    category: "pipes",
-    image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=600&auto=format&fit=crop",
-    specs: ["Flexible sliding mechanics", "High bending strength", "Eliminates timber wastage"]
   },
 
   // Formwork
   {
-    name: "Floor Form Adjusters",
+    name: "Floorform Panels",
     category: "formwork",
-    image: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=600&auto=format&fit=crop",
-    specs: ["Precision concrete leveling", "Heavy impact resistance", "Reusable structural steel"]
-  },
-  {
-    name: "Floor Form Panels",
-    category: "formwork",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop",
+    image: floorformPanels,
     specs: ["Uniform concrete finish", "Stiffened with MS angles", "Seamless interlocking edges"]
-  },
-  {
-    name: "Shuttering Plates",
-    category: "formwork",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop",
-    specs: ["Optimal concrete retention", "14 Gauge thick steel", "Minimal concrete leakage"]
-  },
-  {
-    name: "Centering Sheets",
-    category: "formwork",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop",
-    specs: ["Curved/flat adaptability", "Corrosion resistant coating", "Easy to strip and clean"]
-  },
-  {
-    name: "Column Form Work",
-    category: "formwork",
-    image: "https://images.unsplash.com/photo-1545459720-aac8509eb02c?q=80&w=600&auto=format&fit=crop",
-    specs: ["Square and circular molds", "Integrated tie-rod holes", "High pour pressure rating"]
-  },
-  {
-    name: "Climbing Walform Systems",
-    category: "formwork",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop",
-    specs: ["Continuous vertical pours", "Crane-independent climbing", "Ultimate high-rise efficiency"]
   },
 
   // Hardware
   {
-    name: "Drop Forged Couplers",
+    name: "Double Coupler",
     category: "hardware",
-    image: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=600&auto=format&fit=crop",
-    specs: ["BS 1139 standard compliance", "Slip-resistant grip", "T-bolt mechanism"]
+    image: doubleCoupler,
+    specs: ["90-degree rigid connection", "BS 1139 standard compliance", "Slip-resistant grip"]
   },
   {
-    name: "Pressed Couplers",
+    name: "Swivel Coupler",
     category: "hardware",
-    image: "https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=600&auto=format&fit=crop",
-    specs: ["Cost-effective jointing", "Zinc plated finish", "Swivel and fixed variants"]
+    image: swivelCoupler,
+    specs: ["360-degree rotation", "Connects bracing tubes", "Drop-forged durability"]
   },
   {
-    name: "Clamps and Nuts",
+    name: "Girder Coupler",
     category: "hardware",
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=600&auto=format&fit=crop",
-    specs: ["Heavy duty wing nuts", "Water barrier tie-rods", "Cast iron durability"]
+    image: girderCoupler,
+    specs: ["Secures tubes to beams", "Heavy duty clamping", "Used in pairs"]
   },
   {
-    name: "Reinforcement Hardware",
+    name: "Sleeve Coupler",
     category: "hardware",
-    image: "https://images.unsplash.com/photo-1590644365607-1c5a39178125?q=80&w=600&auto=format&fit=crop",
-    specs: ["Rebar mechanical splices", "Threaded alignment studs", "High seismic resistance"]
+    image: sleeveCoupler,
+    specs: ["End-to-end external connection", "Maintains tube alignment", "High tensile steel"]
+  },
+  {
+    name: "Base Jack",
+    category: "hardware",
+    image: baseJack,
+    specs: ["Leveling on uneven ground", "Heavy duty threaded rod", "Solid load distribution"]
+  },
+  {
+    name: "Universal Jack",
+    category: "hardware",
+    image: universalJack,
+    specs: ["Top and bottom application", "Fits multiple tube sizes", "Precision height control"]
+  },
+  {
+    name: "Fixed Base Plate",
+    category: "hardware",
+    image: fixedBasePlate,
+    specs: ["Spreads load evenly", "Welded central spigot", "Flat concrete placement"]
+  },
+  {
+    name: "Stirrup Head",
+    category: "hardware",
+    image: stirrupHead,
+    specs: ["Holds timber or steel beams", "U-head configuration", "Seamless height adjustment"]
+  },
+  {
+    name: "Expansion Joint Pin",
+    category: "hardware",
+    image: expJointPin,
+    specs: ["Internal end-to-end jointing", "Expanding core mechanism", "Perfect tube alignment"]
+  },
+  {
+    name: "Tie-Rod Array",
+    category: "hardware",
+    image: tieRod,
+    specs: ["High tensile formwork anchor", "Continuous threading", "Resists high pour pressure"]
+  },
+  {
+    name: "Anchor Nut",
+    category: "hardware",
+    image: anchorNut,
+    specs: ["Secures tie-rods tightly", "Wide load distribution", "Cast iron durability"]
   }
 ];
 ---
@@ -125,7 +164,6 @@ const products = [
   
   <main class="bg-[#050f09] min-h-screen">
     
-    <!-- Hero Section -->
     <section class="relative pt-28 pb-16 border-b border-white/5 text-center overflow-hidden">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none"></div>
       
@@ -142,23 +180,26 @@ const products = [
       </div>
     </section>
 
-    <!-- =========================================================================
-         HERO PRODUCTS (DEEP DIVE SECTIONS)
-         ========================================================================= -->
-
-    <!-- Deep Dive: Ringlock -->
     <section class="py-20 sm:py-24 border-b border-white/5 relative overflow-hidden">
       <div class="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none"></div>
 
       <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
           
-          <div class="aspect-[4/3] rounded-sm bg-zinc-900 border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] relative overflow-hidden group">
-            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1545459720-aac8509eb02c?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out z-0"></div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+            <div class="relative rounded-sm bg-zinc-900 border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden group min-h-[300px] sm:min-h-full">
+              <Image src={ringlockOpt1} alt="Ringlock Option 1" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out z-0" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+              <div class="absolute bottom-3 left-3 bg-[#050f09]/90 border border-emerald-500/50 px-3 py-1 text-[10px] font-bold text-emerald-400 uppercase tracking-widest rounded-sm backdrop-blur-sm z-20">Configuration 1</div>
+            </div>
+            <div class="relative rounded-sm bg-zinc-900 border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden group min-h-[300px] sm:min-h-full">
+              <Image src={ringlockOpt2} alt="Ringlock Option 2" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out z-0" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+              <div class="absolute bottom-3 left-3 bg-[#050f09]/90 border border-emerald-500/50 px-3 py-1 text-[10px] font-bold text-emerald-400 uppercase tracking-widest rounded-sm backdrop-blur-sm z-20">Configuration 2</div>
+            </div>
           </div>
 
-          <div>
+          <div class="flex flex-col justify-center">
             <h2 class="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mb-4">Top Rated in India <br/><span class="text-emerald-400">Ringlock Scaffolding</span></h2>
             <p class="font-jakarta text-zinc-300 text-sm sm:text-base leading-relaxed mb-8">
               Our flagship modular system offers maximum flexibility and heavy load-bearing capacity. Designed with precision-engineered connection nodes, it allows for rapid assembly of complex geometries while maintaining rigid structural integrity.
@@ -192,14 +233,13 @@ const products = [
       </div>
     </section>
 
-    <!-- Deep Dive: Staircase Towers -->
     <section class="py-20 sm:py-24 border-b border-white/5 bg-[#0a170e] relative overflow-hidden">
       <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none"></div>
 
       <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
           
-          <div class="order-2 lg:order-1">
+          <div class="order-2 lg:order-1 flex flex-col justify-center">
             <h2 class="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mb-4">Best Heavy-Duty <br/><span class="text-emerald-400">Staircase Towers</span></h2>
             <p class="font-jakarta text-zinc-300 text-sm sm:text-base leading-relaxed mb-8">
               Safe, high-capacity access solutions for multi-level construction and industrial sites. Our modular staircase towers are built to withstand heavy foot traffic and extreme environmental conditions without compromising stability.
@@ -230,23 +270,32 @@ const products = [
           </div>
 
           <div class="order-1 lg:order-2 aspect-[4/3] rounded-sm bg-zinc-900 border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] relative overflow-hidden group">
-            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1590644365607-1c5a39178125?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out z-0"></div>
+            <Image src={towerFeatured} alt="Staircase Tower Setup" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out z-0" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- Deep Dive: Walkway Planks -->
     <section class="py-20 sm:py-24 border-b border-white/5">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
           
-          <div class="aspect-[4/3] rounded-sm bg-zinc-900 border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] relative overflow-hidden group">
-            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out z-0"></div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+            <div class="relative rounded-sm bg-zinc-900 border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden group min-h-[300px] sm:min-h-full">
+              <Image src={plankOpt1} alt="Walkway Plank Option 1" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out z-0" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+              <div class="absolute bottom-3 left-3 bg-[#050f09]/90 border border-emerald-500/50 px-3 py-1 text-[10px] font-bold text-emerald-400 uppercase tracking-widest rounded-sm backdrop-blur-sm z-20">Punched Matrix</div>
+            </div>
+            <div class="relative rounded-sm bg-zinc-900 border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden group min-h-[300px] sm:min-h-full">
+              <Image src={plankOpt2} alt="Walkway Plank Option 2" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-out z-0" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10"></div>
+              <div class="absolute bottom-3 left-3 bg-[#050f09]/90 border border-emerald-500/50 px-3 py-1 text-[10px] font-bold text-emerald-400 uppercase tracking-widest rounded-sm backdrop-blur-sm z-20">Reinforced Ribbing</div>
+            </div>
           </div>
 
-          <div>
+          <div class="flex flex-col justify-center">
             <h2 class="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight mb-4">Premium Industrial <br/><span class="text-emerald-400">Walkway Planks</span></h2>
             <p class="font-jakarta text-zinc-300 text-sm sm:text-base leading-relaxed mb-8">
               The foundation of safe elevation. Our heavy-duty steel walkway planks are roll-formed for structural rigidity, providing workers with an unyielding, secure platform at any height.
@@ -280,16 +329,12 @@ const products = [
       </div>
     </section>
 
-    <!-- =========================================================================
-         FULL CATALOGUE (INTERACTIVE GRID)
-         ========================================================================= -->
     <section class="py-20 bg-[#0a170e]">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         <div class="text-center mb-12">
           <h2 class="text-3xl font-black text-white uppercase tracking-tight mb-6">Complete Product <span class="text-emerald-400">Catalogue</span></h2>
           
-          <!-- Interactive Quick Filters -->
           <div class="flex flex-wrap items-center justify-center gap-3">
             <button class="filter-btn active px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest bg-emerald-500 text-[#050f09] transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.3)]" data-filter="all">All Products</button>
             <button class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest border border-white/10 text-zinc-300 hover:border-emerald-500/50 hover:text-emerald-400 transition-all duration-300" data-filter="scaffolding">Scaffolding</button>
@@ -299,23 +344,19 @@ const products = [
           </div>
         </div>
 
-        <!-- The Interactive Grid -->
         <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
           
           {products.map((item) => (
             <div class="product-card group relative h-[380px] rounded-sm bg-[#050f09] border border-white/5 overflow-hidden shadow-lg transition-all duration-500" data-category={item.category}>
               
-              <!-- Background Image -->
-              <img src={item.image} alt={item.name} class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-30 transition-all duration-700 ease-out" loading="lazy" />
+              <Image src={item.image} alt={item.name} class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-30 transition-all duration-700 ease-out" />
               
-              <!-- Default Bottom Title Bar -->
               <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
               <div class="absolute bottom-0 left-0 right-0 p-6 transform transition-all duration-500 ease-in-out group-hover:translate-y-8 group-hover:opacity-0">
                 <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block mb-2">{item.category}</span>
                 <h3 class="text-xl font-black text-white uppercase tracking-wide leading-tight">{item.name}</h3>
               </div>
 
-              <!-- Hover State (Slides up from bottom) -->
               <div class="absolute top-full left-0 w-full h-full bg-[#050f09]/95 backdrop-blur-md p-8 flex flex-col transition-all duration-500 ease-in-out group-hover:top-0 border-t-4 border-emerald-500">
                 
                 <h3 class="text-lg font-black text-white uppercase tracking-wide mb-6 leading-tight line-clamp-2">{item.name}</h3>
@@ -332,9 +373,6 @@ const products = [
                 <div class="flex flex-col gap-3 mt-6">
                   <a href="/contact-us" class="w-full bg-emerald-500 text-[#050f09] text-xs font-bold uppercase tracking-widest text-center py-3.5 rounded-sm hover:bg-white transition-colors shadow-[0_0_15px_rgba(16,185,129,0.3)]">
                     Get in Touch
-                  </a>
-                  <a href="https://primesteeltech.co.in" target="_blank" rel="noopener noreferrer" class="w-full border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-widest text-center py-3.5 rounded-sm hover:bg-emerald-500/10 transition-colors">
-                    Learn More &rarr;
                   </a>
                 </div>
 
@@ -386,7 +424,7 @@ const products = [
             card.style.transform = 'scale(0.95)';
             setTimeout(() => {
               card.style.display = 'none';
-            }, 300); // Matches transition duration
+            }, 300); 
           }
         });
       });
