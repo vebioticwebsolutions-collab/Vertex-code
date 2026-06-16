@@ -9,19 +9,24 @@ import towerImg from '../assets/products/staircase tower product.jpg';
 ---
 
 <Layout title="Live Quote Engine | Vertex by Primesteeltech">
+  
+  <a href="tel:+919876543210" class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-emerald-500 text-[#050f09] rounded-full shadow-[0_0_25px_rgba(16,185,129,0.5)] hover:scale-110 hover:bg-white transition-all duration-300 group">
+    <svg class="w-6 h-6 transform group-hover:rotate-12 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+  </a>
+
   <main class="bg-[#050f09] min-h-screen pt-24 pb-16 flex items-center justify-center relative overflow-hidden">
     
     <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-emerald-500/10 blur-[150px] rounded-full pointer-events-none z-0"></div>
 
     <div class="w-full max-w-4xl px-4 sm:px-6 relative z-10">
       
-      <div class="mb-8 max-w-2xl mx-auto">
+      <div class="mb-8 max-w-xl mx-auto">
         <div class="flex justify-between mb-3">
-          <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20" id="step-indicator">Step 1 of 6</span>
+          <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20" id="step-indicator">Step 1 of 5</span>
           <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mt-1" id="step-title">Introduction</span>
         </div>
         <div class="w-full h-2 bg-[#0a170e] rounded-full overflow-hidden border border-white/5 relative">
-          <div id="progress-bar" class="absolute top-0 left-0 h-full bg-emerald-500 w-1/6 transition-all duration-700 ease-out shadow-[0_0_15px_rgba(16,185,129,0.8)]"></div>
+          <div id="progress-bar" class="absolute top-0 left-0 h-full bg-emerald-500 w-1/5 transition-all duration-700 ease-out shadow-[0_0_15px_rgba(16,185,129,0.8)]"></div>
         </div>
       </div>
 
@@ -36,12 +41,235 @@ import towerImg from '../assets/products/staircase tower product.jpg';
             Bypass the middlemen. Our proprietary engine connects your project requirements directly to our manufacturing database, generating accurate logistics and material pricing in real-time.
           </p>
           
-          <button onclick="nextStep(2, 'Business Details')" class="w-full sm:w-auto inline-flex h-14 items-center justify-center rounded-sm bg-emerald-500 px-12 text-[13px] font-black text-[#050f09] uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] hover:-translate-y-1">
-            Start Configuration &rarr;
-          </button>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button onclick="goToStep(2, 2, 'Select System')" class="inline-flex h-14 items-center justify-center rounded-sm bg-emerald-500 px-10 text-[13px] font-black text-[#050f09] uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:-translate-y-1">
+              Start Configuration &rarr;
+            </button>
+            <a href="tel:+919876543210" class="inline-flex h-14 items-center justify-center rounded-sm border border-emerald-500/30 bg-emerald-500/10 px-8 text-[12px] font-bold text-emerald-400 uppercase tracking-widest hover:bg-emerald-500 hover:text-[#050f09] transition-all duration-300">
+              <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              Call Sales Direct
+            </a>
+          </div>
         </div>
 
         <div id="step-2" class="form-step hidden p-6 sm:p-12 transition-opacity duration-500">
+          <h2 class="text-2xl font-black text-white uppercase tracking-tight mb-2">Select <span class="text-emerald-400">System</span></h2>
+          <p class="font-jakarta text-zinc-400 text-sm mb-8">Select the primary structural system required for your site.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+            <label class="cursor-pointer group relative block">
+              <input type="radio" name="product_selection" value="ringlock" class="peer sr-only" onchange="selectProduct('ringlock')" />
+              <div class="radio-card rounded-xl bg-[#0a170e] border border-white/10 transition-all flex flex-col overflow-hidden h-full">
+                <div class="h-64 sm:h-48 bg-zinc-900 relative border-b border-white/5 overflow-hidden">
+                  <Image src={ringlockImg} alt="Ringlock" class="w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
+                </div>
+                <div class="p-5 flex items-center justify-between mt-auto">
+                  <h3 class="text-white font-black text-[13px] sm:text-sm uppercase tracking-wide">Ringlock Array</h3>
+                  <div class="custom-radio w-6 h-6 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
+                    <svg class="custom-check w-3 h-3 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            <label class="cursor-pointer group relative block">
+              <input type="radio" name="product_selection" value="tower" class="peer sr-only" onchange="selectProduct('tower')" />
+              <div class="radio-card rounded-xl bg-[#0a170e] border border-white/10 transition-all flex flex-col overflow-hidden h-full">
+                <div class="h-64 sm:h-48 bg-zinc-900 relative border-b border-white/5 overflow-hidden">
+                  <Image src={towerImg} alt="Staircase Tower" class="w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
+                </div>
+                <div class="p-5 flex items-center justify-between mt-auto">
+                  <h3 class="text-white font-black text-[13px] sm:text-sm uppercase tracking-wide">Staircase Tower</h3>
+                  <div class="custom-radio w-6 h-6 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
+                    <svg class="custom-check w-3 h-3 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            <label class="cursor-pointer group relative block">
+              <input type="radio" name="product_selection" value="plank" class="peer sr-only" onchange="selectProduct('plank')" />
+              <div class="radio-card rounded-xl bg-[#0a170e] border border-white/10 transition-all flex flex-col overflow-hidden h-full">
+                <div class="h-64 sm:h-48 bg-zinc-900 relative border-b border-white/5 overflow-hidden">
+                  <Image src={plankImg} alt="Walkway Planks" class="w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
+                </div>
+                <div class="p-5 flex items-center justify-between mt-auto">
+                  <h3 class="text-white font-black text-[13px] sm:text-sm uppercase tracking-wide">Walkway Planks</h3>
+                  <div class="custom-radio w-6 h-6 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
+                    <svg class="custom-check w-3 h-3 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <div class="mt-10 pt-6 border-t border-white/5 flex gap-4">
+            <button onclick="goToStep(1, 1, 'Introduction')" class="hidden sm:flex h-14 items-center justify-center rounded-md border border-white/10 bg-transparent px-8 text-[12px] font-bold text-zinc-400 uppercase tracking-widest hover:bg-white/5 transition-colors">
+              Back
+            </button>
+            <button id="btn-product-disabled" class="w-full inline-flex h-14 items-center justify-center rounded-[3px] bg-zinc-800 text-zinc-500 px-8 text-[13px] font-black uppercase tracking-[0.15em] cursor-not-allowed">
+              Select System &rarr;
+            </button>
+            <button id="btn-product-proceed" style="display: none;" onclick="handleSystemProceed()" class="w-full inline-flex h-14 items-center justify-center rounded-[3px] bg-emerald-500 px-8 text-[13px] font-black text-[#050f09] uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:-translate-y-1">
+              Proceed &rarr;
+            </button>
+          </div>
+        </div>
+
+        <div id="step-3" class="form-step hidden p-6 sm:p-12 transition-opacity duration-500">
+          <h2 class="text-2xl font-black text-white uppercase tracking-tight mb-2">Walkway <span class="text-emerald-400">Specifications</span></h2>
+          <p class="font-jakarta text-zinc-400 text-sm mb-8">Select the specific type of walkway plank required for your site.</p>
+          
+          <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 mb-10">
+            <label class="cursor-pointer group relative block">
+              <input type="radio" name="plank_type" value="2-fold-without-hook" class="sr-only" onchange="selectPlankType('2-fold-without-hook')" />
+              <div class="radio-card rounded-xl bg-[#0a170e] border border-white/5 transition-all p-3 sm:p-4 flex flex-col overflow-hidden h-full">
+                <div class="aspect-square sm:aspect-[4/3] bg-zinc-900 rounded-md mb-3 border border-white/10 overflow-hidden relative">
+                  <img src="https://placehold.co/600x400/050f09/10b981?text=2-Fold\nWithout+Hook" alt="Placeholder" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500" />
+                </div>
+                <div class="flex items-center justify-between mt-auto gap-2">
+                  <h3 class="text-white font-black text-[11px] sm:text-xs uppercase tracking-wide leading-tight">2-Fold<br/><span class="text-[9px] text-zinc-400">Without Hook</span></h3>
+                  <div class="custom-radio w-5 h-5 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
+                    <svg class="custom-check w-3 h-3 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            <label class="cursor-pointer group relative block">
+              <input type="radio" name="plank_type" value="2-fold-standard-hook" class="sr-only" onchange="selectPlankType('2-fold-standard-hook')" />
+              <div class="radio-card rounded-xl bg-[#0a170e] border border-white/5 transition-all p-3 sm:p-4 flex flex-col overflow-hidden h-full">
+                <div class="aspect-square sm:aspect-[4/3] bg-zinc-900 rounded-md mb-3 border border-white/10 overflow-hidden relative">
+                  <img src="https://placehold.co/600x400/050f09/10b981?text=2-Fold\nStandard+Hook" alt="Placeholder" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500" />
+                </div>
+                <div class="flex items-center justify-between mt-auto gap-2">
+                  <h3 class="text-white font-black text-[11px] sm:text-xs uppercase tracking-wide leading-tight">2-Fold<br/><span class="text-[9px] text-zinc-400">Standard Hook</span></h3>
+                  <div class="custom-radio w-5 h-5 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
+                    <svg class="custom-check w-3 h-3 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            <label class="cursor-pointer group relative block">
+              <input type="radio" name="plank_type" value="2-fold-dog-ear" class="sr-only" onchange="selectPlankType('2-fold-dog-ear')" />
+              <div class="radio-card rounded-xl bg-[#0a170e] border border-white/5 transition-all p-3 sm:p-4 flex flex-col overflow-hidden h-full">
+                <div class="aspect-square sm:aspect-[4/3] bg-zinc-900 rounded-md mb-3 border border-white/10 overflow-hidden relative">
+                  <img src="https://placehold.co/600x400/050f09/10b981?text=2-Fold\nDog+Ear+Hook" alt="Placeholder" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500" />
+                </div>
+                <div class="flex items-center justify-between mt-auto gap-2">
+                  <h3 class="text-white font-black text-[11px] sm:text-xs uppercase tracking-wide leading-tight">2-Fold<br/><span class="text-[9px] text-zinc-400">Dog Ear Hook</span></h3>
+                  <div class="custom-radio w-5 h-5 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
+                    <svg class="custom-check w-3 h-3 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            <label class="cursor-pointer group relative block">
+              <input type="radio" name="plank_type" value="2-fold-gi-hook" class="sr-only" onchange="selectPlankType('2-fold-gi-hook')" />
+              <div class="radio-card rounded-xl bg-[#0a170e] border border-white/5 transition-all p-3 sm:p-4 flex flex-col overflow-hidden h-full">
+                <div class="aspect-square sm:aspect-[4/3] bg-zinc-900 rounded-md mb-3 border border-white/10 overflow-hidden relative">
+                  <img src="https://placehold.co/600x400/050f09/10b981?text=2-Fold\nGI+With+Hook" alt="Placeholder" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500" />
+                </div>
+                <div class="flex items-center justify-between mt-auto gap-2">
+                  <h3 class="text-white font-black text-[11px] sm:text-xs uppercase tracking-wide leading-tight">2-Fold<br/><span class="text-[9px] text-zinc-400">GI With Hook</span></h3>
+                  <div class="custom-radio w-5 h-5 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
+                    <svg class="custom-check w-3 h-3 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            <label class="cursor-pointer group relative block">
+              <input type="radio" name="plank_type" value="3-fold-without-hook" class="sr-only" onchange="selectPlankType('3-fold-without-hook')" />
+              <div class="radio-card rounded-xl bg-[#0a170e] border border-white/5 transition-all p-3 sm:p-4 flex flex-col overflow-hidden h-full">
+                <div class="aspect-square sm:aspect-[4/3] bg-zinc-900 rounded-md mb-3 border border-white/10 overflow-hidden relative">
+                  <img src="https://placehold.co/600x400/050f09/10b981?text=3-Fold\nWithout+Hook" alt="Placeholder" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500" />
+                </div>
+                <div class="flex items-center justify-between mt-auto gap-2">
+                  <h3 class="text-white font-black text-[11px] sm:text-xs uppercase tracking-wide leading-tight">3-Fold<br/><span class="text-[9px] text-zinc-400">Without Hook</span></h3>
+                  <div class="custom-radio w-5 h-5 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
+                    <svg class="custom-check w-3 h-3 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            <label class="cursor-pointer group relative block">
+              <input type="radio" name="plank_type" value="3-fold-standard-hook" class="sr-only" onchange="selectPlankType('3-fold-standard-hook')" />
+              <div class="radio-card rounded-xl bg-[#0a170e] border border-white/5 transition-all p-3 sm:p-4 flex flex-col overflow-hidden h-full">
+                <div class="aspect-square sm:aspect-[4/3] bg-zinc-900 rounded-md mb-3 border border-white/10 overflow-hidden relative">
+                  <img src="https://placehold.co/600x400/050f09/10b981?text=3-Fold\nStandard+Hook" alt="Placeholder" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500" />
+                </div>
+                <div class="flex items-center justify-between mt-auto gap-2">
+                  <h3 class="text-white font-black text-[11px] sm:text-xs uppercase tracking-wide leading-tight">3-Fold<br/><span class="text-[9px] text-zinc-400">Standard Hook</span></h3>
+                  <div class="custom-radio w-5 h-5 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
+                    <svg class="custom-check w-3 h-3 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <div class="mt-10 pt-6 border-t border-white/5 flex gap-4">
+            <button onclick="goToStep(2, 2, 'Select System')" class="hidden sm:flex h-14 items-center justify-center rounded-md border border-white/10 bg-transparent px-8 text-[12px] font-bold text-zinc-400 uppercase tracking-widest hover:bg-white/5 transition-colors">
+              Back
+            </button>
+            <button id="btn-plank-disabled" class="w-full inline-flex h-14 items-center justify-center rounded-[3px] bg-zinc-800 text-zinc-500 px-8 text-[13px] font-black uppercase tracking-[0.15em] cursor-not-allowed">
+              Select Type &rarr;
+            </button>
+            <button id="btn-plank-proceed" style="display: none;" onclick="goToStep(4, 4, 'Configuration Matrix')" class="w-full inline-flex h-14 items-center justify-center rounded-[3px] bg-emerald-500 px-8 text-[13px] font-black text-[#050f09] uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:-translate-y-1">
+              Proceed to Dimensions &rarr;
+            </button>
+          </div>
+        </div>
+
+        <div id="step-4" class="form-step hidden p-6 sm:p-12 transition-opacity duration-500">
+          <h2 class="text-2xl font-black text-white uppercase tracking-tight mb-2">Configuration <span class="text-emerald-400">Matrix</span></h2>
+          <p class="font-jakarta text-zinc-400 text-sm mb-8">Enter your project specifications to calculate required tonnage.</p>
+
+          <div class="bg-[#0a170e] border border-emerald-500/20 p-6 sm:p-8 rounded-lg shadow-inner">
+            <div class="space-y-6">
+              
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+                <div>
+                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Length (L) *</label>
+                  <input type="number" id="dim-l" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="mm" required />
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Width (W) *</label>
+                  <input type="number" id="dim-w" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="mm" required />
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Height (H) *</label>
+                  <input type="number" id="dim-h" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="mm" required />
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Quantity *</label>
+                  <input type="number" id="dim-qty" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="e.g. 100" required />
+                </div>
+              </div>
+
+              <div class="pt-2 border-t border-white/5">
+                <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2 mt-4">Remarks / Special Requirements</label>
+                <textarea id="dim-remarks" rows="3" class="w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="Enter any specific load requirements, material grades, or custom configurations..."></textarea>
+              </div>
+
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-white/5 flex gap-4">
+              <button onclick="handleDimBack()" class="hidden sm:flex h-14 items-center justify-center rounded-md border border-white/10 bg-transparent px-8 text-[12px] font-bold text-zinc-400 uppercase tracking-widest hover:bg-white/5 transition-colors">
+                Back
+              </button>
+              <button id="btn-dim-proceed" onclick="handleDimProceed()" class="w-full inline-flex h-14 items-center justify-center rounded-[3px] bg-emerald-500 px-8 text-[13px] font-black text-[#050f09] uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:-translate-y-1">
+                Proceed to Details &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="step-5" class="form-step hidden p-6 sm:p-12 transition-opacity duration-500">
           <h2 class="text-2xl font-black text-white uppercase tracking-tight mb-2">Business <span class="text-emerald-400">Details</span></h2>
           <p class="font-jakarta text-zinc-400 text-sm mb-8">Enter your organizational details to register your quote file.</p>
           
@@ -49,11 +277,11 @@ import towerImg from '../assets/products/staircase tower product.jpg';
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label class="block text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-2">Full Name *</label>
-                <input type="text" id="entry-name" placeholder="John Doe" class="w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3.5 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" />
+                <input type="text" id="entry-name" placeholder="John Doe" required class="w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3.5 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" />
               </div>
               <div>
                 <label class="block text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-2">Company Name *</label>
-                <input type="text" id="entry-company" placeholder="BuildCorp India Ltd." class="w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3.5 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" />
+                <input type="text" id="entry-company" placeholder="BuildCorp India Ltd." required class="w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3.5 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" />
               </div>
             </div>
             
@@ -65,29 +293,29 @@ import towerImg from '../assets/products/staircase tower product.jpg';
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
                 <label class="block text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-2">Email Address *</label>
-                <input type="email" id="entry-email" placeholder="john@buildcorp.in" class="w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3.5 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" />
+                <input type="email" id="entry-email" placeholder="john@buildcorp.in" required class="w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3.5 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" />
               </div>
               <div>
                 <label class="block text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-2">Mobile Number *</label>
                 <div class="flex">
                   <span class="inline-flex items-center px-4 bg-white/5 border border-r-0 border-white/10 rounded-l-sm text-zinc-400 text-sm font-jakarta border-r-transparent">+91</span>
-                  <input type="tel" id="entry-mobile" placeholder="98765 43210" class="w-full bg-[#050f09] border border-white/10 rounded-r-sm px-4 py-3.5 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" />
+                  <input type="tel" id="entry-mobile" placeholder="98765 43210" required minlength="10" class="w-full bg-[#050f09] border border-white/10 rounded-r-sm px-4 py-3.5 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" />
                 </div>
               </div>
             </div>
           </div>
 
           <div class="mt-10 flex gap-4 pt-6 border-t border-white/5">
-            <button onclick="nextStep(1, 'Introduction')" class="hidden sm:flex h-14 items-center justify-center rounded-sm border border-white/10 bg-transparent px-8 text-[12px] font-bold text-zinc-400 uppercase tracking-widest hover:bg-white/5 transition-colors">
+            <button onclick="handleDetailsBack()" class="hidden sm:flex h-14 items-center justify-center rounded-sm border border-white/10 bg-transparent px-8 text-[12px] font-bold text-zinc-400 uppercase tracking-widest hover:bg-white/5 transition-colors">
               Back
             </button>
-            <button onclick="saveUserDataAndProceed()" class="w-full inline-flex h-14 items-center justify-center rounded-[3px] bg-emerald-500 px-8 text-[13px] font-black text-[#050f09] uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] hover:-translate-y-1">
+            <button id="btn-details-proceed" onclick="handleDetailsProceed()" class="w-full inline-flex h-14 items-center justify-center rounded-[3px] bg-emerald-500 px-8 text-[13px] font-black text-[#050f09] uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:-translate-y-1">
               Send OTP &rarr;
             </button>
           </div>
         </div>
 
-        <div id="step-3" class="form-step hidden p-8 sm:p-12 text-center transition-opacity duration-500">
+        <div id="step-6" class="form-step hidden p-8 sm:p-12 text-center transition-opacity duration-500">
           <div class="w-16 h-16 mx-auto bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mb-6 shadow-inner">
             <svg class="w-8 h-8 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
           </div>
@@ -101,9 +329,14 @@ import towerImg from '../assets/products/staircase tower product.jpg';
             <input type="text" maxlength="1" class="otp-box w-14 h-16 text-center text-2xl font-black bg-[#050f09] border border-white/10 rounded-md text-white focus:border-emerald-500 focus:outline-none focus:shadow-[0_0_15px_rgba(16,185,129,0.3)] transition-all" />
           </div>
 
-          <button onclick="verifyOTPAndProceed()" class="w-full sm:max-w-xs mx-auto flex h-14 items-center justify-center rounded-[3px] bg-emerald-500 px-8 text-[13px] font-black text-[#050f09] uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] hover:-translate-y-1 mb-8">
-            Verify & Continue &rarr;
-          </button>
+          <div class="flex gap-4 sm:max-w-xs mx-auto mb-8">
+            <button onclick="handleOTPBack()" class="flex h-14 w-1/3 items-center justify-center rounded-sm border border-white/10 bg-transparent text-[12px] font-bold text-zinc-400 uppercase tracking-widest hover:bg-white/5 transition-colors">
+              Back
+            </button>
+            <button id="btn-otp-proceed" onclick="verifyOTPAndProceed()" class="w-2/3 flex h-14 items-center justify-center rounded-[3px] bg-emerald-500 px-8 text-[13px] font-black text-[#050f09] uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:-translate-y-1">
+              Verify &rarr;
+            </button>
+          </div>
 
           <div class="bg-[#050f09]/80 border border-emerald-500/20 p-5 rounded-md flex items-start gap-4 text-left max-w-md mx-auto">
             <svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
@@ -112,277 +345,6 @@ import towerImg from '../assets/products/staircase tower product.jpg';
               <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">
                 Your organizational data is securely vaulted. It is strictly utilized for structural quote generation and backend logistics routing.
               </p>
-            </div>
-          </div>
-        </div>
-
-        <div id="step-4" class="form-step hidden p-6 sm:p-12 transition-opacity duration-500">
-          <h2 class="text-2xl font-black text-white uppercase tracking-tight mb-2">Select <span class="text-emerald-400">System</span></h2>
-          <p class="font-jakarta text-zinc-400 text-sm mb-8">Select the primary structural system required for your site.</p>
-          
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-            
-            <label class="cursor-pointer group relative block">
-              <input type="radio" name="product_selection" value="ringlock" class="peer sr-only" onchange="selectProduct('ringlock')" />
-              <div class="rounded-xl bg-[#0a170e] border border-white/10 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/5 peer-checked:shadow-[0_0_30px_rgba(16,185,129,0.2)] peer-checked:[&_.custom-radio]:border-emerald-400 peer-checked:[&_.custom-radio]:bg-emerald-500 peer-checked:[&_.custom-check]:opacity-100 transition-all flex flex-col overflow-hidden h-full">
-                <div class="aspect-video bg-zinc-900 relative border-b border-white/5 overflow-hidden">
-                  <Image src={ringlockImg} alt="Ringlock" class="w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
-                </div>
-                <div class="p-5 flex items-center justify-between mt-auto">
-                  <h3 class="text-white font-black text-sm uppercase tracking-wide">Ringlock Array</h3>
-                  <div class="custom-radio w-5 h-5 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
-                    <svg class="custom-check w-3 h-3 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                  </div>
-                </div>
-              </div>
-            </label>
-
-            <label class="cursor-pointer group relative block">
-              <input type="radio" name="product_selection" value="tower" class="peer sr-only" onchange="selectProduct('tower')" />
-              <div class="rounded-xl bg-[#0a170e] border border-white/10 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/5 peer-checked:shadow-[0_0_30px_rgba(16,185,129,0.2)] peer-checked:[&_.custom-radio]:border-emerald-400 peer-checked:[&_.custom-radio]:bg-emerald-500 peer-checked:[&_.custom-check]:opacity-100 transition-all flex flex-col overflow-hidden h-full">
-                <div class="aspect-video bg-zinc-900 relative border-b border-white/5 overflow-hidden">
-                  <Image src={towerImg} alt="Staircase Tower" class="w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
-                </div>
-                <div class="p-5 flex items-center justify-between mt-auto">
-                  <h3 class="text-white font-black text-sm uppercase tracking-wide">Staircase Tower</h3>
-                  <div class="custom-radio w-5 h-5 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
-                    <svg class="custom-check w-3 h-3 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                  </div>
-                </div>
-              </div>
-            </label>
-
-            <label class="cursor-pointer group relative block">
-              <input type="radio" name="product_selection" value="plank" class="peer sr-only" onchange="selectProduct('plank')" />
-              <div class="rounded-xl bg-[#0a170e] border border-white/10 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/5 peer-checked:shadow-[0_0_30px_rgba(16,185,129,0.2)] peer-checked:[&_.custom-radio]:border-emerald-400 peer-checked:[&_.custom-radio]:bg-emerald-500 peer-checked:[&_.custom-check]:opacity-100 transition-all flex flex-col overflow-hidden h-full">
-                <div class="aspect-video bg-zinc-900 relative border-b border-white/5 overflow-hidden">
-                  <Image src={plankImg} alt="Walkway Planks" class="w-full h-full object-cover opacity-70 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700" />
-                </div>
-                <div class="p-5 flex items-center justify-between mt-auto">
-                  <h3 class="text-white font-black text-sm uppercase tracking-wide">Walkway Planks</h3>
-                  <div class="custom-radio w-5 h-5 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
-                    <svg class="custom-check w-3 h-3 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                  </div>
-                </div>
-              </div>
-            </label>
-
-          </div>
-
-          <div class="mt-10 pt-6 border-t border-white/5">
-            <button id="btn-product-disabled" class="w-full inline-flex h-14 items-center justify-center rounded-[3px] bg-zinc-800 text-zinc-500 px-8 text-[13px] font-black uppercase tracking-[0.15em] cursor-not-allowed">
-              Select System &rarr;
-            </button>
-            
-            <button id="btn-product-proceed" style="display: none;" class="w-full inline-flex h-14 items-center justify-center rounded-[3px] bg-emerald-500 px-8 text-[13px] font-black text-[#050f09] uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] hover:-translate-y-1">
-              Proceed &rarr;
-            </button>
-          </div>
-        </div>
-
-        <div id="step-5" class="form-step hidden p-6 sm:p-12 transition-opacity duration-500">
-          <h2 class="text-2xl font-black text-white uppercase tracking-tight mb-2">Walkway <span class="text-emerald-400">Specifications</span></h2>
-          <p class="font-jakarta text-zinc-400 text-sm mb-8">Select the specific type of walkway plank required for your site.</p>
-          
-          <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 mb-10">
-            
-            <label class="cursor-pointer group relative block">
-              <input type="radio" name="plank_type" value="2-fold-without-hook" class="peer sr-only" onchange="selectPlankType('2-fold-without-hook')" />
-              <div class="rounded-xl bg-[#0a170e] border border-white/5 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/5 peer-checked:shadow-[0_0_20px_rgba(16,185,129,0.2)] peer-checked:[&_.custom-radio]:border-emerald-400 peer-checked:[&_.custom-radio]:bg-emerald-500 peer-checked:[&_.custom-check]:opacity-100 transition-all p-3 flex flex-col overflow-hidden h-full">
-                <div class="aspect-[4/3] bg-zinc-900 rounded-md mb-3 border border-white/10 overflow-hidden relative">
-                  <img src="https://placehold.co/600x400/050f09/10b981?text=2-Fold\nWithout+Hook" alt="Placeholder" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500" />
-                </div>
-                <div class="flex items-center justify-between mt-auto">
-                  <h3 class="text-white font-black text-[10px] sm:text-xs uppercase tracking-wide">2-Fold Without Hook</h3>
-                  <div class="custom-radio w-4 h-4 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
-                    <svg class="custom-check w-2 h-2 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                  </div>
-                </div>
-              </div>
-            </label>
-
-            <label class="cursor-pointer group relative block">
-              <input type="radio" name="plank_type" value="2-fold-standard-hook" class="peer sr-only" onchange="selectPlankType('2-fold-standard-hook')" />
-              <div class="rounded-xl bg-[#0a170e] border border-white/5 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/5 peer-checked:shadow-[0_0_20px_rgba(16,185,129,0.2)] peer-checked:[&_.custom-radio]:border-emerald-400 peer-checked:[&_.custom-radio]:bg-emerald-500 peer-checked:[&_.custom-check]:opacity-100 transition-all p-3 flex flex-col overflow-hidden h-full">
-                <div class="aspect-[4/3] bg-zinc-900 rounded-md mb-3 border border-white/10 overflow-hidden relative">
-                  <img src="https://placehold.co/600x400/050f09/10b981?text=2-Fold\nStandard+Hook" alt="Placeholder" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500" />
-                </div>
-                <div class="flex items-center justify-between mt-auto">
-                  <h3 class="text-white font-black text-[10px] sm:text-xs uppercase tracking-wide">2-Fold Standard Hook</h3>
-                  <div class="custom-radio w-4 h-4 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
-                    <svg class="custom-check w-2 h-2 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                  </div>
-                </div>
-              </div>
-            </label>
-
-            <label class="cursor-pointer group relative block">
-              <input type="radio" name="plank_type" value="2-fold-dog-ear" class="peer sr-only" onchange="selectPlankType('2-fold-dog-ear')" />
-              <div class="rounded-xl bg-[#0a170e] border border-white/5 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/5 peer-checked:shadow-[0_0_20px_rgba(16,185,129,0.2)] peer-checked:[&_.custom-radio]:border-emerald-400 peer-checked:[&_.custom-radio]:bg-emerald-500 peer-checked:[&_.custom-check]:opacity-100 transition-all p-3 flex flex-col overflow-hidden h-full">
-                <div class="aspect-[4/3] bg-zinc-900 rounded-md mb-3 border border-white/10 overflow-hidden relative">
-                  <img src="https://placehold.co/600x400/050f09/10b981?text=2-Fold\nDog+Ear+Hook" alt="Placeholder" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500" />
-                </div>
-                <div class="flex items-center justify-between mt-auto">
-                  <h3 class="text-white font-black text-[10px] sm:text-xs uppercase tracking-wide">2-Fold Dog Ear Hook</h3>
-                  <div class="custom-radio w-4 h-4 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
-                    <svg class="custom-check w-2 h-2 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                  </div>
-                </div>
-              </div>
-            </label>
-
-            <label class="cursor-pointer group relative block">
-              <input type="radio" name="plank_type" value="2-fold-gi-hook" class="peer sr-only" onchange="selectPlankType('2-fold-gi-hook')" />
-              <div class="rounded-xl bg-[#0a170e] border border-white/5 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/5 peer-checked:shadow-[0_0_20px_rgba(16,185,129,0.2)] peer-checked:[&_.custom-radio]:border-emerald-400 peer-checked:[&_.custom-radio]:bg-emerald-500 peer-checked:[&_.custom-check]:opacity-100 transition-all p-3 flex flex-col overflow-hidden h-full">
-                <div class="aspect-[4/3] bg-zinc-900 rounded-md mb-3 border border-white/10 overflow-hidden relative">
-                  <img src="https://placehold.co/600x400/050f09/10b981?text=2-Fold\nGI+With+Hook" alt="Placeholder" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500" />
-                </div>
-                <div class="flex items-center justify-between mt-auto">
-                  <h3 class="text-white font-black text-[10px] sm:text-xs uppercase tracking-wide">2-Fold GI With Hook</h3>
-                  <div class="custom-radio w-4 h-4 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
-                    <svg class="custom-check w-2 h-2 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                  </div>
-                </div>
-              </div>
-            </label>
-
-            <label class="cursor-pointer group relative block">
-              <input type="radio" name="plank_type" value="3-fold-without-hook" class="peer sr-only" onchange="selectPlankType('3-fold-without-hook')" />
-              <div class="rounded-xl bg-[#0a170e] border border-white/5 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/5 peer-checked:shadow-[0_0_20px_rgba(16,185,129,0.2)] peer-checked:[&_.custom-radio]:border-emerald-400 peer-checked:[&_.custom-radio]:bg-emerald-500 peer-checked:[&_.custom-check]:opacity-100 transition-all p-3 flex flex-col overflow-hidden h-full">
-                <div class="aspect-[4/3] bg-zinc-900 rounded-md mb-3 border border-white/10 overflow-hidden relative">
-                  <img src="https://placehold.co/600x400/050f09/10b981?text=3-Fold\nWithout+Hook" alt="Placeholder" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500" />
-                </div>
-                <div class="flex items-center justify-between mt-auto">
-                  <h3 class="text-white font-black text-[10px] sm:text-xs uppercase tracking-wide">3-Fold Without Hook</h3>
-                  <div class="custom-radio w-4 h-4 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
-                    <svg class="custom-check w-2 h-2 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                  </div>
-                </div>
-              </div>
-            </label>
-
-            <label class="cursor-pointer group relative block">
-              <input type="radio" name="plank_type" value="3-fold-standard-hook" class="peer sr-only" onchange="selectPlankType('3-fold-standard-hook')" />
-              <div class="rounded-xl bg-[#0a170e] border border-white/5 peer-checked:border-emerald-400 peer-checked:bg-emerald-500/5 peer-checked:shadow-[0_0_20px_rgba(16,185,129,0.2)] peer-checked:[&_.custom-radio]:border-emerald-400 peer-checked:[&_.custom-radio]:bg-emerald-500 peer-checked:[&_.custom-check]:opacity-100 transition-all p-3 flex flex-col overflow-hidden h-full">
-                <div class="aspect-[4/3] bg-zinc-900 rounded-md mb-3 border border-white/10 overflow-hidden relative">
-                  <img src="https://placehold.co/600x400/050f09/10b981?text=3-Fold\nStandard+Hook" alt="Placeholder" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-all duration-500" />
-                </div>
-                <div class="flex items-center justify-between mt-auto">
-                  <h3 class="text-white font-black text-[10px] sm:text-xs uppercase tracking-wide">3-Fold Standard Hook</h3>
-                  <div class="custom-radio w-4 h-4 rounded-full border-2 border-zinc-500 flex items-center justify-center transition-colors shrink-0">
-                    <svg class="custom-check w-2 h-2 text-[#050f09] opacity-0 transition-opacity" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-                  </div>
-                </div>
-              </div>
-            </label>
-
-          </div>
-
-          <div class="mt-10 flex gap-4 pt-6 border-t border-white/5">
-            <button onclick="nextStep(4, 'Select System')" class="hidden sm:flex h-14 items-center justify-center rounded-md border border-white/10 bg-transparent px-8 text-[12px] font-bold text-zinc-400 uppercase tracking-widest hover:bg-white/5 transition-colors">
-              Back
-            </button>
-            
-            <button id="btn-plank-disabled" class="w-full inline-flex h-14 items-center justify-center rounded-[3px] bg-zinc-800 text-zinc-500 px-8 text-[13px] font-black uppercase tracking-[0.15em] cursor-not-allowed">
-              Select Type &rarr;
-            </button>
-            
-            <button id="btn-plank-proceed" style="display: none;" onclick="nextStep(6, 'Configuration Matrix')" class="w-full inline-flex h-14 items-center justify-center rounded-[3px] bg-emerald-500 px-8 text-[13px] font-black text-[#050f09] uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] hover:-translate-y-1">
-              Proceed to Dimensions &rarr;
-            </button>
-          </div>
-        </div>
-
-        <div id="step-6" class="form-step hidden p-6 sm:p-12 transition-opacity duration-500">
-          <h2 class="text-2xl font-black text-white uppercase tracking-tight mb-2">Configuration <span class="text-emerald-400">Matrix</span></h2>
-          <p class="font-jakarta text-zinc-400 text-sm mb-8">Enter your project specifications to calculate required tonnage.</p>
-
-          <div class="bg-[#0a170e] border border-white/10 p-6 sm:p-8 rounded-lg shadow-inner">
-            <div id="form-ringlock" class="dynamic-form hidden space-y-6">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Total Area (Sq. Meters)</label>
-                  <input type="number" id="ringlock-area" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="e.g. 5000" />
-                </div>
-                <div>
-                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Target Height (Meters)</label>
-                  <input type="number" id="ringlock-height" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="e.g. 25" />
-                </div>
-              </div>
-              <div>
-                <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Application Type</label>
-                <select id="ringlock-type" class="w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 appearance-none transition-colors">
-                  <option value="facade">Facade Support</option>
-                  <option value="heavy-load">Heavy Load Shoring</option>
-                  <option value="circular">Circular / Tank Base</option>
-                </select>
-              </div>
-            </div>
-
-            <div id="form-tower" class="dynamic-form hidden space-y-6">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Number of Towers</label>
-                  <input type="number" id="tower-qty" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="e.g. 2" />
-                </div>
-                <div>
-                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Elevation per Tower</label>
-                  <input type="number" id="tower-height" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="Meters" />
-                </div>
-              </div>
-              <div>
-                <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Exit Configuration</label>
-                <select id="tower-exit" class="w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 appearance-none transition-colors">
-                  <option value="single">Single Exit (Top Only)</option>
-                  <option value="multi">Multi-Level Exits</option>
-                </select>
-              </div>
-            </div>
-
-            <div id="form-plank" class="dynamic-form hidden space-y-6">
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-                <div>
-                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Length (L)</label>
-                  <input type="number" id="plank-l" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="mm" />
-                </div>
-                <div>
-                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Width (W)</label>
-                  <input type="number" id="plank-w" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="mm" />
-                </div>
-                <div>
-                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Height (H)</label>
-                  <input type="number" id="plank-h" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="mm" />
-                </div>
-                <div>
-                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Thickness (Thk)</label>
-                  <input type="number" id="plank-thk" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="mm" />
-                </div>
-              </div>
-
-              <div class="grid grid-cols-2 gap-4 sm:gap-6" id="plank-extra-fields" style="display: none;">
-                <div id="plank-field-bottom" style="display: none;">
-                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Bottom</label>
-                  <input type="number" id="plank-bottom" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="mm" />
-                </div>
-                <div id="plank-field-inner" style="display: none;">
-                  <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Inner Bend</label>
-                  <input type="number" id="plank-inner" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="mm" />
-                </div>
-              </div>
-
-              <div>
-                <label class="block text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-2">Total Quantity</label>
-                <input type="number" id="plank-qty-total" class="dim-input w-full bg-[#050f09] border border-white/10 rounded-sm px-4 py-3 text-white text-sm font-jakarta focus:outline-none focus:border-emerald-500 transition-colors" placeholder="e.g. 500" />
-              </div>
-            </div>
-
-            <div class="mt-8 pt-6 border-t border-white/5 flex gap-4">
-              <button onclick="handleDimensionBack()" class="hidden sm:flex h-14 items-center justify-center rounded-md border border-white/10 bg-transparent px-8 text-[12px] font-bold text-zinc-400 uppercase tracking-widest hover:bg-white/5 transition-colors">
-                Back
-              </button>
-              <button onclick="submitFinalQuote()" class="w-full inline-flex h-14 items-center justify-center rounded-[3px] bg-emerald-500 px-8 text-[13px] font-black text-[#050f09] uppercase tracking-[0.15em] hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] hover:-translate-y-1">
-                Generate Final Quote &rarr;
-              </button>
             </div>
           </div>
         </div>
@@ -414,14 +376,27 @@ import towerImg from '../assets/products/staircase tower product.jpg';
   @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
   .font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
   
-  /* Hide arrows on number inputs */
   .dim-input::-webkit-outer-spin-button,
   .dim-input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
 
-  /* GPay Success Animation Styles */
+  /* BULLETPROOF CUSTOM RADIO BUTTON CSS */
+  input[type="radio"]:checked + .radio-card {
+    border-color: #34d399; /* emerald-400 */
+    background-color: rgba(16, 185, 129, 0.05); /* emerald-500/5 */
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
+  }
+  input[type="radio"]:checked + .radio-card .custom-radio {
+    border-color: #34d399;
+    background-color: #10b981; /* emerald-500 */
+  }
+  input[type="radio"]:checked + .radio-card .custom-check {
+    opacity: 1;
+  }
+
+  /* GPAY SUCCESS ANIMATION STYLES */
   .checkmark {
     stroke-width: 3;
     stroke-miterlimit: 10;
@@ -460,172 +435,238 @@ import towerImg from '../assets/products/staircase tower product.jpg';
 </style>
 
 <script is:inline>
-  // 1. MASTER DATA OBJECT
+  // ==========================================
+  // UTILITY: BUTTON LOADING STATES
+  // ==========================================
+  function setButtonLoading(buttonId, loadingText) {
+    const btn = document.getElementById(buttonId);
+    btn.dataset.originalText = btn.innerHTML; 
+    btn.innerHTML = `<svg class="animate-spin h-5 w-5 mr-2 text-[#050f09] inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> ${loadingText}`;
+    btn.classList.add('opacity-70', 'pointer-events-none');
+  }
+
+  function restoreButton(buttonId) {
+    const btn = document.getElementById(buttonId);
+    btn.innerHTML = btn.dataset.originalText;
+    btn.classList.remove('opacity-70', 'pointer-events-none');
+  }
+
+  // 1. MASTER DATA OBJECT (NO THICKNESS!)
   let quoteData = {
     user: { fullName: '', companyName: '', gstin: '', email: '', mobile: '' },
     productType: '',
     plankType: '', 
-    dimensions: {}
+    dimensions: { length: '', width: '', height: '', qty: '', remarks: '' }
   };
 
-  let totalSteps = 6; 
+  let totalVisualSteps = 5; 
 
-  // 2. UI NAVIGATION ENGINE
-  function nextStep(stepNumber, stepName) {
-    // Hide all steps smoothly
+  // 2. CORE NAVIGATION
+  function goToStep(targetStepId, visualStepNumber, stepName) {
     const allSteps = document.querySelectorAll('.form-step');
     allSteps.forEach(step => {
       step.classList.add('opacity-0');
-      setTimeout(() => {
-        step.classList.add('hidden');
-      }, 300); 
+      setTimeout(() => { step.classList.add('hidden'); }, 300); 
     });
 
-    // Show the target step
     setTimeout(() => {
-      const targetStep = document.getElementById(`step-${stepNumber}`);
+      const targetStep = document.getElementById(`step-${targetStepId}`);
       targetStep.classList.remove('hidden');
-      setTimeout(() => {
-        targetStep.classList.remove('opacity-0');
-      }, 50);
+      setTimeout(() => { targetStep.classList.remove('opacity-0'); }, 50);
 
       // Trigger GPay Animation if Step 7
-      if (stepNumber === 7) {
+      if (targetStepId === 7) {
         document.getElementById('gpay-svg').parentElement.classList.add('animate-success');
       }
 
     }, 300);
 
-    // Update Progress Bar
     const progressBar = document.getElementById('progress-bar');
     const stepIndicator = document.getElementById('step-indicator');
     const stepTitle = document.getElementById('step-title');
 
-    if(stepNumber <= totalSteps) {
-      const progressPercentage = (stepNumber / totalSteps) * 100;
+    if(visualStepNumber > 0 && visualStepNumber <= totalVisualSteps) {
+      const progressPercentage = (visualStepNumber / totalVisualSteps) * 100;
       progressBar.style.width = `${progressPercentage}%`;
-      stepIndicator.innerText = `Step ${stepNumber} of ${totalSteps}`;
+      stepIndicator.innerText = `Step ${visualStepNumber} of ${totalVisualSteps}`;
       stepTitle.innerText = stepName;
     }
   }
 
-  // Handle back routing
-  function handleDimensionBack() {
-    if (quoteData.productType === 'plank') {
-      nextStep(5, 'Walkway Specifications');
-    } else {
-      nextStep(4, 'Select System');
-    }
-  }
-
-  // 3. STEP 2 -> 3: SAVE USER DATA
-  function saveUserDataAndProceed() {
-    quoteData.user.fullName = document.getElementById('entry-name').value;
-    quoteData.user.companyName = document.getElementById('entry-company').value;
-    quoteData.user.gstin = document.getElementById('entry-gstin').value;
-    quoteData.user.email = document.getElementById('entry-email').value;
-    quoteData.user.mobile = document.getElementById('entry-mobile').value;
-    
-    document.getElementById('otp-message').innerText = `Enter the 4-digit code sent to +91 ${quoteData.user.mobile}`;
-    nextStep(3, 'Verify Identity');
-  }
-
-  // 4. STEP 3 -> 4: VERIFY OTP
-  function verifyOTPAndProceed() {
-    console.log("OTP Verified. User data captured:", quoteData.user);
-    nextStep(4, 'Select System');
-  }
-
-  // 5. STEP 4: PRODUCT SELECTION
+  // 3. LOGIC HANDLERS
   function selectProduct(productType) {
     quoteData.productType = productType;
-    
-    // UI Button Toggle
     document.getElementById('btn-product-disabled').style.display = 'none';
-    const activeBtn = document.getElementById('btn-product-proceed');
-    activeBtn.style.display = 'inline-flex';
-
-    // Form Toggle
-    document.querySelectorAll('.dynamic-form').forEach(form => form.classList.add('hidden'));
-    document.getElementById(`form-${productType}`).classList.remove('hidden');
-
-    // Routing Logic
-    if (productType === 'plank') {
-      totalSteps = 7;
-      activeBtn.setAttribute('onclick', "nextStep(5, 'Walkway Specifications')");
-    } else {
-      totalSteps = 6;
-      activeBtn.setAttribute('onclick', "nextStep(6, 'Configuration Matrix')");
-    }
+    document.getElementById('btn-product-proceed').style.display = 'inline-flex';
+    totalVisualSteps = (productType === 'plank') ? 6 : 5;
   }
 
-  // 6. STEP 5: PLANK TYPE SELECTION
+  function handleSystemProceed() {
+    if (quoteData.productType === 'plank') { goToStep(3, 3, 'Walkway Specifications'); } 
+    else { goToStep(4, 3, 'Configuration Matrix'); }
+  }
+
   function selectPlankType(type) {
     quoteData.plankType = type;
-    
     document.getElementById('btn-plank-disabled').style.display = 'none';
     document.getElementById('btn-plank-proceed').style.display = 'inline-flex';
-
-    const extraFieldsContainer = document.getElementById('plank-extra-fields');
-    const bottomField = document.getElementById('plank-field-bottom');
-    const innerField = document.getElementById('plank-field-inner');
-
-    // Reset Defaults
-    extraFieldsContainer.style.display = 'none';
-    bottomField.style.display = 'none';
-    innerField.style.display = 'none';
-
-    if (type === '3-fold-without-hook') {
-      extraFieldsContainer.style.display = 'grid';
-      bottomField.style.display = 'block';
-      innerField.style.display = 'block';
-    } else if (type === '3-fold-standard-hook') {
-      extraFieldsContainer.style.display = 'grid';
-      bottomField.style.display = 'block';
-    }
   }
 
-  // 7. STEP 6 -> 7: SUBMIT PAYLOAD
-  function submitFinalQuote() {
-    if (quoteData.productType === 'ringlock') {
-      quoteData.dimensions = {
-        area: document.getElementById('ringlock-area').value,
-        height: document.getElementById('ringlock-height').value,
-        applicationType: document.getElementById('ringlock-type').value
-      };
-    } else if (quoteData.productType === 'tower') {
-      quoteData.dimensions = {
-        quantity: document.getElementById('tower-qty').value,
-        height: document.getElementById('tower-height').value,
-        exitConfig: document.getElementById('tower-exit').value
-      };
-    } else if (quoteData.productType === 'plank') {
-      let plankData = {
-        length: document.getElementById('plank-l').value,
-        width: document.getElementById('plank-w').value,
-        height: document.getElementById('plank-h').value,
-        thickness: document.getElementById('plank-thk').value,
-        totalQuantity: document.getElementById('plank-qty-total').value
-      };
+  function handleDimBack() {
+    if (quoteData.productType === 'plank') { goToStep(3, 3, 'Walkway Specifications'); } 
+    else { goToStep(2, 2, 'Select System'); }
+  }
 
-      if (quoteData.plankType === '3-fold-without-hook') {
-        plankData.bottom = document.getElementById('plank-bottom').value;
-        plankData.innerBend = document.getElementById('plank-inner').value;
-      } else if (quoteData.plankType === '3-fold-standard-hook') {
-        plankData.bottom = document.getElementById('plank-bottom').value;
+  // =========================================================================
+  // 4. BACKEND INTEGRATION & VALIDATION
+  // =========================================================================
+
+  function handleDimProceed() {
+    // TASK 1: VALIDATION FOR DIMENSIONS
+    const l = document.getElementById('dim-l').value;
+    const w = document.getElementById('dim-w').value;
+    const h = document.getElementById('dim-h').value;
+    const qty = document.getElementById('dim-qty').value;
+
+    if(!l || !w || !h || !qty) {
+      alert("Please fill in Length, Width, Height, and Quantity before proceeding.");
+      return;
+    }
+
+    let vStep = (quoteData.productType === 'plank') ? 5 : 4;
+    goToStep(5, vStep, 'Business Details');
+  }
+
+  function handleDetailsBack() {
+    let vStep = (quoteData.productType === 'plank') ? 4 : 3;
+    goToStep(4, vStep, 'Configuration Matrix');
+  }
+
+  // A. TRIGGER SMS OTP
+  async function handleDetailsProceed() {
+    // TASK 1: VALIDATION FOR BUSINESS DETAILS
+    const name = document.getElementById('entry-name').value;
+    const company = document.getElementById('entry-company').value;
+    const email = document.getElementById('entry-email').value;
+    const mobile = document.getElementById('entry-mobile').value;
+
+    if(!name || !company || !email || !mobile) {
+      alert("Please fill in all required fields (*).");
+      return;
+    }
+
+    if(mobile.length < 10) {
+      alert("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
+    quoteData.user.fullName = name;
+    quoteData.user.companyName = company;
+    quoteData.user.gstin = document.getElementById('entry-gstin').value;
+    quoteData.user.email = email;
+    quoteData.user.mobile = mobile;
+    
+    // TASK 2: LOADING STATE & SIMULATED DELAY
+    setButtonLoading('btn-details-proceed', 'Sending OTP...');
+    await new Promise(resolve => setTimeout(resolve, 1500)); // Fake 1.5s network delay
+
+    // BACKEND DEV: Uncomment and replace simulated delay above
+    /*
+    try {
+      const response = await fetch('/api/send-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: quoteData.user.mobile })
+      });
+      if (!response.ok) throw new Error("SMS failed");
+    } catch (error) { 
+      alert("Error sending SMS. Please check your number."); 
+      restoreButton('btn-details-proceed');
+      return; 
+    }
+    */
+
+    restoreButton('btn-details-proceed');
+
+    document.getElementById('otp-message').innerText = `Enter the 4-digit code sent to +91 ${quoteData.user.mobile}`;
+    let vStep = (quoteData.productType === 'plank') ? 6 : 5;
+    goToStep(6, vStep, 'Verify Identity');
+  }
+
+  function handleOTPBack() {
+    let vStep = (quoteData.productType === 'plank') ? 5 : 4;
+    goToStep(5, vStep, 'Business Details');
+  }
+
+  // B. VERIFY OTP AND SUBMIT
+  async function verifyOTPAndProceed() {
+    const otpInputs = document.querySelectorAll('.otp-box');
+    let enteredOTP = "";
+    otpInputs.forEach(input => { enteredOTP += input.value; });
+
+    if(enteredOTP.length < 4) { alert("Please enter the full 4-digit OTP."); return; }
+
+    // TASK 2: LOADING STATE & SIMULATED DELAY
+    setButtonLoading('btn-otp-proceed', 'Verifying...');
+    await new Promise(resolve => setTimeout(resolve, 1500)); // Fake 1.5s network delay
+
+    // BACKEND DEV: Uncomment and replace simulated delay above
+    /*
+    try {
+      const response = await fetch('/api/verify-otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: quoteData.user.mobile, code: enteredOTP })
+      });
+      if (!response.ok) {
+        alert("Invalid OTP. Try again.");
+        otpInputs.forEach(input => input.value = '');
+        otpInputs[0].focus();
+        restoreButton('btn-otp-proceed');
+        return; 
       }
-      quoteData.dimensions = plankData;
+    } catch (error) { 
+      restoreButton('btn-otp-proceed');
+      return; 
     }
+    */
 
-    console.log("FINAL PAYLOAD READY FOR DATABASE:", JSON.stringify(quoteData, null, 2));
-    nextStep(7, 'Processing Complete');
+    // Await the final submission properly so it processes before restoring button
+    await submitFinalQuote(); 
+    restoreButton('btn-otp-proceed'); 
   }
 
-  // OTP Input Auto-Jump UX
+  // C. SUBMIT FINAL PAYLOAD
+  async function submitFinalQuote() {
+    // THICKNESS HAS BEEN REMOVED HERE, PREVENTING THE SILENT CRASH!
+    quoteData.dimensions.length = document.getElementById('dim-l').value;
+    quoteData.dimensions.width = document.getElementById('dim-w').value;
+    quoteData.dimensions.height = document.getElementById('dim-h').value;
+    quoteData.dimensions.qty = document.getElementById('dim-qty').value;
+    quoteData.dimensions.remarks = document.getElementById('dim-remarks').value;
+
+    console.log("FINAL PAYLOAD:", JSON.stringify(quoteData, null, 2));
+    
+    // BACKEND DEV: Uncomment to Save Data
+    /*
+    try {
+      const response = await fetch('/api/submit-quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(quoteData)
+      });
+    } catch (error) { alert("Error saving quote."); return; }
+    */
+
+    goToStep(7, 0, 'Processing Complete');
+  }
+
+  // OTP Auto-Jump Logic
   document.addEventListener('DOMContentLoaded', () => {
     const otpInputs = document.querySelectorAll('.otp-box');
     otpInputs.forEach((input, index) => {
       input.addEventListener('input', () => {
+        input.value = input.value.replace(/[^0-9]/g, ''); // Forces only numbers
         if (input.value.length === 1 && index < otpInputs.length - 1) {
           otpInputs[index + 1].focus();
         }
