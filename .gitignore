@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+#claude working files, so ours dont conflict each other
+CLAUDE.md
+.claude 
