@@ -542,7 +542,7 @@ import towerImg from '../assets/products/staircase tower product.jpg';
     goToStep(4, vStep, 'Configuration Matrix');
   }
 
-  // A. TRIGGER SMS OTP
+  // A. TRIGGER MOCK SMS OTP
   async function handleDetailsProceed() {
     // TASK 1: VALIDATION FOR BUSINESS DETAILS
     const name = document.getElementById('entry-name').value;
@@ -566,12 +566,9 @@ import towerImg from '../assets/products/staircase tower product.jpg';
     quoteData.user.email = email;
     quoteData.user.mobile = mobile;
     
-    // TASK 2: LOADING STATE & SIMULATED DELAY
+    // TASK 2: LIVE FETCH REQUEST TO API
     setButtonLoading('btn-details-proceed', 'Sending OTP...');
-    await new Promise(resolve => setTimeout(resolve, 1500)); // Fake 1.5s network delay
 
-    // BACKEND DEV: Uncomment and replace simulated delay above
-    /*
     try {
       const response = await fetch('/api/send-otp', {
         method: 'POST',
@@ -580,11 +577,10 @@ import towerImg from '../assets/products/staircase tower product.jpg';
       });
       if (!response.ok) throw new Error("SMS failed");
     } catch (error) { 
-      alert("Error sending SMS. Please check your number."); 
+      alert("Error sending SMS. Please check your network connection."); 
       restoreButton('btn-details-proceed');
       return; 
     }
-    */
 
     restoreButton('btn-details-proceed');
 
@@ -606,12 +602,8 @@ import towerImg from '../assets/products/staircase tower product.jpg';
 
     if(enteredOTP.length < 4) { alert("Please enter the full 4-digit OTP."); return; }
 
-    // TASK 2: LOADING STATE & SIMULATED DELAY
     setButtonLoading('btn-otp-proceed', 'Verifying...');
-    await new Promise(resolve => setTimeout(resolve, 1500)); // Fake 1.5s network delay
 
-    // BACKEND DEV: Uncomment and replace simulated delay above
-    /*
     try {
       const response = await fetch('/api/verify-otp', {
         method: 'POST',
@@ -619,26 +611,25 @@ import towerImg from '../assets/products/staircase tower product.jpg';
         body: JSON.stringify({ phone: quoteData.user.mobile, code: enteredOTP })
       });
       if (!response.ok) {
-        alert("Invalid OTP. Try again.");
+        alert("Invalid OTP. Try again. (Hint: Any 4 digits work for testing)");
         otpInputs.forEach(input => input.value = '');
         otpInputs[0].focus();
         restoreButton('btn-otp-proceed');
         return; 
       }
     } catch (error) { 
+      alert("Network error verifying OTP.");
       restoreButton('btn-otp-proceed');
       return; 
     }
-    */
 
     // Await the final submission properly so it processes before restoring button
     await submitFinalQuote(); 
     restoreButton('btn-otp-proceed'); 
   }
 
-  // C. SUBMIT FINAL PAYLOAD
+  // C. SUBMIT FINAL PAYLOAD TO SUPABASE
   async function submitFinalQuote() {
-    // THICKNESS HAS BEEN REMOVED HERE, PREVENTING THE SILENT CRASH!
     quoteData.dimensions.length = document.getElementById('dim-l').value;
     quoteData.dimensions.width = document.getElementById('dim-w').value;
     quoteData.dimensions.height = document.getElementById('dim-h').value;
@@ -647,16 +638,20 @@ import towerImg from '../assets/products/staircase tower product.jpg';
 
     console.log("FINAL PAYLOAD:", JSON.stringify(quoteData, null, 2));
     
-    // BACKEND DEV: Uncomment to Save Data
-    /*
     try {
       const response = await fetch('/api/submit-quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(quoteData)
       });
-    } catch (error) { alert("Error saving quote."); return; }
-    */
+      
+      if (!response.ok) {
+        throw new Error("Failed to save to database");
+      }
+    } catch (error) { 
+      alert("Error saving quote to the database. Please check your console."); 
+      return; 
+    }
 
     goToStep(7, 0, 'Processing Complete');
   }
