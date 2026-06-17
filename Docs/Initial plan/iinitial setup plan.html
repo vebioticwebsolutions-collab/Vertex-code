@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>06 — Team Plan (Full Stack)</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#fff; color:#1a1a2e; padding:32px; font-size:13px; max-width:1100px; margin:0 auto; }
+h1 { font-size:22px; font-weight:700; margin-bottom:4px; }
+.meta { font-size:11px; color:#888; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid #eee; }
+.tabs { display:flex; gap:4px; margin-bottom:16px; border-bottom:2px solid #e0e0e0; flex-wrap:wrap; }
+.tab { padding:7px 14px; font-size:12px; font-weight:600; border-radius:6px 6px 0 0; cursor:pointer; border:1.5px solid transparent; border-bottom:none; color:#888; margin-bottom:-2px; white-space:nowrap; }
+.tab.active { border-color:#e0e0e0; border-bottom-color:#fff; background:#fff; color:#1a1a2e; }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+.sl { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#aaa; margin:16px 0 8px; }
+.sl:first-child { margin-top:0; }
+.divider { height:1px; background:#eee; margin:14px 0; }
+
+/* Architecture boxes */
+.arch { display:flex; flex-direction:column; gap:10px; }
+.arch-row { display:flex; gap:8px; }
+.abox { border-radius:8px; padding:10px 13px; border:1.5px solid; flex:1; }
+.abox-title { font-size:12px; font-weight:700; margin-bottom:3px; }
+.abox-sub { font-size:10.5px; color:#666; line-height:1.5; }
+.ab-blue { border-color:#4f8ef7; background:#f0f5ff; } .ab-blue .abox-title { color:#2456c7; }
+.ab-green { border-color:#00b386; background:#f0fbf7; } .ab-green .abox-title { color:#007a5e; }
+.ab-purple { border-color:#7c4dff; background:#f5f0ff; } .ab-purple .abox-title { color:#5c2fcf; }
+.ab-orange { border-color:#e07030; background:#fff4ec; } .ab-orange .abox-title { color:#a04000; }
+.ab-yellow { border-color:#f0c040; background:#fffbea; } .ab-yellow .abox-title { color:#8a6200; }
+.ab-gray { border-color:#ccc; background:#f9f9f9; } .ab-gray .abox-title { color:#444; }
+.conn { text-align:center; font-size:18px; color:#bbb; line-height:2; }
+.conn-row { display:flex; align-items:center; justify-content:center; gap:6px; font-size:12px; color:#aaa; margin:4px 0; }
+.conn-line { flex:1; height:1px; background:#e0e0e0; }
+
+/* Tags */
+.tag { display:inline-block; font-size:10px; font-weight:600; padding:1px 7px; border-radius:20px; margin:1px; }
+.tg { background:#d0f5ea; color:#007a5e; }
+.tb { background:#dbe8ff; color:#2456c7; }
+.tp { background:#e8ddff; color:#5c2fcf; }
+.ty { background:#fff3cd; color:#8a6200; }
+.to { background:#ffe0cc; color:#a04000; }
+.tr { background:#ffe8e8; color:#c0392b; }
+
+/* Responsibility table */
+.resp-table { width:100%; border-collapse:collapse; }
+.resp-table th { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#888; text-align:left; padding:7px 10px; background:#f5f5f5; border-bottom:2px solid #e0e0e0; }
+.resp-table td { font-size:11.5px; padding:8px 10px; border-bottom:1px solid #eee; vertical-align:top; line-height:1.6; }
+.resp-table tr:nth-child(even) td { background:#fafafa; }
+.resp-table td:first-child { font-weight:700; width:140px; white-space:nowrap; }
+
+/* Page cards */
+.page-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.page-card { border-radius:8px; border:1.5px solid #e0e0e0; padding:11px 13px; }
+.page-card.pub { border-left:3px solid #00b386; }
+.page-card.int { border-left:3px solid #7c4dff; }
+.page-url { font-size:10.5px; font-family:monospace; background:#f0f0f0; padding:1px 6px; border-radius:4px; color:#444; margin-bottom:5px; display:inline-block; }
+.page-title { font-size:12.5px; font-weight:700; color:#1a1a2e; margin-bottom:4px; }
+.page-items { font-size:11px; color:#555; line-height:1.7; list-style:none; }
+.page-items li::before { content:"· "; }
+
+/* API endpoint blocks */
+.endpoint-block { border-radius:8px; border:1.5px solid #e0e0e0; overflow:hidden; margin-bottom:10px; }
+.ep-header { padding:8px 12px; display:flex; align-items:center; gap:10px; background:#f9f9f9; border-bottom:1px solid #eee; }
+.ep-method { font-size:10px; font-weight:700; padding:2px 8px; border-radius:4px; font-family:monospace; }
+.ep-method.post { background:#d0f5ea; color:#007a5e; }
+.ep-method.get { background:#dbe8ff; color:#2456c7; }
+.ep-path { font-size:12px; font-weight:600; font-family:monospace; color:#1a1a2e; }
+.ep-desc { font-size:11px; color:#888; margin-left:auto; }
+.ep-body { padding:10px 12px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.ep-section-title { font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#aaa; margin-bottom:5px; }
+.ep-json { background:#f8f8f8; border:1px solid #eee; border-radius:6px; padding:8px 10px; font-family:monospace; font-size:11px; line-height:1.7; color:#333; white-space:pre; overflow-x:auto; }
+.ep-json .k { color:#2456c7; }
+.ep-json .v { color:#007a5e; }
+.ep-json .s { color:#a04000; }
+.ep-json .n { color:#5c2fcf; }
+.ep-json .c { color:#888; font-style:italic; }
+.ep-auth { font-size:10.5px; padding:3px 8px; border-radius:4px; margin-left:auto; }
+.auth-pub { background:#d0f5ea; color:#007a5e; }
+.auth-priv { background:#e8ddff; color:#5c2fcf; }
+
+/* Note */
+.note { background:#fff8e1; border:1.5px solid #f0c040; border-radius:8px; padding:9px 12px; font-size:11.5px; color:#5a4a00; line-height:1.5; }
+.note strong { font-weight:700; }
+.note-blue { background:#f0f5ff; border-color:#4f8ef7; color:#1a3a7a; }
+.note-green { background:#f0fbf7; border-color:#00b386; color:#003d2e; }
+
+/* Deploy cards */
+.deploy-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+.deploy-card { border-radius:8px; border:1.5px solid #e0e0e0; padding:11px 13px; }
+.dc-service { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#aaa; margin-bottom:3px; }
+.dc-name { font-size:13px; font-weight:700; color:#1a1a2e; margin-bottom:3px; }
+.dc-url { font-size:10.5px; font-family:monospace; color:#888; margin-bottom:5px; }
+.dc-items { font-size:11px; color:#555; line-height:1.6; list-style:none; }
+.dc-items li::before { content:"· "; }
+</style>
+</head>
+<body>
+<h1>Plan 1 — Full Team Plan</h1>
+<div class="meta">Stack: Astro (frontend) · FastAPI on Render (backend) · PostgreSQL on Supabase (database) · Cloudflare R2 (PDF storage)<br>
+Audience: Entire team — frontend devs, backend owner, shared understanding of how everything connects</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="sw('overview')">System Overview</div>
+  <div class="tab" onclick="sw('public')">Public Site</div>
+  <div class="tab" onclick="sw('internal')">Internal Site</div>
+  <div class="tab" onclick="sw('api')">API Reference</div>
+  <div class="tab" onclick="sw('db')">Database</div>
+  <div class="tab" onclick="sw('deploy')">Deployment</div>
+</div>
+
+<!-- ═══ SYSTEM OVERVIEW ═══ -->
+<div class="tab-content active" id="tab-overview">
+  <div class="sl">Who owns what</div>
+  <table class="resp-table">
+    <thead><tr><th>Area</th><th>Owner</th><th>Deliverable</th></tr></thead>
+    <tbody>
+      <tr><td>Public Website</td><td><span class="tag tb">Frontend Team</span></td><td>Astro site — rate calculator, lead form, OTP, quotation CTA · Deployed on Vercel / Cloudflare Pages</td></tr>
+      <tr><td>Internal Tool</td><td><span class="tag tb">Frontend Team</span></td><td>Astro site — staff login, calculator forms, full result view, quote history · Separate deployment</td></tr>
+      <tr><td>Backend API</td><td><span class="tag tg">Backend Owner</span></td><td>FastAPI on Render — all endpoints, auth, DB integration, PDF generation, email sending</td></tr>
+      <tr><td>Database</td><td><span class="tag tg">Backend Owner</span></td><td>PostgreSQL on Supabase — schema, migrations, all read/write operations</td></tr>
+      <tr><td>PDF Storage</td><td><span class="tag tg">Backend Owner</span></td><td>Cloudflare R2 — quotation PDFs stored and served via signed URLs</td></tr>
+    </tbody>
+  </table>
+
+  <div class="divider"></div>
+  <div class="sl">System Architecture</div>
+  <div class="arch">
+    <div class="arch-row">
+      <div class="abox ab-green" style="flex:1.2">
+        <div class="abox-title">🌐 Public Website</div>
+        <div class="abox-sub"><strong>Astro (SSR) · yourcompany.com</strong><br>Rate calculator · Lead capture · OTP · PDF quote<br>No login · Fully public</div>
+      </div>
+      <div class="abox ab-purple" style="flex:1.2">
+        <div class="abox-title">🔒 Internal Tool</div>
+        <div class="abox-sub"><strong>Astro (SSR) · tools.yourcompany.com</strong><br>Staff login · Full detail calc · Quote history<br>Both walkway + staircase tower</div>
+      </div>
+      <div class="abox ab-gray" style="flex:0.8">
+        <div class="abox-title">📱 Existing CRM</div>
+        <div class="abox-sub">Unchanged · No overlap<br>Different team access<br>Separate system</div>
+      </div>
+    </div>
+    <div class="conn">↕ HTTPS API calls ↕</div>
+    <div style="border-radius:8px;padding:12px 14px;border:2px dashed #4f8ef7;background:#f8fbff;">
+      <div style="font-size:12px;font-weight:700;color:#2456c7;margin-bottom:8px;">⚡ FastAPI Backend — api.yourcompany.com (Render)</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;">
+        <span class="tag tg">Public Endpoints</span>
+        <span class="tag tb">Internal Endpoints (JWT protected)</span>
+        <span class="tag tp">Auth Endpoints</span>
+        <span class="tag ty">Handles: calc · DB · PDF gen · Email · OTP</span>
+      </div>
+    </div>
+    <div class="conn">↕</div>
+    <div class="arch-row">
+      <div class="abox ab-blue">
+        <div class="abox-title">🐘 PostgreSQL — Supabase</div>
+        <div class="abox-sub">quotes · leads · rate_log · calc_cache · users</div>
+      </div>
+      <div class="abox ab-orange">
+        <div class="abox-title">☁️ Cloudflare R2</div>
+        <div class="abox-sub">PDF quotation files · Served via signed URLs</div>
+      </div>
+      <div class="abox ab-yellow">
+        <div class="abox-title">📧 Email — Resend</div>
+        <div class="abox-sub">OTP delivery · Quote emails · Triggered by backend</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:12px;">
+    <strong>Key principle:</strong> The frontend team calls the API and displays what it returns. They never handle calculation logic, database queries, PDF generation, or email sending — all of that lives in the backend. The API is the contract between both sides.
+  </div>
+</div>
+
+<!-- ═══ PUBLIC SITE ═══ -->
+<div class="tab-content" id="tab-public">
+  <div class="sl">Pages to Build</div>
+  <div class="page-grid">
+    <div class="page-card pub">
+      <div class="page-url">/</div>
+      <div class="page-title">Homepage</div>
+      <ul class="page-items"><li>Company intro + product overview</li><li>CTA to rate calculator</li><li>SEO: title, description, Open Graph, schema.org</li><li>Fully static — no API call</li></ul>
+    </div>
+    <div class="page-card pub">
+      <div class="page-url">/rate-working</div>
+      <div class="page-title">Rate Calculator Hub</div>
+      <ul class="page-items"><li>Product type selector (7 walkway plank cards)</li><li>Each card: name, description, image</li><li>Click → navigates to that type's calculator</li><li>SEO-optimised with structured product data</li></ul>
+    </div>
+    <div class="page-card pub">
+      <div class="page-url">/rate-working/[type]</div>
+      <div class="page-title">Calculator Page (per type)</div>
+      <ul class="page-items"><li>Dynamic Astro route for each of the 7 types</li><li><strong>Step 1:</strong> Spec input form (fields per type)</li><li><strong>Step 2:</strong> Lead capture form (name, location, phone, email)</li><li><strong>Step 3:</strong> OTP input screen</li><li><strong>Step 4:</strong> Result card + quotation download</li><li>API calls: calculate → submit lead → verify OTP</li></ul>
+    </div>
+    <div class="page-card pub">
+      <div class="page-url">/products</div>
+      <div class="page-title">Products Page</div>
+      <ul class="page-items"><li>SEO landing pages for each product</li><li>Specs, use cases, images</li><li>CTA to rate calculator</li><li>Fully static</li></ul>
+    </div>
+    <div class="page-card pub">
+      <div class="page-url">/contact</div>
+      <div class="page-title">Contact Page</div>
+      <ul class="page-items"><li>Contact form (optional)</li><li>Company address, phone, email</li><li>Fully static or light API call</li></ul>
+    </div>
+    <div class="page-card pub" style="border-color:#eee;background:#fafafa;">
+      <div class="page-url">/thank-you</div>
+      <div class="page-title">Post-OTP Success Page</div>
+      <ul class="page-items"><li>Shown after OTP verified</li><li>Displays rate + weight + specs</li><li>PDF download link (from API response)</li><li>"Check your email" message</li></ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sl">Calculator Flow — Frontend Responsibilities</div>
+  <table class="resp-table">
+    <thead><tr><th>Step</th><th>Frontend does</th><th>API call</th><th>Backend does (invisible)</th></tr></thead>
+    <tbody>
+      <tr><td>User picks type, enters specs</td><td>Show relevant input fields · validate client-side</td><td><code>POST /api/public/walkway/calculate</code></td><td>Checks cache → runs calculation → stores result temporarily → returns <code>quote_token</code></td></tr>
+      <tr><td>Lead capture form</td><td>Collect name, location, phone, email</td><td><code>POST /api/public/lead/submit</code> (with <code>quote_token</code>)</td><td>Saves lead details → sends OTP email → returns <code>{success: true}</code></td></tr>
+      <tr><td>OTP entry</td><td>Show 6-digit input · handle resend · countdown timer</td><td><code>POST /api/public/lead/verify-otp</code></td><td>Verifies OTP → generates PDF → uploads to R2 → sends email → returns final result</td></tr>
+      <tr><td>Result display</td><td>Show rate, weight, specs from API response · show PDF link</td><td>No call — result comes from verify-otp response</td><td>Nothing more needed</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note note-blue" style="margin-top:10px;">
+    <strong>Astro Islands note:</strong> The calculator (Steps 1–4) needs client-side interactivity (form state, OTP timer, conditional rendering). Use an Astro Island for this component — the rest of the page (header, SEO metadata, product info) can be fully static Astro.
+  </div>
+</div>
+
+<!-- ═══ INTERNAL SITE ═══ -->
+<div class="tab-content" id="tab-internal">
+  <div class="sl">Pages to Build</div>
+  <div class="page-grid">
+    <div class="page-card int">
+      <div class="page-url">/login</div>
+      <div class="page-title">Login Page</div>
+      <ul class="page-items"><li>Email + password form</li><li>Calls <code>POST /auth/login</code></li><li>Stores JWT in httpOnly cookie or localStorage</li><li>Redirect to /dashboard on success</li></ul>
+    </div>
+    <div class="page-card int">
+      <div class="page-url">/dashboard</div>
+      <div class="page-title">Dashboard</div>
+      <ul class="page-items"><li>Today's rate display (pre-filled from last entry)</li><li>Quick links to calculators</li><li>Summary: quotes today, total this week</li><li>API: <code>GET /api/internal/dashboard</code></li></ul>
+    </div>
+    <div class="page-card int">
+      <div class="page-url">/rates</div>
+      <div class="page-title">Rate Entry Screen</div>
+      <ul class="page-items"><li>Enter today's MS/GP rate (Rs./kg)</li><li>Shows last entered rate + date</li><li>Rate history table</li><li>API: <code>POST /api/internal/rates</code> · <code>GET /api/internal/rates</code></li></ul>
+    </div>
+    <div class="page-card int">
+      <div class="page-url">/calculator/walkway</div>
+      <div class="page-title">Walkway Plank Calculator</div>
+      <ul class="page-items"><li>Type selector (all 7 types)</li><li>Full input form per type (all fields shown)</li><li>Detailed result: sheet wt, stiffner wt, end plate wt, total, rate/kg, final rate</li><li>API: <code>POST /api/internal/walkway/calculate</code></li></ul>
+    </div>
+    <div class="page-card int">
+      <div class="page-url">/calculator/staircase</div>
+      <div class="page-title">Staircase Tower Calculator</div>
+      <ul class="page-items"><li>Config selector (4-leg / 8-leg / floor type)</li><li>Height, no. of towers, finish inputs</li><li>Full BOQ table output + total weight + total price + Rs./Mtr</li><li>API: <code>POST /api/internal/staircase/calculate</code></li></ul>
+    </div>
+    <div class="page-card int">
+      <div class="page-url">/history</div>
+      <div class="page-title">Quote History</div>
+      <ul class="page-items"><li>Table of all past quotes (public + internal)</li><li>Filter by: type, date range, staff, public/internal</li><li>Expandable rows showing full inputs used</li><li>Export to CSV · Generate PDF for any quote</li><li>API: <code>GET /api/internal/quotes</code></li></ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sl">Auth Flow</div>
+  <table class="resp-table">
+    <thead><tr><th>Action</th><th>Frontend</th><th>API</th></tr></thead>
+    <tbody>
+      <tr><td>Login</td><td>POST credentials → store JWT token → redirect to /dashboard</td><td><code>POST /auth/login</code> → returns <code>{access_token, expires_in}</code></td></tr>
+      <tr><td>Every protected API call</td><td>Include <code>Authorization: Bearer {token}</code> header</td><td>Backend validates JWT · Returns 401 if expired</td></tr>
+      <tr><td>Token expired</td><td>Catch 401 → redirect to /login · clear stored token</td><td>Returns <code>{detail: "Token expired"}</code></td></tr>
+      <tr><td>Logout</td><td>Clear token · redirect to /login</td><td>No API call needed (stateless JWT)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ═══ API REFERENCE ═══ -->
+<div class="tab-content" id="tab-api">
+  <div class="sl">Public Endpoints — no auth required</div>
+
+  <div class="endpoint-block">
+    <div class="ep-header">
+      <span class="ep-method post">POST</span>
+      <span class="ep-path">/api/public/walkway/calculate</span>
+      <span class="ep-auth auth-pub">No auth</span>
+    </div>
+    <div class="ep-body">
+      <div><div class="ep-section-title">Request Body</div><div class="ep-json"><span class="c">// example: 2-fold without hook</span>
+{
+  <span class="k">"type"</span>: <span class="s">"2fold-no-hook"</span>,
+  <span class="k">"length_mm"</span>: <span class="n">2000</span>,
+  <span class="k">"width_mm"</span>: <span class="n">300</span>,
+  <span class="k">"thickness_mm"</span>: <span class="n">1.8</span>
+}</div></div>
+      <div><div class="ep-section-title">Response</div><div class="ep-json">{
+  <span class="k">"quote_token"</span>: <span class="s">"qt_abc123xyz"</span>,
+  <span class="k">"status"</span>: <span class="s">"calculated"</span>
+}
+<span class="c">// result held until OTP verified
+// do NOT show rate yet</span></div></div>
+    </div>
+  </div>
+
+  <div class="endpoint-block">
+    <div class="ep-header">
+      <span class="ep-method post">POST</span>
+      <span class="ep-path">/api/public/lead/submit</span>
+      <span class="ep-auth auth-pub">No auth</span>
+    </div>
+    <div class="ep-body">
+      <div><div class="ep-section-title">Request Body</div><div class="ep-json">{
+  <span class="k">"quote_token"</span>: <span class="s">"qt_abc123xyz"</span>,
+  <span class="k">"name"</span>: <span class="s">"Rahul Sharma"</span>,
+  <span class="k">"location"</span>: <span class="s">"Mumbai, Maharashtra"</span>,
+  <span class="k">"phone"</span>: <span class="s">"9876543210"</span>,
+  <span class="k">"email"</span>: <span class="s">"rahul@example.com"</span>
+}</div></div>
+      <div><div class="ep-section-title">Response</div><div class="ep-json">{
+  <span class="k">"status"</span>: <span class="s">"otp_sent"</span>,
+  <span class="k">"message"</span>: <span class="s">"OTP sent to rahul@ex..."</span>,
+  <span class="k">"expires_in_seconds"</span>: <span class="n">600</span>
+}</div></div>
+    </div>
+  </div>
+
+  <div class="endpoint-block">
+    <div class="ep-header">
+      <span class="ep-method post">POST</span>
+      <span class="ep-path">/api/public/lead/verify-otp</span>
+      <span class="ep-auth auth-pub">No auth</span>
+    </div>
+    <div class="ep-body">
+      <div><div class="ep-section-title">Request Body</div><div class="ep-json">{
+  <span class="k">"quote_token"</span>: <span class="s">"qt_abc123xyz"</span>,
+  <span class="k">"otp"</span>: <span class="s">"384912"</span>
+}</div></div>
+      <div><div class="ep-section-title">Response (success)</div><div class="ep-json">{
+  <span class="k">"final_rate_rs"</span>: <span class="n">1540.00</span>,
+  <span class="k">"weight_kg"</span>: <span class="n">16.2</span>,
+  <span class="k">"plank_size"</span>: <span class="s">"2000x300x42"</span>,
+  <span class="k">"thickness_mm"</span>: <span class="n">1.8</span>,
+  <span class="k">"rate_date"</span>: <span class="s">"2026-06-14"</span>,
+  <span class="k">"pdf_url"</span>: <span class="s">"https://r2.../quote_abc.pdf"</span>,
+  <span class="k">"quote_id"</span>: <span class="n">1042</span>
+}
+<span class="c">// PDF also sent to lead's email</span></div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sl">Auth Endpoints</div>
+
+  <div class="endpoint-block">
+    <div class="ep-header">
+      <span class="ep-method post">POST</span>
+      <span class="ep-path">/auth/login</span>
+      <span class="ep-auth auth-pub">No auth</span>
+    </div>
+    <div class="ep-body">
+      <div><div class="ep-section-title">Request Body</div><div class="ep-json">{
+  <span class="k">"email"</span>: <span class="s">"staff@yourcompany.com"</span>,
+  <span class="k">"password"</span>: <span class="s">"••••••••"</span>
+}</div></div>
+      <div><div class="ep-section-title">Response</div><div class="ep-json">{
+  <span class="k">"access_token"</span>: <span class="s">"eyJhbGci..."</span>,
+  <span class="k">"token_type"</span>: <span class="s">"bearer"</span>,
+  <span class="k">"expires_in"</span>: <span class="n">86400</span>,
+  <span class="k">"user"</span>: {
+    <span class="k">"name"</span>: <span class="s">"Staff Name"</span>,
+    <span class="k">"role"</span>: <span class="s">"staff"</span>
+  }
+}</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sl">Internal Endpoints — JWT required (Authorization: Bearer token)</div>
+
+  <div class="endpoint-block">
+    <div class="ep-header">
+      <span class="ep-method post">POST</span>
+      <span class="ep-path">/api/internal/rates</span>
+      <span class="ep-auth auth-priv">JWT required</span>
+    </div>
+    <div class="ep-body">
+      <div><div class="ep-section-title">Request Body</div><div class="ep-json">{
+  <span class="k">"ms_rate_per_kg"</span>: <span class="n">77.50</span>,
+  <span class="k">"gp_rate_per_kg"</span>: <span class="n">82.00</span>
+}</div></div>
+      <div><div class="ep-section-title">Response</div><div class="ep-json">{
+  <span class="k">"status"</span>: <span class="s">"saved"</span>,
+  <span class="k">"date"</span>: <span class="s">"2026-06-14"</span>,
+  <span class="k">"entered_by"</span>: <span class="s">"Staff Name"</span>
+}</div></div>
+    </div>
+  </div>
+
+  <div class="endpoint-block">
+    <div class="ep-header">
+      <span class="ep-method post">POST</span>
+      <span class="ep-path">/api/internal/walkway/calculate</span>
+      <span class="ep-auth auth-priv">JWT required</span>
+    </div>
+    <div class="ep-body">
+      <div><div class="ep-section-title">Request Body</div><div class="ep-json">{
+  <span class="k">"type"</span>: <span class="s">"3fold-with-hook"</span>,
+  <span class="k">"length_mm"</span>: <span class="n">2000</span>,
+  <span class="k">"width_mm"</span>: <span class="n">300</span>,
+  <span class="k">"bottom_bend_mm"</span>: <span class="n">22</span>
+}
+<span class="c">// rate_per_kg auto-used from today's rate</span></div></div>
+      <div><div class="ep-section-title">Response (full detail)</div><div class="ep-json">{
+  <span class="k">"summary"</span>: {
+    <span class="k">"total_weight_kg"</span>: <span class="n">17.6</span>,
+    <span class="k">"final_rate_rs"</span>: <span class="n">1672</span>,
+    <span class="k">"rate_per_kg_rs"</span>: <span class="n">95.00</span>
+  },
+  <span class="k">"breakdown"</span>: {
+    <span class="k">"sheet_weight_kg"</span>: <span class="n">14.9</span>,
+    <span class="k">"stiffner_weight_kg"</span>: <span class="n">1.3</span>,
+    <span class="k">"end_plate_weight_kg"</span>: <span class="n">0.0</span>,
+    <span class="k">"hook_weight_kg"</span>: <span class="n">1.4</span>
+  },
+  <span class="k">"rate_working"</span>: {
+    <span class="k">"std_wt_kg"</span>: <span class="n">16.2</span>,
+    <span class="k">"std_rate_rs"</span>: <span class="n">1539</span>,
+    <span class="k">"raw_material_rate"</span>: <span class="n">77.00</span>,
+    <span class="k">"diff_per_kg"</span>: <span class="n">18.00</span>
+  },
+  <span class="k">"quote_id"</span>: <span class="n">1043</span>
+}</div></div>
+    </div>
+  </div>
+
+  <div class="endpoint-block">
+    <div class="ep-header">
+      <span class="ep-method post">POST</span>
+      <span class="ep-path">/api/internal/staircase/calculate</span>
+      <span class="ep-auth auth-priv">JWT required</span>
+    </div>
+    <div class="ep-body">
+      <div><div class="ep-section-title">Request Body</div><div class="ep-json">{
+  <span class="k">"config"</span>: <span class="s">"8leg-antiskid-3.8x1.8"</span>,
+  <span class="k">"platform_height_m"</span>: <span class="n">12</span>,
+  <span class="k">"num_towers"</span>: <span class="n">2</span>,
+  <span class="k">"finish"</span>: <span class="s">"painted"</span>
+}</div></div>
+      <div><div class="ep-section-title">Response</div><div class="ep-json">{
+  <span class="k">"summary"</span>: {
+    <span class="k">"total_weight_kg"</span>: <span class="n">1556</span>,
+    <span class="k">"total_price_rs"</span>: <span class="n">163273</span>,
+    <span class="k">"rate_per_mtr_rs"</span>: <span class="n">13606</span>,
+    <span class="k">"kg_per_mtr"</span>: <span class="n">129.7</span>
+  },
+  <span class="k">"boq"</span>: [
+    {
+      <span class="k">"item"</span>: <span class="s">"Cup-Lock Standard 3.0m"</span>,
+      <span class="k">"qty"</span>: <span class="n">64</span>,
+      <span class="k">"weight_each_kg"</span>: <span class="n">14</span>,
+      <span class="k">"total_weight_kg"</span>: <span class="n">896</span>,
+      <span class="k">"rate_rs"</span>: <span class="n">85</span>,
+      <span class="k">"total_price_rs"</span>: <span class="n">76160</span>
+    }
+    <span class="c">// ... more items</span>
+  ],
+  <span class="k">"quote_id"</span>: <span class="n">1044</span>
+}</div></div>
+    </div>
+  </div>
+
+  <div class="endpoint-block">
+    <div class="ep-header">
+      <span class="ep-method get">GET</span>
+      <span class="ep-path">/api/internal/quotes?type=walkway&from=2026-06-01&page=1</span>
+      <span class="ep-auth auth-priv">JWT required</span>
+    </div>
+    <div class="ep-body">
+      <div><div class="ep-section-title">Query Params</div><div class="ep-json"><span class="k">type</span>: walkway | staircase | all
+<span class="k">from</span>: date (YYYY-MM-DD)
+<span class="k">to</span>: date (YYYY-MM-DD)
+<span class="k">source</span>: public | internal | all
+<span class="k">page</span>: integer (default 1)
+<span class="k">per_page</span>: integer (default 25)</div></div>
+      <div><div class="ep-section-title">Response</div><div class="ep-json">{
+  <span class="k">"total"</span>: <span class="n">142</span>,
+  <span class="k">"page"</span>: <span class="n">1</span>,
+  <span class="k">"quotes"</span>: [
+    {
+      <span class="k">"id"</span>: <span class="n">1042</span>,
+      <span class="k">"type"</span>: <span class="s">"walkway"</span>,
+      <span class="k">"source"</span>: <span class="s">"public"</span>,
+      <span class="k">"lead_name"</span>: <span class="s">"Rahul Sharma"</span>,
+      <span class="k">"lead_email"</span>: <span class="s">"rahul@..."</span>,
+      <span class="k">"final_rate_rs"</span>: <span class="n">1540</span>,
+      <span class="k">"created_at"</span>: <span class="s">"2026-06-14T10:23:00Z"</span>,
+      <span class="k">"pdf_url"</span>: <span class="s">"https://r2.../quote.pdf"</span>
+    }
+  ]
+}</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ DATABASE ═══ -->
+<div class="tab-content" id="tab-db">
+  <div class="sl">Tables Overview</div>
+  <table class="resp-table">
+    <thead><tr><th>Table</th><th>Purpose</th><th>Key fields</th></tr></thead>
+    <tbody>
+      <tr><td>quotes</td><td>Every calculation ever run — public and internal</td><td>id, type, source (public/internal), inputs (JSON), rate_used, final_rate, weight_kg, lead_name, lead_email, lead_phone, lead_location, email_verified, pdf_url, staff_id, created_at</td></tr>
+      <tr><td>rate_log</td><td>Daily material rate history</td><td>id, date, ms_rate_per_kg, gp_rate_per_kg, entered_by (staff), created_at</td></tr>
+      <tr><td>calc_cache</td><td>Cache of geometry calculations (rate-independent)</td><td>cache_key (hash of type+dims), type, inputs (JSON), weight_kg, component_data (JSON), created_at</td></tr>
+      <tr><td>users</td><td>Internal staff accounts</td><td>id, name, email, hashed_password, role, created_at, last_login</td></tr>
+      <tr><td>otp_tokens</td><td>Temporary OTP records for public lead verification</td><td>quote_token, otp_hash, email, expires_at, verified, attempts</td></tr>
+    </tbody>
+  </table>
+  <div class="note note-green" style="margin-top:10px;">
+    <strong>Frontend team note:</strong> The frontend never queries the database directly. All data access goes through the API. The database is fully managed by the backend — the frontend team does not need Supabase credentials or any DB access.
+  </div>
+</div>
+
+<!-- ═══ DEPLOYMENT ═══ -->
+<div class="tab-content" id="tab-deploy">
+  <div class="sl">Deployment Map</div>
+  <div class="deploy-grid">
+    <div class="deploy-card" style="border-color:#00b386;">
+      <div class="dc-service">Frontend — Public</div>
+      <div class="dc-name">Astro Public Site</div>
+      <div class="dc-url">yourcompany.com</div>
+      <ul class="dc-items"><li>Deployed on Vercel or Cloudflare Pages</li><li>SSR adapter for dynamic routes</li><li>Env var: <code>PUBLIC_API_URL</code></li><li>Domain: root domain / yourcompany.com</li></ul>
+    </div>
+    <div class="deploy-card" style="border-color:#7c4dff;">
+      <div class="dc-service">Frontend — Internal</div>
+      <div class="dc-name">Astro Internal Tool</div>
+      <div class="dc-url">tools.yourcompany.com</div>
+      <ul class="dc-items"><li>Separate deployment on Vercel / CF Pages</li><li>Protected behind login</li><li>Env var: <code>PUBLIC_API_URL</code></li><li>Subdomain: tools.yourcompany.com</li></ul>
+    </div>
+    <div class="deploy-card" style="border-color:#4f8ef7;">
+      <div class="dc-service">Backend API</div>
+      <div class="dc-name">FastAPI</div>
+      <div class="dc-url">api.yourcompany.com</div>
+      <ul class="dc-items"><li>Render (Web Service)</li><li>CORS configured for both Astro origins</li><li>Env vars: DB_URL, R2_KEY, RESEND_KEY</li><li>Subdomain: api.yourcompany.com</li></ul>
+    </div>
+    <div class="deploy-card" style="border-color:#f0c040;">
+      <div class="dc-service">Database</div>
+      <div class="dc-name">PostgreSQL</div>
+      <div class="dc-url">Supabase (managed)</div>
+      <ul class="dc-items"><li>Connection via SQLAlchemy from FastAPI</li><li>No direct frontend access</li><li>Backups managed by Supabase</li></ul>
+    </div>
+    <div class="deploy-card" style="border-color:#e07030;">
+      <div class="dc-service">PDF Storage</div>
+      <div class="dc-name">Cloudflare R2</div>
+      <div class="dc-url">files.yourcompany.com (R2 custom domain)</div>
+      <ul class="dc-items"><li>PDF files stored by FastAPI</li><li>Served via signed URLs (expiring links)</li><li>Frontend only receives the URL string</li></ul>
+    </div>
+    <div class="deploy-card" style="border-color:#ccc;">
+      <div class="dc-service">Email</div>
+      <div class="dc-name">Resend</div>
+      <div class="dc-url">noreply@yourcompany.com</div>
+      <ul class="dc-items"><li>OTP emails for public flow</li><li>Quote delivery emails</li><li>Triggered entirely from FastAPI</li></ul>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="sl">GitHub Repos (shared)</div>
+  <table class="resp-table">
+    <thead><tr><th>Repo</th><th>Contains</th><th>Who has access</th></tr></thead>
+    <tbody>
+      <tr><td><code>pstm-platform</code></td><td>/frontend-public (Astro) · /frontend-internal (Astro) · /backend (FastAPI shell — routes, DB models, auth) · /database (migrations, schema)</td><td>Whole team</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-top:8px;"><strong>Note:</strong> The backend in the shared repo contains all route definitions, database logic, auth, email, and PDF handling — but calculation logic is handled internally by the backend owner. The frontend team only needs to know the API contract documented in the API Reference tab.</div>
+</div>
+
+<script>
+function sw(name) {
+  const names = ['overview','public','internal','api','db','deploy'];
+  names.forEach((n,i) => {
+    document.querySelectorAll('.tab')[i].classList.toggle('active', n===name);
+    document.getElementById('tab-'+n).classList.toggle('active', n===name);
+  });
+}
+</script>
+</body>
+</html>

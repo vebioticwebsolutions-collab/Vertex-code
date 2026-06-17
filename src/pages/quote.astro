@@ -6,6 +6,8 @@ import { Image } from 'astro:assets';
 import ringlockImg from '../assets/products/Ringlock product.jpg';
 import plankImg from '../assets/products/walkway plank.jpg';
 import towerImg from '../assets/products/staircase tower product.jpg';
+
+const API_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:8000';
 ---
 
 <Layout title="Live Quote Engine | Vertex by Primesteeltech">
@@ -14,7 +16,7 @@ import towerImg from '../assets/products/staircase tower product.jpg';
     <svg class="w-6 h-6 transform group-hover:rotate-12 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
   </a>
 
-  <main class="bg-[#050f09] min-h-screen pt-24 pb-16 flex items-center justify-center relative overflow-hidden">
+  <main data-api-url={API_URL} class="bg-[#050f09] min-h-screen pt-24 pb-16 flex items-center justify-center relative overflow-hidden">
     
     <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-emerald-500/10 blur-[150px] rounded-full pointer-events-none z-0"></div>
 
@@ -359,6 +361,7 @@ import towerImg from '../assets/products/staircase tower product.jpg';
           </div>
 
           <h2 class="text-3xl font-black text-white uppercase tracking-tight mb-4">Payload <span class="text-emerald-400">Received</span></h2>
+          <div id="quote-result" class="font-jakarta text-emerald-300 text-sm sm:text-base font-semibold mb-4"></div>
           <p class="font-jakarta text-zinc-300 text-sm sm:text-base leading-relaxed mb-8 max-w-sm mx-auto">
             Your dimensional data has been routed to our logistics engine. A dedicated technical sales agent will contact you within 48 hours with your official quotation.
           </p>
@@ -370,6 +373,21 @@ import towerImg from '../assets/products/staircase tower product.jpg';
       </div>
     </div>
   </main>
+
+  <!-- TESTING RESULT MODAL -->
+  <div id="test-result-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="bg-[#0a1a10] border border-emerald-500/30 rounded-lg w-full max-w-sm p-6 shadow-[0_0_40px_rgba(16,185,129,0.15)]">
+      <div class="flex items-center gap-2 mb-5 bg-amber-500/10 border border-amber-500/30 rounded px-3 py-2">
+        <span class="text-amber-400 text-[11px] font-black uppercase tracking-widest">&#9888; For Testing Purposes Only</span>
+      </div>
+      <h3 class="text-white font-black text-base uppercase tracking-tight mb-1">Quote Result</h3>
+      <p class="text-zinc-500 text-xs font-jakarta mb-4">Raw response from backend API</p>
+      <div id="test-modal-body" class="space-y-0 mb-6 text-sm min-h-[40px]"></div>
+      <button onclick="closeTestModal()" class="w-full h-11 rounded-sm bg-emerald-500 text-[#050f09] text-[12px] font-black uppercase tracking-widest hover:bg-emerald-400 transition-all">
+        Acknowledge &amp; Continue
+      </button>
+    </div>
+  </div>
 </Layout>
 
 <style is:global>
@@ -435,6 +453,8 @@ import towerImg from '../assets/products/staircase tower product.jpg';
 </style>
 
 <script is:inline>
+  const API_URL = document.querySelector('main').dataset.apiUrl || 'http://localhost:8000';
+
   // ==========================================
   // UTILITY: BUTTON LOADING STATES
   // ==========================================
@@ -624,8 +644,9 @@ import towerImg from '../assets/products/staircase tower product.jpg';
     }
 
     // Await the final submission properly so it processes before restoring button
-    await submitFinalQuote(); 
-    restoreButton('btn-otp-proceed'); 
+    const ok = await submitFinalQuote();
+    if (ok) return; // step 7 shown, button is irrelevant
+    restoreButton('btn-otp-proceed');
   }
 
   // C. SUBMIT FINAL PAYLOAD TO SUPABASE
@@ -638,22 +659,29 @@ import towerImg from '../assets/products/staircase tower product.jpg';
 
     console.log("FINAL PAYLOAD:", JSON.stringify(quoteData, null, 2));
     
+    // BACKEND DEV: Uncomment to Save Data
+    /*
     try {
-      const response = await fetch('/api/submit-quote', {
+      const response = await fetch(`${API_URL}/api/submit-quote`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(quoteData)
       });
-      
-      if (!response.ok) {
-        throw new Error("Failed to save to database");
-      }
-    } catch (error) { 
-      alert("Error saving quote to the database. Please check your console."); 
-      return; 
-    }
+    } catch (error) { alert("Error saving quote."); return; }
+    */
 
     goToStep(7, 0, 'Processing Complete');
+  }
+
+  function renderQuoteResult(result) {
+    const el = document.getElementById('quote-result');
+    if (!el) return;
+    const weight = result.weight_kg ?? result.weight ?? null;
+    const rate   = result.final_rate ?? result.rate ?? null;
+    if (weight == null && rate == null) return;
+    el.innerHTML =
+      (weight != null ? `Estimated weight: <strong>${weight} kg</strong><br>` : '') +
+      (rate   != null ? `Final rate: <strong>${rate}</strong>` : '');
   }
 
   // OTP Auto-Jump Logic
