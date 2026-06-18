@@ -1,11 +1,29 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// ==========================================
+// CUSTOM ASSET IMPORTS
+// ==========================================
+// 1. Core Components Assets
+import dimplesImg from '../../assets/walkway/Walkway Plank Anti-Skid Dimples.png';
+import stiffnerImg from '../../assets/walkway/Walkway Plank Stiffner.png';
+import hookImg from '../../assets/walkway/Walkway Plank Hook.png';
+import gpSheetImg from '../../assets/walkway/Walkway Plank GP Sheet.png';
+
+// 2. Extreme Environments Assets
+import refineryImg from '../../assets/walkway/Walkway Plank Oil & Gas Refinery.png';
+import highRiseImg from '../../assets/walkway/Walkway Plank High-Rise Buildings.png';
+import solarImg from '../../assets/walkway/Walkway Plank Solar Rooftop.png';
 ---
 
 <Layout title="Best Heavy-Duty Walkway Planks in India | Vertex by Primesteeltech">
   
   <main class="bg-[#050f09] min-h-screen pt-24 pb-16">
     
+    <!-- ==========================================
+         HERO SECTION (3D VIEWER)
+         ========================================== -->
     <section class="pb-16 sm:pb-24 border-b border-emerald-500/10 relative overflow-visible">
       <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/10 blur-[150px] rounded-full pointer-events-none"></div>
       <div class="absolute top-40 left-0 w-[400px] h-[400px] bg-teal-500/5 blur-[120px] rounded-full pointer-events-none"></div>
@@ -69,6 +87,9 @@ import Layout from '../../layouts/Layout.astro';
       </div>
     </section>
 
+    <!-- ==========================================
+         CORE COMPONENTS
+         ========================================== -->
     <section class="py-16 sm:py-24 bg-[#0a170e] border-b border-emerald-500/10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
@@ -76,46 +97,53 @@ import Layout from '../../layouts/Layout.astro';
           <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">Core <span class="text-emerald-400">Components</span></h2>
           <div class="h-1 w-12 bg-emerald-400 mx-auto mt-4 rounded-full mb-6"></div>
           <p class="font-jakarta text-zinc-400 text-sm leading-relaxed">
-            Every millimeter of our walkway planks is engineered for function. From the traction surface to the locking mechanisms, safety is built into the steel.
+            Every millimeter of our walkway planks is engineered for function. From the traction surface to the structural base, safety is built into the steel.
           </p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1">
+          <!-- Component 1: Anti-Skid Dimples -->
+          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1 flex flex-col h-full">
             <div class="aspect-square bg-zinc-900 rounded-sm mb-6 overflow-hidden relative border border-white/5">
-              <img src="https://images.unsplash.com/photo-1590644365607-1c5a39178125?q=80&w=400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" alt="Punched Surface Detail" />
+              <Image src={dimplesImg} alt="Punched Surface Detail" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" />
             </div>
             <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Punched Surface</h3>
             <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Aggressive, extruded dimples that provide maximum boot grip and allow water, debris, and oil to pass through.</p>
           </div>
 
-          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1">
+          <!-- Component 2: Stiffeners / Ribs -->
+          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1 flex flex-col h-full">
             <div class="aspect-square bg-zinc-900 rounded-sm mb-6 overflow-hidden relative border border-white/5">
-              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" alt="Structural Rib Detail" />
+              <Image src={stiffnerImg} alt="Structural Stiffener Detail" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" />
             </div>
-            <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Structural Ribs</h3>
-            <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Deep-pressed continuous side ribs that prevent bending, sagging, or material fatigue over long spans.</p>
+            <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Structural Stiffeners</h3>
+            <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Deep-pressed continuous internal ribs that prevent bending, sagging, or material fatigue over long heavy-duty spans.</p>
           </div>
 
-          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1">
+          <!-- Component 3: Hooks -->
+          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1 flex flex-col h-full">
             <div class="aspect-square bg-zinc-900 rounded-sm mb-6 overflow-hidden relative border border-white/5">
-              <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" alt="O-Type Hook Detail" />
+              <Image src={hookImg} alt="O-Type Hook Detail" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" />
             </div>
             <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">O-Type Hooks</h3>
             <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Heavy-duty welded end hooks designed to sit perfectly and securely flush across standard tubular ledgers.</p>
           </div>
 
-          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1">
+          <!-- Component 4: GP Sheet -->
+          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1 flex flex-col h-full">
             <div class="aspect-square bg-zinc-900 rounded-sm mb-6 overflow-hidden relative border border-white/5">
-              <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" alt="Wind Lock Latch" />
+              <Image src={gpSheetImg} alt="Galvanized Plain Sheet" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" />
             </div>
-            <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Wind-Lock Pins</h3>
-            <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Integrated safety latches that snap underneath the ledger to prevent the planks from uplifting in high-wind conditions.</p>
+            <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Galvanized (GP) Sheet</h3>
+            <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Roll-formed from premium GP steel sheets, ensuring absolute resistance to rust and weather degradation over its lifecycle.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ==========================================
+         EXTREME ENVIRONMENTS
+         ========================================== -->
     <section class="py-16 sm:py-24 bg-[#050f09] border-b border-emerald-500/10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
@@ -128,36 +156,42 @@ import Layout from '../../layouts/Layout.astro';
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Environment 1: Refinery -->
           <div class="group relative aspect-square sm:aspect-[4/5] overflow-hidden rounded-sm border border-white/5 bg-zinc-900">
-            <img src="https://images.unsplash.com/photo-1545459720-aac8509eb02c?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700" alt="Refinery Scaffolding Planks" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/40 to-transparent"></div>
+            <Image src={refineryImg} alt="Refinery Scaffolding Planks" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/60 to-transparent"></div>
             <div class="absolute bottom-6 left-6 right-6">
               <h3 class="text-lg font-bold text-white uppercase tracking-wide mb-2 group-hover:text-emerald-400 transition-colors">Oil & Gas Refineries</h3>
-              <p class="font-jakarta text-xs text-zinc-300">Fire-proof steel prevents the massive safety risks associated with traditional timber boards in highly flammable zones.</p>
+              <p class="font-jakarta text-xs text-zinc-300 leading-relaxed">Fire-proof steel prevents the massive safety risks associated with traditional timber boards in highly flammable zones.</p>
             </div>
           </div>
 
+          <!-- Environment 2: High-Rise -->
           <div class="group relative aspect-square sm:aspect-[4/5] overflow-hidden rounded-sm border border-white/5 bg-zinc-900">
-            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700" alt="High Rise Construction Walkways" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/40 to-transparent"></div>
+            <Image src={highRiseImg} alt="High Rise Construction Walkways" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/60 to-transparent"></div>
             <div class="absolute bottom-6 left-6 right-6">
               <h3 class="text-lg font-bold text-white uppercase tracking-wide mb-2 group-hover:text-emerald-400 transition-colors">High-Rise Commercial</h3>
-              <p class="font-jakarta text-xs text-zinc-300">Wind-lock pins prevent high-altitude uplift, ensuring platforms remain completely rigid during heavy storms.</p>
+              <p class="font-jakarta text-xs text-zinc-300 leading-relaxed">Solid interlocking prevents high-altitude uplift, ensuring platforms remain completely rigid during heavy storms.</p>
             </div>
           </div>
 
+          <!-- Environment 3: Solar Rooftop -->
           <div class="group relative aspect-square sm:aspect-[4/5] overflow-hidden rounded-sm border border-white/5 bg-zinc-900">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700" alt="Civil Infrastructure Scaffolding" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/40 to-transparent"></div>
+            <Image src={solarImg} alt="Solar Rooftop Walkways" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/60 to-transparent"></div>
             <div class="absolute bottom-6 left-6 right-6">
-              <h3 class="text-lg font-bold text-white uppercase tracking-wide mb-2 group-hover:text-emerald-400 transition-colors">Civil Infrastructure</h3>
-              <p class="font-jakarta text-xs text-zinc-300">Deep structural ribs sustain the constant, heavy movement of workers and heavy machinery materials.</p>
+              <h3 class="text-lg font-bold text-white uppercase tracking-wide mb-2 group-hover:text-emerald-400 transition-colors">Solar Rooftop Installations</h3>
+              <p class="font-jakarta text-xs text-zinc-300 leading-relaxed">Provides secure, slip-resistant pathways across fragile commercial roof spaces for solar panel maintenance crews.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ==========================================
+         ERECTION PROTOCOL
+         ========================================== -->
     <section class="py-16 sm:py-24 bg-[#0a170e] border-b border-emerald-500/10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
@@ -185,7 +219,7 @@ import Layout from '../../layouts/Layout.astro';
               <span class="text-xl font-black text-emerald-400">2</span>
             </div>
             <h3 class="text-white font-bold uppercase tracking-wider text-sm mb-2">Snap to Lock</h3>
-            <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Apply downward pressure to seat the hooks flush. The wind-lock pins will automatically engage beneath the pipe.</p>
+            <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Apply downward pressure to seat the hooks flush. The interlocking components securely grip the pipe below.</p>
           </div>
 
           <div class="relative z-10 flex flex-col items-center text-center">
@@ -195,11 +229,13 @@ import Layout from '../../layouts/Layout.astro';
             <h3 class="text-white font-bold uppercase tracking-wider text-sm mb-2">Immediate Access</h3>
             <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">The platform is instantly load-bearing and ready for heavy foot traffic and material storage.</p>
           </div>
-
         </div>
       </div>
     </section>
 
+    <!-- ==========================================
+         TECHNICAL SPECIFICATIONS
+         ========================================== -->
     <section class="py-16 sm:py-24 border-b border-emerald-500/10 relative bg-[#050f09]">
       <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         
@@ -242,7 +278,7 @@ import Layout from '../../layouts/Layout.astro';
               </tr>
               <tr class="hover:bg-emerald-500/5 transition-colors">
                 <td class="px-6 py-4 font-semibold text-white">Material & Coating</td>
-                <td class="px-6 py-4">Pre-Galvanized / Hot-Dip Galvanized</td>
+                <td class="px-6 py-4">Pre-Galvanized (GP Sheet) / HDG</td>
                 <td class="px-6 py-4 text-zinc-500">ISO 1461 Anti-Rust</td>
               </tr>
             </tbody>
@@ -252,6 +288,9 @@ import Layout from '../../layouts/Layout.astro';
       </div>
     </section>
 
+    <!-- ==========================================
+         COMPLETE YOUR SYSTEM
+         ========================================== -->
     <section class="py-16 bg-[#0a170e] border-b border-emerald-500/10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
@@ -290,6 +329,9 @@ import Layout from '../../layouts/Layout.astro';
       </div>
     </section>
 
+    <!-- ==========================================
+         FAQ
+         ========================================== -->
     <section class="py-16 sm:py-24 bg-[#050f09] border-t border-emerald-500/10">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl sm:text-3xl font-black text-center text-white uppercase tracking-tight mb-12">

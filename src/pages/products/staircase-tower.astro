@@ -1,5 +1,19 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+// ==========================================
+// CUSTOM ASSET IMPORTS
+// ==========================================
+// 1. System Architecture Assets
+import cuplockImg from '../../assets/staircase/Staircase Tower Cuplock Component.png';
+import handrailImg from '../../assets/staircase/Staircase Tower Handrail.png';
+import landingImg from '../../assets/staircase/Staircase Tower Resting Landing.jpg';
+
+// 2. Extreme Environments Assets
+import deepPitsImg from '../../assets/staircase/Staircase Tower Deep Pits & Excavation.png';
+import bulletTrainImg from '../../assets/staircase/Staircase Tower Bullet Train & Metrorail.png';
+import plantMaintImg from '../../assets/staircase/Staricase Tower Plant & refinery Maintenance.png';
 ---
 
 <Layout title="Heavy-Duty Staircase Towers India | Vertex by Primesteeltech">
@@ -81,15 +95,16 @@ import Layout from '../../layouts/Layout.astro';
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1">
+          
+          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1 flex flex-col h-full">
             <div class="aspect-square bg-zinc-900 rounded-sm mb-6 overflow-hidden relative border border-white/5">
-              <img src="https://images.unsplash.com/photo-1541888087850-255d61488c9f?q=80&w=400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" alt="Steel Stringers" />
+              <Image src={cuplockImg} alt="Cuplock Component" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" />
             </div>
-            <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Interlocking Stringers</h3>
-            <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">The heavy-duty diagonal framing that drops directly onto standard ledgers, forming the unyielding slope of the stairs.</p>
+            <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Interlocking Architecture</h3>
+            <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Heavy-duty structural components that drop directly onto standard ledgers, forming the unyielding base of the stairs.</p>
           </div>
 
-          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1">
+          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1 flex flex-col h-full">
             <div class="aspect-square bg-zinc-900 rounded-sm mb-6 overflow-hidden relative border border-white/5">
               <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" alt="Anti-Slip Treads" />
             </div>
@@ -97,17 +112,17 @@ import Layout from '../../layouts/Layout.astro';
             <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Deep-punched steel steps ensuring absolute boot grip during ascent and descent, even in wet site conditions.</p>
           </div>
 
-          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1">
+          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1 flex flex-col h-full">
             <div class="aspect-square bg-zinc-900 rounded-sm mb-6 overflow-hidden relative border border-white/5">
-              <img src="https://images.unsplash.com/photo-1590644365607-1c5a39178125?q=80&w=400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" alt="Safety Handrails" />
+              <Image src={handrailImg} alt="Safety Handrails" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" />
             </div>
             <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Safety Handrails</h3>
             <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Continuous tubular guards that lock into the outer rosettes, completely enclosing the staircase to prevent fall hazards.</p>
           </div>
 
-          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1">
+          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1 flex flex-col h-full">
             <div class="aspect-square bg-zinc-900 rounded-sm mb-6 overflow-hidden relative border border-white/5">
-              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" alt="Resting Landings" />
+              <Image src={landingImg} alt="Resting Landings" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" />
             </div>
             <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Resting Landings</h3>
             <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Wide, flat platforms situated between stair flights, allowing workers to rest or safely maneuver heavy equipment.</p>
@@ -128,32 +143,34 @@ import Layout from '../../layouts/Layout.astro';
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
           <div class="group relative aspect-square sm:aspect-[4/5] overflow-hidden rounded-sm border border-white/5 bg-zinc-900">
-            <img src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700" alt="Deep Excavation Access" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/40 to-transparent"></div>
+            <Image src={deepPitsImg} alt="Deep Excavation Access" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/60 to-transparent"></div>
             <div class="absolute bottom-6 left-6 right-6">
-              <h3 class="text-lg font-bold text-white uppercase tracking-wide mb-2 group-hover:text-emerald-400 transition-colors">Deep Excavation & Mining</h3>
-              <p class="font-jakarta text-xs text-zinc-300">Provides safe, low-angle descent into deep foundation pits where traditional ladders pose severe slip risks.</p>
+              <h3 class="text-lg font-bold text-white uppercase tracking-wide mb-2 group-hover:text-emerald-400 transition-colors">Deep Pits & Excavation</h3>
+              <p class="font-jakarta text-xs text-zinc-300 leading-relaxed">Provides safe, low-angle descent into deep foundation pits where traditional ladders pose severe slip risks.</p>
             </div>
           </div>
 
           <div class="group relative aspect-square sm:aspect-[4/5] overflow-hidden rounded-sm border border-white/5 bg-zinc-900">
-            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700" alt="High Rise Egress" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/40 to-transparent"></div>
+            <Image src={bulletTrainImg} alt="Bullet Train & Metrorail Projects" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/60 to-transparent"></div>
             <div class="absolute bottom-6 left-6 right-6">
-              <h3 class="text-lg font-bold text-white uppercase tracking-wide mb-2 group-hover:text-emerald-400 transition-colors">High-Rise Facade Teams</h3>
-              <p class="font-jakarta text-xs text-zinc-300">Allows massive painting or masonry crews to move between floors simultaneously without bottlenecking.</p>
+              <h3 class="text-lg font-bold text-white uppercase tracking-wide mb-2 group-hover:text-emerald-400 transition-colors">Bullet Train & Metrorail</h3>
+              <p class="font-jakarta text-xs text-zinc-300 leading-relaxed">Provides continuous, high-volume structural access for massive elevated transit and railway projects.</p>
             </div>
           </div>
 
           <div class="group relative aspect-square sm:aspect-[4/5] overflow-hidden rounded-sm border border-white/5 bg-zinc-900">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700" alt="Industrial Plant Maintenance" />
-            <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/40 to-transparent"></div>
+            <Image src={plantMaintImg} alt="Industrial Plant Maintenance" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/60 to-transparent"></div>
             <div class="absolute bottom-6 left-6 right-6">
-              <h3 class="text-lg font-bold text-white uppercase tracking-wide mb-2 group-hover:text-emerald-400 transition-colors">Industrial Plant Maintenance</h3>
-              <p class="font-jakarta text-xs text-zinc-300">Wide stair treads allow engineers to safely carry heavy diagnostic tools and parts up to operational pipeline levels.</p>
+              <h3 class="text-lg font-bold text-white uppercase tracking-wide mb-2 group-hover:text-emerald-400 transition-colors">Plant & Refinery Maintenance</h3>
+              <p class="font-jakarta text-xs text-zinc-300 leading-relaxed">Wide stair treads allow engineers to safely carry heavy diagnostic tools and parts up to operational pipeline levels.</p>
             </div>
           </div>
+          
         </div>
       </div>
     </section>
@@ -269,7 +286,7 @@ import Layout from '../../layouts/Layout.astro';
               <h3 class="text-xl font-bold text-white uppercase tracking-wide group-hover:text-emerald-400 transition-colors">Ringlock Scaffolding</h3>
             </div>
             <div class="absolute bottom-6 sm:bottom-8 right-6 sm:right-8 z-20 w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/30 group-hover:bg-emerald-500 group-hover:border-emerald-500 transition-colors">
-              <svg class="w-5 h-5 text-white group-hover:text-[#050f09]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              <svg class="w-5 h-5 text-white group-hover:text-[#050f09]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7-7m7-7H3"/></svg>
             </div>
           </a>
 
@@ -281,7 +298,7 @@ import Layout from '../../layouts/Layout.astro';
               <h3 class="text-xl font-bold text-white uppercase tracking-wide group-hover:text-emerald-400 transition-colors">Walkway Planks</h3>
             </div>
             <div class="absolute bottom-6 sm:bottom-8 right-6 sm:right-8 z-20 w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/30 group-hover:bg-emerald-500 group-hover:border-emerald-500 transition-colors">
-              <svg class="w-5 h-5 text-white group-hover:text-[#050f09]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              <svg class="w-5 h-5 text-white group-hover:text-[#050f09]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7-7m7-7H3"/></svg>
             </div>
           </a>
 

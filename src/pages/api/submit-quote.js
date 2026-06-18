@@ -1,3 +1,4 @@
+
 import { createClient } from '@supabase/supabase-js';
 
 export const POST = async ({ request }) => {
@@ -7,7 +8,8 @@ export const POST = async ({ request }) => {
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     const body = await request.json();
-    const { user, productType, plankType, dimensions } = body;
+    // Notice we added materialType here
+    const { user, productType, plankType, materialType, dimensions } = body;
 
     const { data, error } = await supabase
       .from('quotes')
@@ -20,6 +22,7 @@ export const POST = async ({ request }) => {
           mobile: user.mobile,
           product_type: productType,
           plank_type: plankType,
+          material_type: materialType, // Sends the MS/GI choice to Supabase
           length: dimensions.length ? Number(dimensions.length) : null,
           width: dimensions.width ? Number(dimensions.width) : null,
           height: dimensions.height ? Number(dimensions.height) : null,
