@@ -542,6 +542,7 @@ import towerImg from '../assets/products/staircase tower product.jpg';
 
   let selectedFoldType = '';
   let selectedHookType = '';
+  let calcPromise = null; // calculation kicked off early (Business Details screen) so it's ready by the time OTP is verified
 
   let totalVisualSteps = 5;
 
@@ -623,6 +624,23 @@ import towerImg from '../assets/products/staircase tower product.jpg';
       alert("Please fill in Length, Width, Height, and Quantity before proceeding.");
       return;
     }
+
+    quoteData.dimensions.length = l;
+    quoteData.dimensions.width = w;
+    quoteData.dimensions.height = h;
+    quoteData.dimensions.qty = qty;
+    quoteData.dimensions.remarks = document.getElementById('dim-remarks').value;
+
+    // Fire the calculation now, while the user fills in Business Details + OTP,
+    // so the result is already on hand by the time OTP is verified.
+    // Business Details (incl. mobile) isn't collected yet at this step, but the backend's
+    // request validator requires user.mobile even though the calc itself doesn't use it —
+    // so a placeholder is sent here only; the real mobile is saved at submit time.
+    calcPromise = fetch('/api/calculate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...quoteData, user: { ...quoteData.user, mobile: quoteData.user.mobile || '0000000000' } })
+    }).then(r => r.ok ? r.json() : Promise.reject(new Error('Calculation failed')));
 
     let vStep = (quoteData.productType === 'plank') ? 7 : 4;
     goToStep(5, vStep, 'Business Details');
@@ -726,10 +744,21 @@ import towerImg from '../assets/products/staircase tower product.jpg';
 
     let result = {};
     try {
+      // Calc was already kicked off when Business Details was shown; reuse it
+      // so submit only has to wait on the (fast) database save.
+      let precomputedCalc = null;
+      if (calcPromise) {
+        try {
+          precomputedCalc = await calcPromise;
+        } catch (_) {
+          precomputedCalc = null; // fall back to letting submit-quote calculate it
+        }
+      }
+
       const response = await fetch('/api/submit-quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(quoteData)
+        body: JSON.stringify({ ...quoteData, calcResult: precomputedCalc })
       });
 
       if (!response.ok) {
@@ -814,7 +843,6 @@ import towerImg from '../assets/products/staircase tower product.jpg';
     const weight = result.weight_kg ?? null;
     const rate   = result.final_rate ?? null;
     if (weight == null && rate == null) return;
-     (rate   != null ? `Final rate: <strong>₹${rate}</strong>` : '');
   }
 
   document.addEventListener('DOMContentLoaded', () => {

@@ -1,59 +1,15 @@
 
 import { createClient } from '@supabase/supabase-js';
-
-const COLD_START_RETRIES = 2; // Render free-tier services sleep when idle and need ~30-50s to wake up
-const ATTEMPT_TIMEOUT_MS = 60000;
-const RETRY_DELAY_MS = 5000;
-
-async function callRenderBackend(body) {
-  let lastError;
-
-  for (let attempt = 0; attempt <= COLD_START_RETRIES; attempt++) {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), ATTEMPT_TIMEOUT_MS);
-
-    try {
-      const renderResponse = await fetch(`${import.meta.env.PUBLIC_API_URL}/api/submit-quote`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-        signal: controller.signal
-      });
-      clearTimeout(timeout);
-
-      if (!renderResponse.ok) {
-        const errText = await renderResponse.text();
-        const isColdStart = errText.includes('unreachable') || errText.includes('timed out');
-        if (isColdStart && attempt < COLD_START_RETRIES) {
-          lastError = new Error(`Calculation service error: ${errText}`);
-          await new Promise(r => setTimeout(r, RETRY_DELAY_MS));
-          continue;
-        }
-        throw new Error(`Calculation service error: ${errText}`);
-      }
-
-      return await renderResponse.json();
-    } catch (error) {
-      clearTimeout(timeout);
-      lastError = error.name === 'AbortError'
-        ? new Error('Calculation service timed out')
-        : error;
-      if (attempt < COLD_START_RETRIES) {
-        await new Promise(r => setTimeout(r, RETRY_DELAY_MS));
-        continue;
-      }
-    }
-  }
-
-  throw lastError;
-}
+import { callRenderBackend } from '../../lib/calc.js';
 
 export const POST = async ({ request }) => {
   try {
     const body = await request.json();
-    const { user, productType, plankType, materialType, dimensions } = body;
+    const { user, productType, plankType, materialType, dimensions, calcResult: precomputedResult } = body;
 
-    const calcResult = await callRenderBackend(body);
+    // If the calc was already triggered earlier (when Business Details was shown),
+    // reuse it instead of waiting on the render backend again here.
+    const calcResult = precomputedResult ?? await callRenderBackend(body);
 
     const supabaseUrl = import.meta.env.SUPABASE_URL;
     const supabaseKey = import.meta.env.SUPABASE_ANON_KEY;
