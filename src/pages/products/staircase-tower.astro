@@ -8,7 +8,8 @@ import { Image } from 'astro:assets';
 // 1. System Architecture Assets
 import cuplockImg from '../../assets/staircase/Staircase Tower Cuplock Component.png';
 import handrailImg from '../../assets/staircase/Staircase Tower Handrail.png';
-import landingImg from '../../assets/staircase/Staircase Tower Resting Landing.jpg';
+import landingImg from '../../assets/staircase/(updated) Staircase Tower resting landing.jpg';
+import stepArmImg from '../../assets/staircase/(updated) Staircase Tower step arm.jpg'; // <-- ADDED STEP ARM
 
 // 2. Extreme Environments Assets
 import deepPitsImg from '../../assets/staircase/Staircase Tower Deep Pits & Excavation.png';
@@ -52,9 +53,6 @@ import plantMaintImg from '../../assets/staircase/Staricase Tower Plant & refine
             <div class="flex flex-wrap gap-3 mb-10">
               <span class="px-3 py-1.5 bg-[#0a170e] border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-widest rounded-sm flex items-center gap-2 shadow-inner">
                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> OSHA Fall Protected
-              </span>
-              <span class="px-3 py-1.5 bg-[#0a170e] border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-widest rounded-sm flex items-center gap-2 shadow-inner">
-                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg> Anti-Slip Treads
               </span>
             </div>
 
@@ -106,14 +104,6 @@ import plantMaintImg from '../../assets/staircase/Staricase Tower Plant & refine
 
           <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1 flex flex-col h-full">
             <div class="aspect-square bg-zinc-900 rounded-sm mb-6 overflow-hidden relative border border-white/5">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=400&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" alt="Anti-Slip Treads" />
-            </div>
-            <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Anti-Slip Treads</h3>
-            <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Deep-punched steel steps ensuring absolute boot grip during ascent and descent, even in wet site conditions.</p>
-          </div>
-
-          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1 flex flex-col h-full">
-            <div class="aspect-square bg-zinc-900 rounded-sm mb-6 overflow-hidden relative border border-white/5">
               <Image src={handrailImg} alt="Safety Handrails" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" />
             </div>
             <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Safety Handrails</h3>
@@ -127,6 +117,15 @@ import plantMaintImg from '../../assets/staircase/Staricase Tower Plant & refine
             <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Resting Landings</h3>
             <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Wide, flat platforms situated between stair flights, allowing workers to rest or safely maneuver heavy equipment.</p>
           </div>
+
+          <div class="bg-[#050f09] border border-emerald-500/10 rounded-sm p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-300 group hover:-translate-y-1 flex flex-col h-full">
+            <div class="aspect-square bg-zinc-900 rounded-sm mb-6 overflow-hidden relative border border-white/5">
+              <Image src={stepArmImg} alt="Step Arm Component" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-500" />
+            </div>
+            <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wide mb-2">Heavy-Duty Step Arms</h3>
+            <p class="font-jakarta text-xs text-zinc-400 leading-relaxed">Robust structural brackets that securely lock into the vertical standards, providing unyielding support for the anti-slip stair treads.</p>
+          </div>
+
         </div>
       </div>
     </section>

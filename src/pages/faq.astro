@@ -1,61 +1,66 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { faqs } from '../data/faqData.js';
 
-// Your FAQ Database - Easy to update and expand!
-const faqs = [
-  {
-    category: "Ringlock Scaffolding",
-    question: "What is the maximum load capacity of your Ringlock standards?",
-    answer: "Our high-tensile steel vertical standards are tested to support a safe working load of up to 40 kN per leg, depending on the ledger lift height. Full destructive testing certificates are available upon request."
-  },
-  {
-    category: "Ringlock Scaffolding",
-    question: "Is your Ringlock system compatible with other brands?",
-    answer: "Yes, our rosettes and ledger heads are manufactured to strict global dimensional tolerances, ensuring seamless integration and compatibility with most standard scaffolding systems on the market."
-  },
-  {
-    category: "Walkway Planks",
-    question: "Do your walkway planks meet OSHA anti-slip requirements?",
-    answer: "Absolutely. Our planks feature an aggressive, extruded punched-hole matrix that significantly exceeds minimum OSHA friction coefficient standards, even in wet, oily, or muddy site conditions."
-  },
-  {
-    category: "Walkway Planks",
-    question: "What lengths do your steel planks come in?",
-    answer: "Our standard stock lengths range from 1.0m to 3.0m. However, because we manufacture in-house, we can roll-form custom lengths to fit your specific structural footprint."
-  },
-  {
-    category: "Staircase Towers",
-    question: "How many workers can safely use the staircase tower at once?",
-    answer: "Our heavy-duty staircase towers are rated for a live load capacity of 7.5 kN/m² (Class 6), designed to safely support high-density, simultaneous worker movement and heavy tool transport."
-  },
-  {
-    category: "Logistics & Pricing",
-    question: "What is your minimum order quantity (MOQ)?",
-    answer: "While we cater primarily to tier-1 infrastructure developers requiring bulk tonnage, our MOQ is flexible based on the specific component. Please use our Live Quote Engine to submit your exact dimensional requirements."
-  },
-  {
-    category: "Logistics & Pricing",
-    question: "Do you ship across India?",
-    answer: "Yes, our manufacturing facility in Mumbai has direct access to major transport arteries, allowing us to deploy massive logistical shipments to any construction epicenter across the country rapidly."
-  },
-  {
-    category: "Engineering",
-    question: "Can you provide custom engineering drawings for my site?",
-    answer: "Yes. Our internal design team can analyze your site load ratings and elevation requirements to provide tailored configuration matrices and AutoCAD structural drawings."
-  }
+// Derive category list + counts dynamically from the data, in a fixed display order
+const categoryOrder = [
+  "Ringlock Scaffolding",
+  "Walkway Planks",
+  "Staircase Towers",
+  "Logistics & Pricing",
+  "Safety & Compliance",
+  "Engineering & Technical",
+  "Formwork",
+  "Materials & Maintenance",
+  "General Scaffolding & Formwork"
 ];
+
+const categories = categoryOrder
+  .filter((cat) => faqs.some((f) => f.category === cat))
+  .map((cat) => ({
+    name: cat,
+    count: faqs.filter((f) => f.category === cat).length
+  }));
+
+// Slugify helper for stable per-FAQ anchor IDs (useful for deep-linking + crawlability)
+function slugify(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .slice(0, 60);
+}
+
+// FAQPage JSON-LD structured data — this is what allows Google / AI engines
+// to surface individual Q&A pairs directly in search results and AI answers.
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
-<Layout title="Customer FAQ | Vertex Scaffolding Support">
-  
+<Layout title="Scaffolding & Formwork FAQ | PrimeSteel Tech Engineering Support">
+
+  <!-- FAQPage structured data for SEO + GEO (AI Overviews, ChatGPT, Perplexity, etc.) -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
   <main class="bg-[#2b332a] min-h-screen pt-20 pb-24">
-    
+
     <section class="relative pt-16 sm:pt-24 pb-12 border-b border-white/5 text-center overflow-hidden">
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none"></div>
-      
+
       <div class="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/5 px-4 py-2 text-[11px] font-semibold text-emerald-400 uppercase tracking-widest mb-6 shadow-[0_0_15px_rgba(52,211,153,0.1)]">
-          Knowledge Base
+          Knowledge Base · {faqs.length} Answers
         </div>
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6">
           How can we <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">help you?</span>
@@ -68,9 +73,9 @@ const faqs = [
           <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
             <svg class="h-5 w-5 text-emerald-500 group-focus-within:text-emerald-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
           </div>
-          <input 
-            type="text" 
-            id="faq-search" 
+          <input
+            type="text"
+            id="faq-search"
             class="block w-full pl-12 pr-4 py-5 bg-zinc-900/80 border border-white/10 rounded-sm text-white font-jakarta text-sm sm:text-base placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 shadow-2xl backdrop-blur-md transition-all"
             placeholder="Search for 'load capacity', 'shipping', 'OSHA'..."
             autocomplete="off"
@@ -79,9 +84,37 @@ const faqs = [
       </div>
     </section>
 
-    <section class="py-12 relative z-10">
+    <!-- CATEGORY FILTER PILLS -->
+    <section class="pt-10 pb-2 relative z-10">
+      <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div id="category-pills" class="flex flex-wrap justify-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            class="category-pill active-pill px-4 py-2 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-widest border transition-all bg-emerald-500 border-emerald-500 text-[#1a2419]"
+            data-category="all"
+          >
+            All <span class="opacity-70 font-semibold">({faqs.length})</span>
+          </button>
+          {categories.map((cat) => (
+            <button
+              type="button"
+              class="category-pill px-4 py-2 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-widest border border-white/10 bg-white/5 text-zinc-300 hover:border-emerald-500/40 hover:text-emerald-300 transition-all"
+              data-category={cat.name}
+            >
+              {cat.name} <span class="opacity-70 font-semibold">({cat.count})</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-10 relative z-10">
       <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        
+
+        <div id="result-count" class="text-center text-zinc-500 text-xs font-jakarta font-medium uppercase tracking-widest mb-6">
+          Showing all {faqs.length} answers
+        </div>
+
         <div id="no-results" class="hidden text-center py-12 bg-white/5 border border-white/10 rounded-sm">
           <svg class="h-12 w-12 text-zinc-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <h3 class="text-lg font-bold text-white uppercase tracking-wide mb-2">No matching answers found</h3>
@@ -92,33 +125,40 @@ const faqs = [
         </div>
 
         <div id="faq-container" class="space-y-4">
-          {faqs.map((faq, index) => (
-            <div class="faq-item group bg-zinc-900/50 border border-white/10 rounded-sm overflow-hidden transition-all duration-300 hover:border-emerald-500/30">
-              
-              <button 
-                class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none"
-                aria-expanded="false"
+          {faqs.map((faq, index) => {
+            const slug = slugify(faq.question);
+            return (
+              <div
+                class="faq-item group bg-zinc-900/50 border border-white/10 rounded-sm overflow-hidden transition-all duration-300 hover:border-emerald-500/30"
+                data-category={faq.category}
+                id={`faq-${slug}`}
               >
-                <div class="pr-8">
-                  <span class="block text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1">{faq.category}</span>
-                  <h3 class="text-sm sm:text-base font-bold text-white uppercase tracking-wide group-hover:text-emerald-300 transition-colors">{faq.question}</h3>
-                </div>
-                <div class="shrink-0 h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
-                  <svg class="icon-plus h-4 w-4 text-emerald-400 block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                  <svg class="icon-minus h-4 w-4 text-emerald-400 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
-                </div>
-              </button>
 
-              <div class="faq-answer hidden px-5 sm:px-6 pb-6 pt-2">
-                <div class="h-px w-full bg-white/5 mb-4"></div>
-                <p class="font-jakarta text-zinc-300 text-sm leading-relaxed border-l-2 border-emerald-500 pl-4">
-                  {faq.answer}
-                </p>
+                <button
+                  class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none"
+                  aria-expanded="false"
+                >
+                  <div class="pr-8">
+                    <span class="block text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1">{faq.category}</span>
+                    <h2 class="text-sm sm:text-base font-bold text-white uppercase tracking-wide group-hover:text-emerald-300 transition-colors">{faq.question}</h2>
+                  </div>
+                  <div class="shrink-0 h-8 w-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                    <svg class="icon-plus h-4 w-4 text-emerald-400 block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    <svg class="icon-minus h-4 w-4 text-emerald-400 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/></svg>
+                  </div>
+                </button>
+
+                <div class="faq-answer hidden px-5 sm:px-6 pb-6 pt-2">
+                  <div class="h-px w-full bg-white/5 mb-4"></div>
+                  <p class="font-jakarta text-zinc-300 text-sm leading-relaxed border-l-2 border-emerald-500 pl-4">
+                    {faq.answer}
+                  </p>
+                </div>
+
+                <span class="search-data hidden">{faq.question.toLowerCase()} {faq.answer.toLowerCase()} {faq.category.toLowerCase()}</span>
               </div>
-              
-              <span class="search-data hidden">{faq.question.toLowerCase()} {faq.answer.toLowerCase()} {faq.category.toLowerCase()}</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>
@@ -129,7 +169,7 @@ const faqs = [
 
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-  
+
   .font-jakarta {
     font-family: 'Plus Jakarta Sans', sans-serif;
   }
@@ -138,7 +178,7 @@ const faqs = [
 <script>
   // 1. ACCORDION LOGIC
   const toggles = document.querySelectorAll('.faq-toggle');
-  
+
   toggles.forEach(toggle => {
     toggle.addEventListener('click', () => {
       const answer = toggle.nextElementSibling;
@@ -173,34 +213,64 @@ const faqs = [
     });
   });
 
-  // 2. LIVE SEARCH FILTER LOGIC
+  // 2. LIVE SEARCH + CATEGORY FILTER LOGIC (combined)
   const searchInput = document.getElementById('faq-search') as HTMLInputElement;
-  const faqItems = document.querySelectorAll('.faq-item');
+  const faqItems = document.querySelectorAll<HTMLElement>('.faq-item');
   const noResultsDiv = document.getElementById('no-results');
+  const resultCountDiv = document.getElementById('result-count');
+  const pills = document.querySelectorAll<HTMLButtonElement>('.category-pill');
 
-  searchInput?.addEventListener('input', (e) => {
-    const target = e.target as HTMLInputElement;
-    const searchTerm = target.value.toLowerCase();
+  let activeCategory = 'all';
+
+  function applyFilters() {
+    const searchTerm = (searchInput?.value || '').toLowerCase().trim();
     let visibleCount = 0;
 
     faqItems.forEach(item => {
-      // Tell VS Code this is an HTML Element so it knows it has a 'style' property
-      const htmlItem = item as HTMLElement;
-      const searchData = htmlItem.querySelector('.search-data')?.textContent || '';
-      
-      if (searchData.includes(searchTerm)) {
-        htmlItem.style.display = 'block';
+      const searchData = item.querySelector('.search-data')?.textContent || '';
+      const itemCategory = item.getAttribute('data-category') || '';
+
+      const matchesSearch = searchTerm === '' || searchData.includes(searchTerm);
+      const matchesCategory = activeCategory === 'all' || itemCategory === activeCategory;
+
+      if (matchesSearch && matchesCategory) {
+        item.style.display = 'block';
         visibleCount++;
       } else {
-        htmlItem.style.display = 'none';
+        item.style.display = 'none';
       }
     });
 
-    // Use ?. (Optional Chaining) so it only runs if the div exists
+    if (resultCountDiv) {
+      if (searchTerm === '' && activeCategory === 'all') {
+        resultCountDiv.textContent = `Showing all ${faqItems.length} answers`;
+      } else {
+        resultCountDiv.textContent = `Showing ${visibleCount} of ${faqItems.length} answers`;
+      }
+    }
+
     if (visibleCount === 0) {
       noResultsDiv?.classList.remove('hidden');
     } else {
       noResultsDiv?.classList.add('hidden');
     }
+  }
+
+  searchInput?.addEventListener('input', applyFilters);
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      activeCategory = pill.getAttribute('data-category') || 'all';
+
+      // Update active pill styling
+      pills.forEach(p => {
+        p.classList.remove('active-pill', 'bg-emerald-500', 'border-emerald-500', 'text-[#1a2419]');
+        p.classList.add('bg-white/5', 'border-white/10', 'text-zinc-300');
+      });
+      pill.classList.add('active-pill', 'bg-emerald-500', 'border-emerald-500', 'text-[#1a2419]');
+      pill.classList.remove('bg-white/5', 'border-white/10', 'text-zinc-300');
+
+      applyFilters();
+    });
   });
 </script>

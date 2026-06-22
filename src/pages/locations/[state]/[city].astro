@@ -4,6 +4,11 @@ import { Image } from 'astro:assets';
 import { locations } from '../../../data/locations.js';
 
 // ==========================================
+// 1. THE CRUCIAL FIX: Force Static Rendering
+// ==========================================
+export const prerender = true;
+
+// ==========================================
 // IMAGE IMPORTS (Reusing your high-quality assets)
 // ==========================================
 import img3_1 from '../../../assets/home-page/3-1.jpeg'; 
@@ -23,7 +28,11 @@ import img6_4 from '../../../assets/home-page/6-4 option 1.jpg';
 export function getStaticPaths() {
   return locations.map((loc) => {
     return {
-      params: { state: loc.state, city: loc.slug },
+      // 2. SAFETY FIX: Force strings to prevent param mismatch crashes
+      params: { 
+        state: String(loc.state), 
+        city: String(loc.slug) 
+      },
       props: { locationData: loc },
     };
   });
@@ -31,11 +40,16 @@ export function getStaticPaths() {
 
 const { locationData } = Astro.props;
 
+// 3. SAFETY NET: Prevent crashes if an invalid URL is typed
+if (!locationData) {
+  return Astro.redirect('/404');
+}
+
 // Formatting helpers for SEO text
 const cityName = locationData.name;
 const regionName = locationData.region;
 const pinCodeText = locationData.pin ? ` (PIN: ${locationData.pin})` : '';
-const stateName = locationData.state.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+const stateName = String(locationData.state).replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
 ---
 
 <Layout title={`Scaffolding Manufacturer in ${cityName} | Vertex by Primesteeltech`}>
