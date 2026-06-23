@@ -6,15 +6,19 @@ import { Image } from 'astro:assets';
 // CUSTOM ASSET IMPORTS
 // ==========================================
 // 1. System Architecture Assets
-import cuplockImg from '../../assets/staircase/Staircase Tower Cuplock Component.png';
-import handrailImg from '../../assets/staircase/Staircase Tower Handrail.png';
+import cuplockImg from '../../assets/staircase/(updated)Staircase Tower Cuplock Component.jpg';
+import handrailImg from '../../assets/staircase/(updated)Staircase Tower Handrail.jpg';
 import landingImg from '../../assets/staircase/(updated) Staircase Tower resting landing.jpg';
 import stepArmImg from '../../assets/staircase/(updated) Staircase Tower step arm.jpg'; // <-- ADDED STEP ARM
 
 // 2. Extreme Environments Assets
-import deepPitsImg from '../../assets/staircase/Staircase Tower Deep Pits & Excavation.png';
-import bulletTrainImg from '../../assets/staircase/Staircase Tower Bullet Train & Metrorail.png';
-import plantMaintImg from '../../assets/staircase/Staricase Tower Plant & refinery Maintenance.png';
+import deepPitsImg from '../../assets/staircase/(updated)Staircase Tower Deep Pits & Excavations.jpg';
+import bulletTrainImg from '../../assets/staircase/(updated)Staircase Tower Bullet Train & Metrorail.jpg';
+import plantMaintImg from '../../assets/staircase/(updated)Staircase Tower Plant & refinery Maintenance.jpg';
+import btmimg1 from '../../assets/staircase/walkway plank (1).jpg';
+import btmimg2 from '../../assets/staircase/ringlock.png';
+import btmimg3 from '../../assets/staircase/Scaffolding heavy duty staircase tower.png';
+
 ---
 
 <Layout title="Heavy-Duty Staircase Towers India | Vertex by Primesteeltech">
@@ -68,14 +72,12 @@ import plantMaintImg from '../../assets/staircase/Staricase Tower Plant & refine
             </div>
           </div>
 
-          <div class="lg:col-span-7 relative z-10 w-full h-[400px] sm:h-[500px]">
-            <div id="3d-canvas-container" class="w-full h-full rounded-sm border border-white/10 bg-zinc-900/40 flex flex-col items-center justify-center text-zinc-500 overflow-hidden relative shadow-[0_0_40px_rgba(0,0,0,0.5)]">
-              <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1590644365607-1c5a39178125?q=80&w=1000&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay grayscale"></div>
-              
-              <svg class="w-12 h-12 mb-4 text-zinc-600 relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" /></svg>
-              <span class="text-xs font-bold uppercase tracking-widest relative z-10">Mount 3D Viewer Here</span>
+         <div class="lg:col-span-7 relative z-10 w-full h-[400px] sm:h-[500px]">
+            <div class="w-full h-full rounded-sm border border-white/10 overflow-hidden relative shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+              <Image src={btmimg3} alt="Ringlock Rosette Component" class="w-full h-full object-cover" />
             </div>
           </div>
+
 
         </div>
       </div>
@@ -278,7 +280,7 @@ import plantMaintImg from '../../assets/staircase/Staricase Tower Plant & refine
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           
           <a href="/products/ringlock-scaffolding" class="group relative overflow-hidden rounded-sm aspect-[21/9] sm:aspect-[16/9] bg-zinc-900 shadow-lg border border-emerald-500/20 flex items-end p-6 sm:p-8">
-            <img src="https://images.unsplash.com/photo-1545459720-aac8509eb02c?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700 z-0" alt="Ringlock Framework" />
+            <img src={btmimg2.src} class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700 z-0" alt="Ringlock Framework" />
             <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/50 to-transparent z-10"></div>
             <div class="relative z-20">
               <span class="block text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1">Flagship System</span>
@@ -290,7 +292,7 @@ import plantMaintImg from '../../assets/staircase/Staricase Tower Plant & refine
           </a>
 
           <a href="/products/walkway-planks" class="group relative overflow-hidden rounded-sm aspect-[21/9] sm:aspect-[16/9] bg-zinc-900 shadow-lg border border-emerald-500/20 flex items-end p-6 sm:p-8">
-            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700 z-0" alt="Walkway Planks" />
+            <img src={btmimg1.src} class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700 z-0" alt="Walkway Planks" />
             <div class="absolute inset-0 bg-gradient-to-t from-[#050f09] via-[#050f09]/50 to-transparent z-10"></div>
             <div class="relative z-20">
               <span class="block text-[10px] font-bold text-emerald-400 uppercase tracking-widest mb-1">Safe Elevation</span>
