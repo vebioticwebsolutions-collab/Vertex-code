@@ -5,7 +5,7 @@ export interface Props {
   title?: string;
 }
 
-const { title = "Vertex by Primesteeltech" } = Astro.props;
+const { title = "Prime SteelTech India Pvt Ltd" } = Astro.props;
 
 // Get the current URL path to determine which link should be active (green)
 const pathname = Astro.url.pathname;
@@ -16,18 +16,44 @@ const pathname = Astro.url.pathname;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon1.ico" />
+    <link rel="icon" href="/favicon1.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <!-- LOCAL BUSINESS SCHEMA FOR AI & GOOGLE -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Prime SteelTech India Pvt Ltd",
+      "image": "https://www.yourdomain.com/favicon.svg",
+      "description": "Premium manufacturer of BIS-approved Ringlock scaffolding, Cuplock scaffolding, formwork, and heavy-duty structural materials, Staircase Towers, Anti Skid Walkway Planks.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mumbai", 
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      },
+      "url": "https://www.yourdomain.com",
+      "telephone": "+91-9393161504",
+      "priceRange": "$$$"
+    }
+    </script>
   </head>
   <body class="bg-[#050f09] text-white font-jakarta antialiased selection:bg-emerald-500 selection:text-[#050f09] relative">
     
     <header class="relative z-50 w-full flex flex-col shadow-[0_10px_40px_rgba(0,0,0,0.3)] transition-all duration-300">
       
+      <!-- TOP BAR -->
       <div class="hidden lg:flex w-full bg-[#050f09] border-b border-white/5 relative z-20">
         <div class="mx-auto flex w-full max-w-7xl h-10 items-center justify-end px-4 sm:px-6 lg:px-8 gap-5">
           
+          <a href="/blogs" class={`text-[10px] font-bold tracking-[0.15em] uppercase transition-colors flex items-center gap-1.5 border-r border-white/10 pr-5 ${pathname.startsWith('/blogs') ? 'text-emerald-400' : 'text-zinc-300 hover:text-white'}`}>
+            BLOGS
+            <span class="px-1 py-0.5 rounded-[2px] bg-emerald-500/20 text-[8px] text-emerald-400 tracking-wider">NEW</span>
+          </a>
+
           <span class="text-[9px] font-bold tracking-[0.2em] text-zinc-500 uppercase mr-2 border-r border-white/10 pr-5">Follow Us</span>
           
           <a href="https://www.linkedin.com/company/primesteeltech-india/" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-emerald-400 transition-colors" aria-label="LinkedIn">
@@ -52,6 +78,7 @@ const pathname = Astro.url.pathname;
         </div>
       </div>
 
+      <!-- MAIN HEADER -->
       <div class="w-full bg-[#0a170e]/80 backdrop-blur-xl border-b border-emerald-500/20 relative z-30">
         <div class="mx-auto flex max-w-7xl h-24 items-center justify-between px-4 sm:px-6 lg:px-8">
           
@@ -67,7 +94,7 @@ const pathname = Astro.url.pathname;
             </a>
           </div>
 
-          <nav class="hidden lg:flex items-center gap-6 xl:gap-8">
+          <nav class="hidden lg:flex items-center gap-4 xl:gap-6">
             
             <div class="relative group py-6">
               <a href="/products" class={`flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase transition-colors focus:outline-none pb-1 ${pathname.startsWith('/products') ? 'text-emerald-400' : 'text-zinc-300 hover:text-white'}`}>
@@ -91,11 +118,17 @@ const pathname = Astro.url.pathname;
               <span class="px-1.5 py-0.5 rounded-[2px] bg-emerald-500/20 text-[9px] text-emerald-400 tracking-wider">NEW</span>
             </a>
 
-            <a href="/our-projects" class={`text-xs font-bold tracking-widest uppercase transition-colors ${pathname.startsWith('/our-projects') ? 'text-emerald-400' : 'text-zinc-300 hover:text-white'}`}>OUR PROJECTS</a>
+            <a href="/our-projects" class={`text-xs font-bold tracking-widest uppercase transition-colors ${pathname.startsWith('/our-projects') ? 'text-emerald-400' : 'text-zinc-300 hover:text-white'}`}>PROJECTS</a>
+            
+            <a href="/standards" class={`text-xs font-bold tracking-widest uppercase transition-colors flex items-center gap-1.5 ${pathname.startsWith('/standards') ? 'text-emerald-400' : 'text-zinc-300 hover:text-white'}`}>
+              STANDARDS
+              <span class="px-1.5 py-0.5 rounded-[2px] bg-emerald-500/20 text-[9px] text-emerald-400 tracking-wider">NEW</span>
+            </a>
+
             <a href="/about" class={`text-xs font-bold tracking-widest uppercase transition-colors ${pathname.startsWith('/about') ? 'text-emerald-400' : 'text-zinc-300 hover:text-white'}`}>ABOUT</a>
             
-            <div class="flex items-center gap-4 xl:gap-5 ml-2 xl:ml-4 pl-4 xl:pl-6 border-l border-white/10">
-              <a href="tel:+919819153834" class="inline-flex items-center justify-center rounded-sm bg-transparent text-xs font-bold uppercase tracking-widest text-zinc-300 hover:text-emerald-400 transition-colors" aria-label="Call Us">
+            <div class="flex items-center gap-3 xl:gap-4 ml-1 xl:ml-2 pl-3 xl:pl-4 border-l border-white/10">
+              <a href="tel:+919393161504" class="inline-flex items-center justify-center rounded-sm bg-transparent text-xs font-bold uppercase tracking-widest text-zinc-300 hover:text-emerald-400 transition-colors" aria-label="Call Us">
                 <svg class="h-4 w-4 xl:h-5 xl:w-5 mr-1.5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                 SALES
               </a>
@@ -119,6 +152,7 @@ const pathname = Astro.url.pathname;
         </div>
       </div>
       
+      <!-- MOBILE DRAWER -->
       <div id="mobile-drawer" class="hidden lg:hidden border-t border-white/10 bg-[#0a170e]/95 backdrop-blur-xl px-4 py-8 shadow-2xl absolute w-full top-full left-0 z-40">
         <div class="flex flex-col gap-6">
           <a href="/" class={`text-sm font-bold uppercase tracking-widest ${pathname === '/' ? 'text-emerald-400' : 'text-zinc-300 hover:text-white'}`}>HOME</a>
@@ -136,12 +170,23 @@ const pathname = Astro.url.pathname;
           </a>
           
           <a href="/our-projects" class={`text-sm font-bold uppercase tracking-widest ${pathname.startsWith('/our-projects') ? 'text-emerald-400' : 'text-zinc-300 hover:text-white'}`}>OUR PROJECTS</a>
+          
+          <a href="/standards" class={`text-sm font-bold uppercase tracking-widest flex items-center gap-2 ${pathname.startsWith('/standards') ? 'text-emerald-400' : 'text-zinc-300 hover:text-white'}`}>
+            STANDARDS
+            <span class="px-1.5 py-0.5 rounded-[2px] bg-emerald-500/20 text-[9px] text-emerald-400 tracking-wider">NEW</span>
+          </a>
+          
+          <a href="/blogs" class={`text-sm font-bold uppercase tracking-widest flex items-center gap-2 ${pathname.startsWith('/blogs') ? 'text-emerald-400' : 'text-zinc-300 hover:text-white'}`}>
+            BLOGS
+            <span class="px-1.5 py-0.5 rounded-[2px] bg-emerald-500/20 text-[9px] text-emerald-400 tracking-wider">NEW</span>
+          </a>
+
           <a href="/about" class={`text-sm font-bold uppercase tracking-widest ${pathname.startsWith('/about') ? 'text-emerald-400' : 'text-zinc-300 hover:text-white'}`}>ABOUT</a>
           
           <div class="mt-4 flex flex-col gap-3 pt-6 border-t border-white/10">
-            <a href="tel:+919819153834" class="flex w-full items-center justify-center gap-2 rounded-sm border border-emerald-500/50 bg-emerald-500/10 py-4 text-sm font-bold uppercase tracking-widest text-emerald-400 active:bg-emerald-500 active:text-[#050f09] transition-colors">
+            <a href="tel:+919393161504" class="flex w-full items-center justify-center gap-2 rounded-sm border border-emerald-500/50 bg-emerald-500/10 py-4 text-sm font-bold uppercase tracking-widest text-emerald-400 active:bg-emerald-500 active:text-[#050f09] transition-colors">
               <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-              CALL SALES: +91 9819153834
+              CALL SALES: +91 9393161504
             </a>
             <a href="/quote" class={`flex w-full items-center justify-center gap-2 rounded-sm py-4 text-sm font-bold uppercase tracking-widest shadow-md transition-colors ${pathname === '/quote' ? 'bg-gradient-to-r from-emerald-500 to-teal-400 text-[#050f09]' : 'bg-white text-[#050f09] active:bg-zinc-200'}`}>
               LIVE QUOTE ENGINE
@@ -227,12 +272,23 @@ const pathname = Astro.url.pathname;
             <ul class="space-y-4 font-jakarta text-sm">
               <li><a href="/quote" class="hover:text-emerald-400 transition-colors text-white font-bold">Live Quote Engine &rarr;</a></li>
               <li>
+                <a href="/standards" class="hover:text-emerald-400 transition-colors inline-flex items-center">
+                  Scaffolding Standards 
+                  <span class="ml-2 text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded-sm uppercase tracking-wider">New</span>
+                </a>
+              </li>
+              <li>
+                <a href="/blogs" class="hover:text-emerald-400 transition-colors inline-flex items-center">
+                  Engineering Blogs 
+                  <span class="ml-2 text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded-sm uppercase tracking-wider">New</span>
+                </a>
+              </li>
+              <li>
                 <a href="/buyer's-guide" class="hover:text-emerald-400 transition-colors inline-flex items-center">
                   Buyer's Guide 
                   <span class="ml-2 text-[9px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded-sm uppercase tracking-wider">New</span>
                 </a>
               </li>
-              <li><a href="/blogs" class="hover:text-emerald-400 transition-colors">Engineering Blogs</a></li>
               <li><a href="/faq" class="hover:text-emerald-400 transition-colors">Customer FAQs</a></li>
             </ul>
           </div>
@@ -240,7 +296,7 @@ const pathname = Astro.url.pathname;
         </div>
 
         <div class="border-t border-emerald-500/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-jakarta text-zinc-500">
-          <p>&copy; {new Date().getFullYear()}  Prime Steeltech India PVT LTD. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()}  Prime SteelTech India Pvt Ltd. All rights reserved.</p>
           <div class="flex items-center gap-4">
             <p>Developed By Dhruv and Ayush</p>
             <span class="hidden md:block w-1 h-1 rounded-full bg-zinc-700"></span>

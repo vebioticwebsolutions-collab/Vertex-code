@@ -4,11 +4,47 @@ import { Image } from 'astro:assets';
 
 // Use the existing tower image as the flagship visual
 import towerImg from '../assets/products/orange staircase tower.jpg';
-import finalImg from '../assets/staircase/Scaffolding heavy duty staircase tower.png'
+import finalImg from '../assets/products/(updated) Staircase Tower with clean background.jpg'
+
+// ==========================================
+// RENTALS PAGE SCHEMA (SEO/GEO)
+// ==========================================
+const rentalsSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Heavy-Duty Staircase Tower Rentals",
+  "serviceType": "Scaffolding Equipment Rental",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Prime SteelTech India Pvt Ltd",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mumbai",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "telephone": "+91-9393161504",
+    "url": "https://primesteeltech.co.in"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Mumbai" },
+    { "@type": "City", "name": "Thane" },
+    { "@type": "City", "name": "Navi Mumbai" },
+    { "@type": "City", "name": "Pune" },
+    { "@type": "State", "name": "Maharashtra" },
+    { "@type": "State", "name": "Gujarat" },
+    { "@type": "State", "name": "Goa" }
+  ],
+  "description": "Short-term and long-term rental of heavy-duty scaffolding staircase towers for industrial and construction projects across India.",
+  "url": "https://primesteeltech.co.in/rentals"
+};
 ---
 
-<Layout title="Staircase Tower Rentals | Heavy-Duty Scaffolding Hire | Vertex">
+<Layout title="Staircase Tower Rentals | Heavy-Duty Scaffolding Hire | Prime SteelTech India Pvt Ltd">
   
+  <!-- INJECT STRUCTURED DATA FOR AI ENGINES -->
+  <script type="application/ld+json" set:html={JSON.stringify(rentalsSchema)} />
+
   <main class="bg-[#050f09] min-h-screen text-white overflow-hidden pt-24 pb-16">
     
     <!-- ==========================================
@@ -38,9 +74,8 @@ import finalImg from '../assets/staircase/Scaffolding heavy duty staircase tower
           Available for short-term and long-term rental across India 
         </p>
 
-
         <div class="flex flex-col sm:flex-row items-center justify-center gap-5 max-w-2xl mx-auto">
-          <a href="tel:+919819153834" class="relative group w-full sm:w-auto inline-flex h-14 items-center justify-center gap-3 rounded-sm bg-gradient-to-r from-emerald-500 to-teal-400 px-10 text-sm font-black text-[#050f09] shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_rgba(16,185,129,0.6)] hover:-translate-y-1 transition-all duration-300 uppercase tracking-widest">
+          <a href="tel:+919393161504" class="relative group w-full sm:w-auto inline-flex h-14 items-center justify-center gap-3 rounded-sm bg-gradient-to-r from-emerald-500 to-teal-400 px-10 text-sm font-black text-[#050f09] shadow-[0_0_30px_rgba(16,185,129,0.4)] hover:shadow-[0_0_50px_rgba(16,185,129,0.6)] hover:-translate-y-1 transition-all duration-300 uppercase tracking-widest">
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
             Call to Check Availability
           </a>
@@ -59,7 +94,7 @@ import finalImg from '../assets/staircase/Scaffolding heavy duty staircase tower
         
         <div class="text-center mb-16">
           <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight mb-4">
-            Why Rent From <span class="text-emerald-400">Prime SteelTech ?</span>
+            Why Rent From <span class="text-emerald-400">Prime SteelTech?</span>
           </h2>
           <p class="font-jakarta text-zinc-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
             Buying access equipment isn't always the smartest option. Renting allows you to get certified, ready-to-use Staircase Towers exactly when you need them without the burden of ownership, storage, or maintenance
@@ -127,7 +162,7 @@ import finalImg from '../assets/staircase/Scaffolding heavy duty staircase tower
               The Asset:<br/> <span class="text-emerald-400">Industrial Staircase Towers</span>
             </h2>
             <p class="font-jakarta text-zinc-300 text-sm sm:text-base leading-relaxed mb-8">
-             Built for projects where safe and efficient vertical access is critical.Our Staircase Towers provide dedicated access routes for workers, helping reduce congestion, improve movement across levels, and support safer site operations
+              Built for projects where safe and efficient vertical access is critical.Our Staircase Towers provide dedicated access routes for workers, helping reduce congestion, improve movement across levels, and support safer site operations
             </p>
             
             <ul class="space-y-4 mb-10">
@@ -222,7 +257,7 @@ import finalImg from '../assets/staircase/Scaffolding heavy duty staircase tower
         <div class="text-center mb-12">
           <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight mb-4">Rental <span class="text-emerald-400">Coverage Areas</span></h2>
           <p class="font-jakarta text-zinc-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-            Prime SteelTech  provides rapid-dispatch staircase tower rentals across major western infrastructure hubs. We guarantee fast logistics to keep your site moving without delays.
+            Headquartered in Mumbai, Maharashtra, India, Prime SteelTech provides rapid-dispatch staircase tower rentals across major western infrastructure hubs. We guarantee fast logistics to keep your site moving without delays.
           </p>
         </div>
 
@@ -354,9 +389,9 @@ import finalImg from '../assets/staircase/Scaffolding heavy duty staircase tower
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="tel:+919819153834" class="w-full sm:w-auto inline-flex h-14 items-center justify-center gap-2 rounded-sm bg-emerald-500 px-10 text-sm font-black text-[#050f09] shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] hover:bg-emerald-400 hover:-translate-y-1 transition-all duration-300 uppercase tracking-widest">
+          <a href="tel:+919393161504" class="w-full sm:w-auto inline-flex h-14 items-center justify-center gap-2 rounded-sm bg-emerald-500 px-10 text-sm font-black text-[#050f09] shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] hover:bg-emerald-400 hover:-translate-y-1 transition-all duration-300 uppercase tracking-widest">
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-            Call: +91 9819153834
+            Call: +91 9393161504
           </a>
           <a href="/contact-us" class="w-full sm:w-auto inline-flex h-14 items-center justify-center rounded-sm border-2 border-emerald-500/30 bg-[#050f09] px-10 text-sm font-bold text-emerald-400 hover:border-emerald-500 hover:bg-emerald-500/10 transition-all uppercase tracking-widest">
             Send an Inquiry
