@@ -32,13 +32,25 @@ import logoAdani from '../assets/home-page/logo adani.png';
 import logoLT from '../assets/home-page/logo L&T.png';
 import logoTata from '../assets/home-page/logo tataprojects.jpeg';
 import logoJKumar from '../assets/home-page/logo jkumar.png';
+
+// ==========================================
+// HOME PAGE SCHEMA (SEO/GEO)
+// ==========================================
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Prime SteelTech India Pvt Ltd",
+  "url": "https://primesteeltech.co.in",
+  "description": "Top manufacturer of walkway planks, staircase towers, and ringlock scaffolding in Mumbai, India."
+};
 ---
 
-<Layout title="Vertex by Primesteeltech | Top Scaffolding Manufacturer Mumbai">
+<Layout title="Prime SteelTech India Pvt Ltd | Top Scaffolding Manufacturer Mumbai">
   
+  <script type="application/ld+json" set:html={JSON.stringify(homeSchema)} />
+
   <main class="bg-[#050f09] text-white overflow-hidden">
     
-    <!-- 1. HERO SECTION -->
     <section class="relative pt-12 pb-16 sm:pt-16 sm:pb-24 lg:pt-16 lg:pb-32 border-b border-emerald-500/10 text-center z-10">
       <div class="absolute inset-0 bg-[linear-gradient(to_right,#10b98105_1px,transparent_1px),linear-gradient(to_bottom,#10b98105_1px,transparent_1px)] bg-[size:3rem_3rem] sm:bg-[size:4rem_4rem]"></div>
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[400px] bg-emerald-500/20 blur-[130px] rounded-full pointer-events-none"></div>
@@ -59,7 +71,7 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
         </h1>
 
         <p class="font-jakarta mt-6 text-sm sm:text-base lg:text-lg leading-relaxed sm:leading-8 text-zinc-300 max-w-3xl font-medium">
-          Engineered for India's toughest projects, Prime Steeltech India Pvt Ltd provides EN/BS/OSHO/BIS certified Ringlock & Cuplock Systems , Anti skid walkway planks , Scaffolding Staircase Towers and other Modular Scaffolding Systems & Formworks. With decades of expertise serving in India, Gulf and African countries, our systems ensure rock-solid stability and safety for diverse infrastructure and industrial projects. We also assist you throughout the project by providing services such as consultancy , personalization , erection & estimation of materials required for your project.
+          Engineered for India's toughest projects, Prime SteelTech India Pvt Ltd provides EN/BS/OSHO/BIS certified Ringlock & Cuplock Systems , Anti skid walkway planks , Scaffolding Staircase Towers and other Modular Scaffolding Systems & Formworks. With decades of expertise serving in India, Gulf and African countries, our systems ensure rock-solid stability and safety for diverse infrastructure and industrial projects. We also assist you throughout the project by providing services such as consultancy , personalization , erection & estimation of materials required for your project.
         </p>
 
         <div class="mt-10 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto">
@@ -73,7 +85,6 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
       </div>
     </section>
 
-    <!-- 2. VIDEO SECTION -->
     <section class="py-16 sm:py-24 border-b border-emerald-500/10 relative bg-[#0a170e]">
       <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         
@@ -83,7 +94,7 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
         
         <div class="space-y-6 text-zinc-300 text-sm sm:text-base leading-relaxed max-w-3xl mb-12 font-medium">
           <p class="font-jakarta">
-            Prime Steeltech India is redefining the industry through a next-generation digital platform. This combines instant quoting and real-time specifications with faster procurement, merging engineering heritage with digital efficiency
+            Prime SteelTech India is redefining the industry through a next-generation digital platform. This combines instant quoting and real-time specifications with faster procurement, merging engineering heritage with digital efficiency
           </p>
         </div>
 
@@ -91,7 +102,7 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
           <iframe 
             class="absolute top-0 left-0 w-full h-full border-0"
             src="https://www.youtube.com/embed/OBa_5lMDzVA?autoplay=0&rel=0" 
-            title="Vertex Manufacturing Process" 
+            title="Prime SteelTech Manufacturing Process" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen
             loading="lazy">
@@ -102,7 +113,6 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
       </div>
     </section>
 
-    <!-- 3. ENGINEERED FOR EXTREME LOADS (Moved up directly under video) -->
     <section class="py-16 sm:py-24 border-b border-emerald-500/10 relative overflow-hidden bg-[#050f09]">
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none"></div>
 
@@ -187,7 +197,6 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
       </div>
     </section>
 
-    <!-- 4. LEADING MANUFACTURERS SECTION -->
     <section class="py-16 sm:py-24 bg-[#050f09] border-b border-emerald-500/10 relative overflow-hidden">
       <div class="absolute right-0 top-0 w-1/3 h-full bg-emerald-500/5 blur-[100px] pointer-events-none"></div>
       
@@ -218,7 +227,7 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
             </h2>
             <div class="space-y-6 font-jakarta text-zinc-300 text-sm sm:text-base leading-relaxed font-medium">
               <p>
-                With a rich heritage of engineering excellence, <strong class="text-emerald-400">Prime Steeltech India</strong> has evolved into a leading player in the market for manufacturing and supplying elite scaffolding and formwork materials.
+                With a rich heritage of engineering excellence, <strong class="text-emerald-400">Prime SteelTech India</strong> has evolved into a leading player in the market for manufacturing and supplying elite scaffolding and formwork materials.
               </p>
               <p>
                 You will find yourself working in a true partnership that results in an incredible experience, and an end product that exceeds all load-bearing and safety compliance expectations. We specialize in precision-engineered walkway planks and heavy-duty staircase towers designed for rapid deployment and maximum site safety.
@@ -241,7 +250,6 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
       </div>
     </section>
 
-    <!-- 5. BEST RINGLOCK / PLANKS -->
     <section class="py-16 sm:py-24 bg-[#0a170e] border-b border-emerald-500/10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
@@ -311,7 +319,6 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
       </div>
     </section>
 
-    <!-- 6. NUMBER BAR -->
     <section class="relative py-16 bg-black border-b border-emerald-500/10 overflow-hidden">
       <div class="absolute inset-0 opacity-20 mix-blend-overlay grayscale">
         <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=2000&auto=format&fit=crop" alt="Industrial Steel Background" class="w-full h-full object-cover" />
@@ -340,7 +347,6 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
       </div>
     </section>
 
-    <!-- 7. SECTORS -->
     <section class="py-16 sm:py-24 bg-[#050f09] border-b border-emerald-500/10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
@@ -409,7 +415,6 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
       </div>
     </section>
 
-    <!-- 8. THE BUYER's GUIDE (NEW SECTION) -->
     <section class="py-16 sm:py-24 bg-[#0a170e] border-b border-emerald-500/10 relative overflow-hidden">
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-emerald-900/10 via-[#0a170e] to-[#0a170e] pointer-events-none"></div>
       
@@ -425,7 +430,7 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
         </h2>
         
         <p class="font-jakarta text-zinc-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-3xl mx-auto mb-10 font-medium">
-          Navigate the complexities of industrial scaffolding procurement. Download our complete Buyer's Guide for detailed product specifications, load-bearing capacities, material grades, and compliance certifications for all Vertex systems.
+          Navigate the complexities of industrial scaffolding procurement. Download our complete Buyer's Guide for detailed product specifications, load-bearing capacities, material grades, and compliance certifications for all Prime SteelTech systems.
         </p>
 
         <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-6xl">
@@ -465,7 +470,6 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
       </div>
     </section>
 
-    <!-- 9. STREAMLINED PROCUREMENT -->
     <section class="py-16 sm:py-24 bg-[#050f09] border-b border-emerald-500/10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
@@ -526,7 +530,6 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
       </div>
     </section>
 
-    <!-- 10. TIER-1 DEVELOPERS & PROJECTS CTA (Upgraded CTA) -->
     <section class="py-16 bg-white overflow-hidden border-t border-zinc-200">
       <div class="w-full bg-[#0a170e] py-4 mb-16 flex overflow-hidden relative shadow-inner border-y border-emerald-500/20">
         <div class="animate-marquee flex whitespace-nowrap items-center">
@@ -565,7 +568,6 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
       </div>
     </section>
 
-    <!-- 11. PARENT COMPANY & FINAL CTA -->
     <section class="py-16 sm:py-24 bg-[#050f09] relative overflow-hidden border-t border-emerald-500/10">
       <div class="absolute inset-0 opacity-[0.15] mix-blend-overlay grayscale">
         <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2000&auto=format&fit=crop" alt="Steel Formwork Background" class="w-full h-full object-cover" />
@@ -576,7 +578,7 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
         
         <div class="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/50 px-4 py-2 text-[10px] font-bold text-zinc-300 uppercase tracking-widest mb-6">
           <svg class="w-3 h-3 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-          Parent Company Profile
+          Complete Manufacturing Profile
         </div>
         
         <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white uppercase tracking-tight mb-6 leading-tight">
@@ -585,15 +587,15 @@ import logoJKumar from '../assets/home-page/logo jkumar.png';
         </h2>
         
         <p class="font-jakarta text-zinc-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-10">
-          Vertex specializes in next-generation Ringlock engineering. For traditional scaffolding requirements, including premium Cuplock systems, adjustable props, and comprehensive steel formwork solutions, explore our parent company's extensive catalog.
+          We specialize in next-generation Ringlock engineering. For traditional scaffolding requirements, including premium Cuplock systems, adjustable props, and comprehensive steel formwork solutions, explore our complete manufacturing catalog.
         </p>
         
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 relative z-10">
-          <a href="/contact-us" class="w-full sm:w-auto inline-flex h-14 items-center justify-center rounded-sm bg-emerald-500 px-8 text-sm font-extrabold text-[#050f09] shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] hover:bg-emerald-400 transition-all duration-300 uppercase tracking-widest">
-            Get in Touch
+          <a href="tel:+919393161504" class="w-full sm:w-auto inline-flex h-14 items-center justify-center rounded-sm bg-emerald-500 px-8 text-sm font-extrabold text-[#050f09] shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] hover:bg-emerald-400 transition-all duration-300 uppercase tracking-widest">
+            Call Sales: +91 9393161504
           </a>
-          <a href="https://primesteeltech.co.in" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex h-14 items-center justify-center gap-3 rounded-sm border-2 border-emerald-500/30 bg-[#0a170e] px-8 text-sm font-bold text-emerald-400 hover:bg-emerald-500 hover:text-[#050f09] hover:border-emerald-500 transition-all duration-300 uppercase tracking-widest shadow-[0_0_20px_rgba(16,185,129,0.15)] group">
-            Visit Primesteeltech
+          <a href="/products" class="w-full sm:w-auto inline-flex h-14 items-center justify-center gap-3 rounded-sm border-2 border-emerald-500/30 bg-[#0a170e] px-8 text-sm font-bold text-emerald-400 hover:bg-emerald-500 hover:text-[#050f09] hover:border-emerald-500 transition-all duration-300 uppercase tracking-widest shadow-[0_0_20px_rgba(16,185,129,0.15)] group">
+            View All Products
             <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7-7m7-7H3" /></svg>
           </a>
         </div>
