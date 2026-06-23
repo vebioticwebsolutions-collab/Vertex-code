@@ -20,6 +20,26 @@ const pathname = Astro.url.pathname;
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <!-- LOCAL BUSINESS SCHEMA FOR AI & GOOGLE -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Prime Steeltech India Pvt Ltd",
+      "image": "https://www.yourdomain.com/favicon.svg",
+      "description": "Premium manufacturer of BIS-approved Ringlock scaffolding, Cuplock scaffolding, formwork, and heavy-duty structural materials, Staricase Towers, Anti Skid Walkway Planks.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Mumbai", 
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      },
+      "url": "https://www.yourdomain.com",
+      "telephone": "+91-9819153834",
+      "priceRange": "$"
+    }
+    </script>
   </head>
   <body class="bg-[#050f09] text-white font-jakarta antialiased selection:bg-emerald-500 selection:text-[#050f09] relative">
     
