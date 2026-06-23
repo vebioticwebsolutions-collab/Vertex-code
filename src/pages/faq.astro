@@ -48,9 +48,8 @@ const faqSchema = {
 };
 ---
 
-<Layout title="Scaffolding & Formwork FAQ | PrimeSteel Tech Engineering Support">
+<Layout title="Scaffolding & Formwork FAQ | Prime SteelTech India Pvt Ltd">
 
-  <!-- FAQPage structured data for SEO + GEO (AI Overviews, ChatGPT, Perplexity, etc.) -->
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <main class="bg-[#2b332a] min-h-screen pt-20 pb-24">
@@ -84,7 +83,6 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- CATEGORY FILTER PILLS -->
     <section class="pt-10 pb-2 relative z-10">
       <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div id="category-pills" class="flex flex-wrap justify-center gap-2 sm:gap-3">
@@ -119,9 +117,14 @@ const faqSchema = {
           <svg class="h-12 w-12 text-zinc-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <h3 class="text-lg font-bold text-white uppercase tracking-wide mb-2">No matching answers found</h3>
           <p class="font-jakarta text-zinc-400 text-sm mb-6">Our system couldn't find an exact match for your search.</p>
-          <a href="/contact-us" class="inline-flex h-10 items-center justify-center rounded-sm bg-emerald-500 px-6 text-xs font-extrabold text-[#2b332a] shadow-md hover:bg-white transition-all uppercase tracking-widest">
-            Contact Engineering Support
-          </a>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="/contact-us" class="inline-flex h-10 items-center justify-center rounded-sm bg-emerald-500 px-6 text-xs font-extrabold text-[#2b332a] shadow-md hover:bg-white transition-all uppercase tracking-widest">
+              Contact Engineering Support
+            </a>
+            <a href="tel:+919393161504" class="inline-flex h-10 items-center justify-center rounded-sm border border-emerald-500/50 bg-transparent px-6 text-xs font-extrabold text-emerald-400 shadow-md hover:bg-emerald-500/10 transition-all uppercase tracking-widest">
+              Call: +91 9393161504
+            </a>
+          </div>
         </div>
 
         <div id="faq-container" class="space-y-4">
