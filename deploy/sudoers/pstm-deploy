@@ -1,0 +1,18 @@
+# /etc/sudoers.d/pstm-deploy
+#
+# Grants the CI deploy user exactly two passwordless powers and nothing else:
+#   1. run the build AS the service user `pstm` (via /bin/bash)
+#   2. restart the two PSTM services
+#
+# Replace `deploy` below with the SSH user GitHub Actions logs in as (VPS_USER).
+#
+# Install:
+#   sudo cp deploy/sudoers/pstm-deploy /etc/sudoers.d/pstm-deploy
+#   sudo chmod 440 /etc/sudoers.d/pstm-deploy
+#   sudo visudo -cf /etc/sudoers.d/pstm-deploy     # must report "parsed OK"
+#
+# NOTE: confirm the systemctl path on your box (`command -v systemctl`); on
+# Ubuntu/Debian it is /usr/bin/systemctl. Adjust the path below if it differs.
+
+deploy ALL=(pstm) NOPASSWD: /bin/bash
+deploy ALL=(root) NOPASSWD: /usr/bin/systemctl restart pstm-astro pstm-worker

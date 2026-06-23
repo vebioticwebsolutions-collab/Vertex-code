@@ -1,0 +1,37 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# PSTM Astro Node SSR backend (serves app.<domain> + api.<domain>)
+#
+# Install:
+#   sudo cp pstm-astro.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now pstm-astro
+#
+# Assumes:
+#   - app deployed at /var/www/pstm/astro-web (git checkout, built with `npm run build`)
+#   - entrypoint dist/server/entry.mjs (Astro @astrojs/node standalone)
+#   - service user: pstm (non-root, see VPS_SETUP.md)
+#   - env file at /etc/pstm-astro.env (chmod 600)
+# ─────────────────────────────────────────────────────────────────────────────
+[Unit]
+Description=PSTM Astro Node SSR backend
+After=network.target
+
+[Service]
+Type=simple
+User=pstm
+Group=pstm
+WorkingDirectory=/var/www/pstm/astro-web
+EnvironmentFile=/etc/pstm-astro.env
+ExecStart=/usr/bin/node ./dist/server/entry.mjs
+Restart=always
+RestartSec=3
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/www/pstm/astro-web
+
+[Install]
+WantedBy=multi-user.target

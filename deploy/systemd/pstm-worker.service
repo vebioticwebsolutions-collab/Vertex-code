@@ -1,0 +1,40 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# PSTM background worker — BullMQ consumer (email / pdf / automation queues)
+#
+# The worker entrypoint (dist/worker/index.mjs) ships in Phase A3 — built by
+# `npm run build:worker` (esbuild) as part of `npm run build`. Safe to enable once
+# the app is built and Redis is running.
+#
+# Install / enable:
+#   sudo cp pstm-worker.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now pstm-worker
+#
+# Shares /etc/pstm-astro.env with the web service (needs DATABASE_URL, REDIS_URL,
+# SMTP_*, R2_*, and optionally PDF_TEMPLATE_PATH). Requires Redis up first, plus
+# LibreOffice (soffice) installed for the pdf job (provisioned in A0).
+# ─────────────────────────────────────────────────────────────────────────────
+[Unit]
+Description=PSTM BullMQ background worker
+After=network.target redis-server.service
+Wants=redis-server.service
+
+[Service]
+Type=simple
+User=pstm
+Group=pstm
+WorkingDirectory=/var/www/pstm/astro-web
+EnvironmentFile=/etc/pstm-astro.env
+ExecStart=/usr/bin/node ./dist/worker/index.mjs
+Restart=always
+RestartSec=5
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/www/pstm/astro-web /tmp
+
+[Install]
+WantedBy=multi-user.target

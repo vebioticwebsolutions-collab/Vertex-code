@@ -636,7 +636,7 @@ import towerImg from '../assets/products/staircase tower product.jpg';
     // Business Details (incl. mobile) isn't collected yet at this step, but the backend's
     // request validator requires user.mobile even though the calc itself doesn't use it —
     // so a placeholder is sent here only; the real mobile is saved at submit time.
-    calcPromise = fetch('/api/calculate', {
+    calcPromise = fetch('/api/public/calculate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...quoteData, user: { ...quoteData.user, mobile: quoteData.user.mobile || '0000000000' } })
@@ -676,7 +676,7 @@ import towerImg from '../assets/products/staircase tower product.jpg';
     setButtonLoading('btn-details-proceed', 'Sending OTP...');
 
     try {
-      const response = await fetch('/api/send-otp', {
+      const response = await fetch('/api/public/send-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone: quoteData.user.mobile })
@@ -710,7 +710,7 @@ import towerImg from '../assets/products/staircase tower product.jpg';
     setButtonLoading('btn-otp-proceed', 'Verifying...');
 
     try {
-      const response = await fetch('/api/verify-otp', {
+      const response = await fetch('/api/public/verify-otp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone: quoteData.user.mobile, code: enteredOTP })
@@ -755,7 +755,7 @@ import towerImg from '../assets/products/staircase tower product.jpg';
         }
       }
 
-      const response = await fetch('/api/submit-quote', {
+      const response = await fetch('/api/public/submit-quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...quoteData, calcResult: precomputedCalc })

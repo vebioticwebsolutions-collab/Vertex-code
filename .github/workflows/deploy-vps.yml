@@ -1,0 +1,68 @@
+name: Deploy to VPS
+
+# Auto-deploy Repo A (astro-web) to the Hostinger VPS on push to main.
+# Ordering rule (gap from A1 review): DB migrations apply BEFORE the VPS restarts
+# the new code, so the schema is never behind the running app. Keep migrations
+# additive/backward-compatible so a half-finished deploy (migrated DB, old code)
+# still runs.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never let two deploys overlap (a later push waits for the in-flight one).
+concurrency:
+  group: deploy-vps
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply DB migrations (Supabase direct connection)
+        # drizzle-kit migrate reads DATABASE_URL; a no-op when nothing is pending.
+        # DATABASE_URL secret = the Supabase DIRECT connection (5432, sslmode=require).
+        run: npm run db:migrate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+      - name: Build (CI gate — fail fast before touching prod)
+        run: npm run build
+
+      - name: Deploy over SSH (pull, build, restart)
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_SSH_PORT || 22 }}
+          script_stop: true
+          script: |
+            set -euo pipefail
+            # Build AS the service user (pstm) so dist/ ownership and env-file
+            # read access are correct. `sudo -u pstm /bin/bash` is the only thing
+            # the deploy user may run as pstm (see deploy/sudoers/pstm-deploy).
+            sudo -u pstm /bin/bash -lc '
+              set -euo pipefail
+              cd /var/www/pstm/astro-web
+              git fetch --prune origin
+              git reset --hard origin/main          # deploy-only checkout, never edited
+              npm ci --include=dev                  # esbuild/drizzle-kit are devDeps
+              set -a; . /etc/pstm-astro.env; set +a  # PUBLIC_* are baked at build time
+              npm run build                          # astro build + esbuild worker
+            '
+            # Restart both units (scoped NOPASSWD sudo — see deploy/sudoers/pstm-deploy).
+            sudo systemctl restart pstm-astro pstm-worker
